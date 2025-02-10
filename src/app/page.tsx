@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Hero from '@/components/Hero'
 import Education from '@/components/Education'
 import Internships from '@/components/Internships'
+import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
 import Certificates from '@/components/Certificates'
 import Testimonials from '@/components/Testimonials'
@@ -22,6 +23,7 @@ export default function Home() {
         <Hero />
         <Education />
         <Internships />
+        <Skills />
         <Projects />
         <Certificates />
         <Testimonials />

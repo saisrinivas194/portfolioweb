@@ -24,6 +24,7 @@ const Certificates = () => {
           animate={{ opacity: 1 }}
           className="max-w-[1600px] mx-auto"
         >
+          {/* Certificates Section */}
           <h1 className="text-3xl md:text-4xl font-bold mb-8 gradient-heading text-center">
             Certifications
           </h1>

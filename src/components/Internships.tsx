@@ -37,42 +37,44 @@ const Internships = () => {
 
   return (
     <ParallaxLayout>
-      <div className="min-h-screen py-16 px-4" id="internships">
+      <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8" id="internships">
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          className="max-w-[1600px] mx-auto"
+          className="max-w-7xl mx-auto"
         >
           <h1 className="text-3xl md:text-4xl font-bold mb-12 gradient-heading text-center">
             Internship Experience
           </h1>
           
-          <div className="flex justify-center gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 justify-items-center">
             {internshipData.map((internship, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-[380px] min-h-[340px] p-4 rounded-[20px] bg-white/90 card flex flex-col transition-all duration-300 hover:scale-[0.98] hover:shadow-[0_0_30px_1px_rgba(63,43,150,0.3)] border-2 border-transparent hover:border-[#3f2b96]/30"
+                className="w-full max-w-xl p-4 sm:p-6 rounded-[20px] bg-white/90 card flex flex-col transition-all duration-300 hover:scale-[0.98] hover:shadow-[0_0_30px_1px_rgba(63,43,150,0.3)] border-2 border-transparent hover:border-[#3f2b96]/30"
               >
                 {/* Content */}
                 <div className="relative h-full flex flex-col">
-                  <h3 className="text-xl font-bold text-gray-800 mb-1.5">
+                  <h3 className="text-xl font-bold text-gray-800 mb-1.5 bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] bg-clip-text text-transparent">
                     {internship.company}
                   </h3>
                   <h4 className="text-base text-gray-700 mb-4">
                     {internship.role}
                   </h4>
                   
-                  <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
-                    <FaClock className="text-[#3f2b96]" size={14} />
-                    <span>{internship.duration}</span>
-                  </div>
-                  
-                  <div className="flex items-center gap-2 text-sm text-gray-600 mb-4">
-                    <FaMapMarkerAlt className="text-[#3f2b96]" size={14} />
-                    <span>{internship.location}</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-sm text-gray-600 mb-4">
+                    <div className="flex items-center gap-2">
+                      <FaClock className="text-[#3f2b96] flex-shrink-0" size={14} />
+                      <span>{internship.duration}</span>
+                    </div>
+                    
+                    <div className="flex items-center gap-2">
+                      <FaMapMarkerAlt className="text-[#3f2b96] flex-shrink-0" size={14} />
+                      <span>{internship.location}</span>
+                    </div>
                   </div>
 
                   {/* Description Section */}
@@ -86,7 +88,7 @@ const Internships = () => {
                   
                   <div className="flex-grow">
                     <div className="flex items-center gap-2 mb-3">
-                      <FaTrophy className="text-[#3f2b96]" size={14} />
+                      <FaTrophy className="text-[#3f2b96] flex-shrink-0" size={14} />
                       <span className="text-sm font-semibold text-gray-700">Achievements/Tasks</span>
                     </div>
                     <ul className="list-disc list-inside space-y-2">

@@ -30,14 +30,30 @@ const StyledWrapper = styled.div`
   .button {
     position: relative;
     z-index: 0;
-    width: 120px;
-    height: 32px;
+    width: 90px;
+    height: 28px;
     text-decoration: none;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
     color: var(--line_color);
-    letter-spacing: 1.2px;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
+
+    @media (min-width: 640px) {
+      width: 100px;
+      height: 30px;
+      font-size: 11px;
+      letter-spacing: 1.2px;
+    }
+
+    @media (min-width: 768px) {
+      width: 110px;
+      height: 32px;
+    }
+
+    @media (min-width: 1024px) {
+      width: 120px;
+    }
   }
   .button__text {
     display: flex;
@@ -52,37 +68,89 @@ const StyledWrapper = styled.div`
   .button__text::after {
     content: "";
     position: absolute;
-    height: 3px;
+    height: 2px;
     border-radius: 2px;
     background: var(--line_color);
     transition: all 0.5s ease;
+
+    @media (min-width: 640px) {
+      height: 3px;
+    }
   }
   .button::before {
     top: 0;
-    left: 46px;
-    width: calc(100% - 48px * 2 - 16px);
+    left: 36px;
+    width: calc(100% - 38px * 2 - 12px);
+
+    @media (min-width: 640px) {
+      left: 40px;
+      width: calc(100% - 42px * 2 - 14px);
+    }
+
+    @media (min-width: 768px) {
+      left: 44px;
+      width: calc(100% - 46px * 2 - 16px);
+    }
   }
   .button::after {
     top: 0;
-    right: 46px;
-    width: 8px;
+    right: 36px;
+    width: 6px;
+
+    @media (min-width: 640px) {
+      right: 40px;
+      width: 7px;
+    }
+
+    @media (min-width: 768px) {
+      right: 44px;
+      width: 8px;
+    }
   }
   .button__text::before {
     bottom: 0;
-    right: 46px;
-    width: calc(100% - 48px * 2 - 16px);
+    right: 36px;
+    width: calc(100% - 38px * 2 - 12px);
+
+    @media (min-width: 640px) {
+      right: 40px;
+      width: calc(100% - 42px * 2 - 14px);
+    }
+
+    @media (min-width: 768px) {
+      right: 44px;
+      width: calc(100% - 46px * 2 - 16px);
+    }
   }
   .button__text::after {
     bottom: 0;
-    left: 46px;
-    width: 8px;
+    left: 36px;
+    width: 6px;
+
+    @media (min-width: 640px) {
+      left: 40px;
+      width: 7px;
+    }
+
+    @media (min-width: 768px) {
+      left: 44px;
+      width: 8px;
+    }
   }
   .button__line {
     position: absolute;
     top: 0;
-    width: 48px;
+    width: 38px;
     height: 100%;
     overflow: hidden;
+
+    @media (min-width: 640px) {
+      width: 42px;
+    }
+
+    @media (min-width: 768px) {
+      width: 46px;
+    }
   }
   .button__line::before {
     content: "";
@@ -92,7 +160,11 @@ const StyledWrapper = styled.div`
     height: 100%;
     box-sizing: border-box;
     border-radius: 300px;
-    border: solid 3px var(--line_color);
+    border: solid 2px var(--line_color);
+
+    @media (min-width: 640px) {
+      border-width: 3px;
+    }
   }
   .button__line:nth-child(1),
   .button__line:nth-child(1)::before {
@@ -103,15 +175,35 @@ const StyledWrapper = styled.div`
     right: 0;
   }
   .button:hover {
-    letter-spacing: 4px;
+    letter-spacing: 3px;
+
+    @media (min-width: 640px) {
+      letter-spacing: 4px;
+    }
   }
   .button:hover::before,
   .button:hover .button__text::before {
-    width: 8px;
+    width: 6px;
+
+    @media (min-width: 640px) {
+      width: 7px;
+    }
+
+    @media (min-width: 768px) {
+      width: 8px;
+    }
   }
   .button:hover::after,
   .button:hover .button__text::after {
-    width: calc(100% - 48px * 2 - 16px);
+    width: calc(100% - 38px * 2 - 12px);
+
+    @media (min-width: 640px) {
+      width: calc(100% - 42px * 2 - 14px);
+    }
+
+    @media (min-width: 768px) {
+      width: calc(100% - 46px * 2 - 16px);
+    }
   }
   .button__drow1,
   .button__drow2 {
@@ -121,18 +213,42 @@ const StyledWrapper = styled.div`
     transform-origin: 16px 16px;
   }
   .button__drow1 {
-    top: -8px;
-    left: 20px;
-    width: 24px;
+    top: -6px;
+    left: 16px;
+    width: 18px;
     height: 0;
     transform: rotate(30deg);
+
+    @media (min-width: 640px) {
+      top: -7px;
+      left: 18px;
+      width: 21px;
+    }
+
+    @media (min-width: 768px) {
+      top: -8px;
+      left: 20px;
+      width: 24px;
+    }
   }
   .button__drow2 {
-    top: 22px;
-    left: 38px;
-    width: 24px;
+    top: 18px;
+    left: 32px;
+    width: 18px;
     height: 0;
     transform: rotate(-127deg);
+
+    @media (min-width: 640px) {
+      top: 20px;
+      left: 35px;
+      width: 21px;
+    }
+
+    @media (min-width: 768px) {
+      top: 22px;
+      left: 38px;
+      width: 24px;
+    }
   }
   .button__drow1::before,
   .button__drow1::after,
@@ -145,37 +261,77 @@ const StyledWrapper = styled.div`
     bottom: 0;
     left: 0;
     width: 0;
-    height: 24px;
+    height: 18px;
     border-radius: 16px;
     transform-origin: 16px 16px;
     transform: rotate(-60deg);
+
+    @media (min-width: 640px) {
+      height: 21px;
+    }
+
+    @media (min-width: 768px) {
+      height: 24px;
+    }
   }
   .button__drow1::after {
-    top: -5px;
-    left: 22px;
+    top: -3px;
+    left: 18px;
     width: 0;
-    height: 24px;
+    height: 18px;
     border-radius: 16px;
     transform-origin: 16px 16px;
     transform: rotate(69deg);
+
+    @media (min-width: 640px) {
+      top: -4px;
+      left: 20px;
+      height: 21px;
+    }
+
+    @media (min-width: 768px) {
+      top: -5px;
+      left: 22px;
+      height: 24px;
+    }
   }
   .button__drow2::before {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 24px;
+    height: 18px;
     border-radius: 16px;
     transform-origin: 16px 16px;
     transform: rotate(-146deg);
+
+    @media (min-width: 640px) {
+      height: 21px;
+    }
+
+    @media (min-width: 768px) {
+      height: 24px;
+    }
   }
   .button__drow2::after {
-    bottom: 13px;
-    left: -20px;
+    bottom: 10px;
+    left: -16px;
     width: 0;
-    height: 24px;
+    height: 18px;
     border-radius: 16px;
     transform-origin: 16px 16px;
     transform: rotate(-262deg);
+
+    @media (min-width: 640px) {
+      bottom: 11px;
+      left: -18px;
+      height: 21px;
+    }
+
+    @media (min-width: 768px) {
+      bottom: 13px;
+      left: -20px;
+      height: 24px;
+    }
   }
   .button__drow1,
   .button__drow1::before,
@@ -210,12 +366,8 @@ const StyledWrapper = styled.div`
     animation-fill-mode: forwards;
   }
   @keyframes drow1 {
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 50px;
-    }
+    0% { height: 0; }
+    100% { height: 40px; }
   }
   @keyframes drow2 {
     0% {
@@ -229,32 +381,20 @@ const StyledWrapper = styled.div`
       opacity: 1;
     }
     100% {
-      width: 60px;
+      width: 50px;
     }
   }
   @keyframes drow3 {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 40px;
-    }
+    0% { width: 0; }
+    100% { width: 35px; }
   }
   @keyframes drow4 {
-    0% {
-      height: 0;
-    }
-    100% {
-      height: 60px;
-    }
+    0% { height: 0; }
+    100% { height: 50px; }
   }
   @keyframes drow5 {
-    0% {
-      width: 0;
-    }
-    100% {
-      width: 62px;
-    }
+    0% { width: 0; }
+    100% { width: 52px; }
   }
 
   .container {
@@ -266,6 +406,25 @@ const StyledWrapper = styled.div`
   }
   .button:not(:last-child) {
     margin-bottom: 32px;
+  }
+
+  @media (max-width: 639px) {
+    @keyframes drow1 {
+      0% { height: 0; }
+      100% { height: 30px; }
+    }
+    @keyframes drow2 {
+      100% { width: 40px; }
+    }
+    @keyframes drow3 {
+      100% { width: 25px; }
+    }
+    @keyframes drow4 {
+      100% { height: 40px; }
+    }
+    @keyframes drow5 {
+      100% { width: 42px; }
+    }
   }
 `;
 
