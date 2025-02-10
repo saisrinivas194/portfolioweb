@@ -266,7 +266,7 @@ const ParallaxLayout: React.FC<ParallaxLayoutProps> = ({ children }) => {
     <>
       <ParallaxContainer>
         <Image
-          src="/videos/back.png"
+          src="/SSR.jpg"
           alt="Background Pattern"
           fill
           className="object-cover opacity-20"

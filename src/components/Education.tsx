@@ -14,7 +14,7 @@ const Education = () => {
       duration: "2024 - 2025",
       location: "Newark, NJ, USA",
       gpa: "3.313/4 CGPA",
-      logo: "/njit-logo.gif",
+      logo: "/NJIT.png",
       courses: [
         "Machine Learning & Deep Learning",
         "Artificial Intelligence & Prompt Engineering",
@@ -104,7 +104,8 @@ const Education = () => {
                       src={education.logo}
                       alt={education.institution}
                       fill
-                      className="object-contain p-1"
+                      className="object-cover p-0.5"
+                      sizes="(max-width: 64px) 100vw, 64px"
                       priority
                     />
                   </div>
