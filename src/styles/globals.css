@@ -1,0 +1,166 @@
+/* Add this to your existing globals.css */
+
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+    text-shadow: 2px 2px 10px rgba(63, 43, 150, 0.3),
+                -2px -2px 10px rgba(168, 192, 255, 0.3);
+    transform: translateY(0px);
+  }
+  25% {
+    text-shadow: 4px 4px 20px rgba(63, 43, 150, 0.5),
+                -4px -4px 20px rgba(168, 192, 255, 0.5);
+    transform: translateY(-2px);
+  }
+  50% {
+    background-position: 100% 50%;
+    text-shadow: 6px 6px 30px rgba(63, 43, 150, 0.4),
+                -6px -6px 30px rgba(168, 192, 255, 0.4);
+    transform: translateY(0px);
+  }
+  75% {
+    text-shadow: 4px 4px 20px rgba(63, 43, 150, 0.5),
+                -4px -4px 20px rgba(168, 192, 255, 0.5);
+    transform: translateY(2px);
+  }
+  100% {
+    background-position: 0% 50%;
+    text-shadow: 2px 2px 10px rgba(63, 43, 150, 0.3),
+                -2px -2px 10px rgba(168, 192, 255, 0.3);
+    transform: translateY(0px);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes bounce-text {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+.animate-bounce-text {
+  animation: bounce-text 0.5s ease-in-out;
+}
+
+.animate-fade-in-right {
+  animation: fade-in-right 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Project card styles */
+.project-card {
+  isolation: isolate;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #1a1a1a;
+  border-radius: 8px;
+  transform: translateZ(-1px);
+}
+
+.project-card > div:nth-child(1) {
+  transform-origin: center;
+  will-change: transform;
+}
+
+.project-card > div:nth-child(2) {
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+}
+
+/* Scrollbar styling for the description */
+.project-card ul {
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(63, 43, 150, 0.3) transparent;
+}
+
+.project-card ul::-webkit-scrollbar {
+  width: 4px;
+}
+
+.project-card ul::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.project-card ul::-webkit-scrollbar-thumb {
+  background-color: rgba(63, 43, 150, 0.3);
+  border-radius: 20px;
+}
+
+/* Custom scrollbar for project cards */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 192, 255, 0.3) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(168, 192, 255, 0.3);
+  border-radius: 20px;
+}
+
+/* Hide scrollbar when not hovering */
+.custom-scrollbar {
+  scrollbar-width: none;
+}
+
+.custom-scrollbar:hover {
+  scrollbar-width: thin;
+}
+
+/* For Webkit browsers */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar {
+  display: block;
+} 
