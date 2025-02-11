@@ -214,6 +214,13 @@ const StyledComponents: React.FC<StyledComponentsProps> = ({ scrollY, children }
     setIsMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.documentElement.style.setProperty('--scroll-float-x', `${scrollY * 0.1}px`);
+      document.documentElement.style.setProperty('--scroll-float-y', `${scrollY * 0.05}px`);
+    }
+  }, [scrollY]);
+
   if (!isMounted) {
     return (
       <div className="min-h-screen bg-white">
@@ -238,52 +245,22 @@ const StyledComponents: React.FC<StyledComponentsProps> = ({ scrollY, children }
           }}
           priority
         />
-        <div 
-          className="floating-logo logo-1"
-          style={{ 
-            transform: `translate(${Math.sin(scrollY * 0.002) * 30}px, ${Math.cos(scrollY * 0.002) * 30}px)` 
-          }}
-        >
-          <Image src="/NJIT.png" alt="NJIT Logo" fill className="object-contain" />
+        <div className="floating-logo logo-1">
+          <Image src="/NJIT.png" alt="NJIT Logo" width={64} height={64} className="object-cover p-0.5" sizes="(max-width: 64px) 100vw, 64px" />
         </div>
-        <div 
-          className="floating-logo logo-2"
-          style={{ 
-            transform: `translate(${Math.cos(scrollY * 0.002) * -25}px, ${Math.sin(scrollY * 0.002) * 25}px)` 
-          }}
-        >
-          <Image src="/scsvmv.png" alt="SCSVMV Logo" fill className="object-contain" />
+        <div className="floating-logo logo-2">
+          <Image src="/KS.png" alt="KS Logo" width={64} height={64} className="object-cover p-0.5" sizes="(max-width: 64px) 100vw, 64px" />
         </div>
-        <div 
-          className="floating-logo logo-3"
-          style={{ 
-            transform: `translate(${Math.sin(scrollY * 0.002) * -20}px, ${Math.cos(scrollY * 0.002) * -20}px)` 
-          }}
-        >
+        <div className="floating-logo logo-3">
           <Image src="/sc.png" alt="Sri Chaitanya Logo" fill className="object-contain" />
         </div>
-        <div 
-          className="floating-logo logo-4"
-          style={{ 
-            transform: `translate(${Math.cos(scrollY * 0.002) * 35}px, ${Math.sin(scrollY * 0.002) * -35}px)` 
-          }}
-        >
-          <Image src="/KS.png" alt="Keshava Reddy Logo" fill className="object-contain" />
+        <div className="floating-logo logo-4">
+          <Image src="/scsvmv.png" alt="SCSVMV Logo" fill className="object-contain" />
         </div>
-        <div 
-          className="floating-logo logo-5"
-          style={{ 
-            transform: `translate(${Math.sin(scrollY * 0.002) * 40}px, ${Math.cos(scrollY * 0.002) * -40}px)` 
-          }}
-        >
+        <div className="floating-logo logo-5">
           <Image src="/nit-logo.png" alt="NIT Logo" fill className="object-contain" />
         </div>
-        <div 
-          className="floating-logo logo-6"
-          style={{ 
-            transform: `translate(${Math.cos(scrollY * 0.002) * -45}px, ${Math.sin(scrollY * 0.002) * -45}px)` 
-          }}
-        >
+        <div className="floating-logo logo-6">
           <Image src="/keshava-logo.png" alt="Keshava Reddy Logo" fill className="object-contain" />
         </div>
       </ParallaxContainer>

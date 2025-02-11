@@ -8,6 +8,7 @@ import Button from './Button';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import SocialIcon from '@/components/SocialIcon';
 import dynamic from 'next/dynamic';
+import '../styles/Hero.css';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -102,6 +103,13 @@ const Hero = () => {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.documentElement.style.setProperty('--scroll-y', `${scrollY * 0.08}px`);
+      document.documentElement.style.setProperty('--scroll-scale', `${1 - scrollY * 0.0002}`);
+    }
+  }, [scrollY]);
+
   const renderButton = useCallback((text: string, href: string) => (
     <div key={href} onClick={() => handleMenuClick(href)}>
       <ButtonClient text={text} href={href} />
@@ -125,24 +133,13 @@ const Hero = () => {
   const content = (
     <section className={`min-h-screen flex items-center justify-center relative hero-section ${openSans.className}`}>
       {/* Logo Section */}
-      <div 
-        className="absolute top-4 sm:top-8 left-4 sm:left-8 z-50"
-        style={{ 
-          transform: `translateY(${scrollY * 0.08}px)`,
-          transition: 'all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)',
-          willChange: 'transform',
-          opacity: 0.9
-        }}
-      >
+      <div className="absolute top-4 sm:top-8 left-4 sm:left-8 z-50 logo-container">
         <div className="relative w-[150px] sm:w-[200px] h-[75px] sm:h-[100px]">
           <Image
             src="/logo.png"
             alt="Logo"
             fill
-            className="hover:scale-110 transition-all duration-300 object-contain mix-blend-normal"
-            style={{
-              filter: 'brightness(1) contrast(1)'
-            }}
+            className="hover:scale-110 transition-all duration-300 object-contain mix-blend-normal logo-image"
             priority
           />
         </div>
@@ -192,10 +189,7 @@ const Hero = () => {
           {/* Image section */}
           <div className="order-2 md:order-none relative flex justify-center items-center min-h-[400px] sm:min-h-[600px]">
             <div 
-              className="animate-float relative z-10 w-full max-w-[300px] sm:max-w-[500px]"
-              style={{ 
-                transform: `translateY(${scrollY * -0.1}px) scale(${1 - scrollY * 0.0002})`,
-              }}
+              className="animate-float relative z-10 w-full max-w-[300px] sm:max-w-[500px] floating-image"
             >
               <img
                 src="/image.png"
@@ -207,24 +201,12 @@ const Hero = () => {
 
           {/* Content section */}
           <div 
-            className="order-1 md:order-none space-y-4 sm:space-y-6 relative z-20 max-w-xl text-container"
-            style={{ 
-              transform: `translateY(${scrollY * 0.15}px)`,
-            }}
+            className="order-1 md:order-none space-y-4 sm:space-y-6 relative z-20 max-w-xl text-container content-section"
           >
             <div className="space-y-4">
               <div className="text-sm md:text-base font-semibold tracking-wide px-3 sm:px-5 py-2 sm:py-3 inline-block rounded-xl animate-fade-in-right">
                 <span 
-                  className="inline-block hover:scale-105 transition-transform duration-300"
-                  style={{
-                    background: 'linear-gradient(to right, #3f2b96, #a8c0ff)',
-                    backgroundSize: '200% auto',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    WebkitTextFillColor: 'Black',
-                    animation: 'textShine 4s ease-in-out infinite',
-                    fontWeight: '600'
-                  }}
+                  className="inline-block hover:scale-105 transition-transform duration-300 welcome-text"
                 >
                   👋 <RandomizedTextEffectClient text="Welcome to my portfolio" />
                 </span>
@@ -236,16 +218,7 @@ const Hero = () => {
                 </h1>
                 <div className="space-y-2">
                   <div 
-                    className="relative text-xl sm:text-2xl md:text-4xl font-bold tracking-tight whitespace-normal sm:whitespace-nowrap inline-block min-h-[40px] sm:min-h-[50px] leading-tight"
-                    style={{
-                      background: 'linear-gradient(to right, #3f2b96, #a8c0ff)',
-                      backgroundSize: '200% auto',
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      color: 'transparent',
-                      animation: 'textShine 4s ease-in-out infinite',
-                      textShadow: '2px 2px 4px rgba(63, 43, 150, 0.2)',
-                    }}
+                    className="relative text-xl sm:text-2xl md:text-4xl font-bold tracking-tight whitespace-normal sm:whitespace-nowrap inline-block min-h-[40px] sm:min-h-[50px] leading-tight name-text"
                   >
                     {displayText}
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-full bg-[#a8c0ff] animate-blink"></div>

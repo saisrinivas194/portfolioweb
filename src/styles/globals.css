@@ -111,8 +111,6 @@
 .project-card ul {
   max-height: 200px;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(63, 43, 150, 0.3) transparent;
 }
 
 .project-card ul::-webkit-scrollbar {
@@ -128,14 +126,13 @@
   border-radius: 20px;
 }
 
-/* Custom scrollbar for project cards */
+/* Custom scrollbar styles */
 .custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(168, 192, 255, 0.3) transparent;
+  overflow-y: auto;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -143,24 +140,17 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(168, 192, 255, 0.3);
-  border-radius: 20px;
+  background-color: rgba(63, 43, 150, 0.3);
+  border-radius: 3px;
 }
 
-/* Hide scrollbar when not hovering */
-.custom-scrollbar {
-  scrollbar-width: none;
-}
-
-.custom-scrollbar:hover {
-  scrollbar-width: thin;
-}
-
-/* For Webkit browsers */
-.custom-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.custom-scrollbar:hover::-webkit-scrollbar {
-  display: block;
+/* Hide scrollbar by default */
+@media (hover: hover) {
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .custom-scrollbar:hover::-webkit-scrollbar {
+    display: block;
+  }
 } 

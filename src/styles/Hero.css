@@ -1,0 +1,114 @@
+.logo-container {
+  transform: translateY(var(--scroll-y));
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  will-change: transform;
+  opacity: 0.9;
+}
+
+.logo-image {
+  filter: brightness(1) contrast(1);
+}
+
+.welcome-text {
+  background: linear-gradient(to right, #3f2b96, #a8c0ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: Black;
+  animation: textShine 4s ease-in-out infinite;
+  font-weight: 600;
+}
+
+.name-text {
+  background: linear-gradient(to right, #3f2b96, #a8c0ff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textShine 4s ease-in-out infinite;
+  text-shadow: 2px 2px 4px rgba(63, 43, 150, 0.2);
+}
+
+.floating-image {
+  transform: translateY(var(--scroll-y)) scale(var(--scroll-scale));
+}
+
+.content-section {
+  transform: translateY(var(--scroll-y));
+}
+
+.floating-logo {
+  position: absolute;
+  opacity: 0.04;
+  filter: grayscale(100%) brightness(0.9);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  will-change: transform;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 5px;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes float1 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(var(--scroll-float-x, 10px), var(--scroll-float-y, 5px)); }
+}
+
+@keyframes float2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(var(--scroll-float-x, -15px), var(--scroll-float-y, 8px)); }
+}
+
+.logo-1 { 
+  top: 15%; 
+  left: 10%; 
+  width: 120px; 
+  height: 120px;
+  animation: float1 1s ease-out forwards;
+}
+
+.logo-2 { 
+  top: 60%; 
+  right: 15%; 
+  width: 130px; 
+  height: 130px;
+  animation: float2 1s ease-out forwards;
+}
+
+.logo-3 { 
+  bottom: 20%; 
+  left: 20%; 
+  width: 100px; 
+  height: 100px;
+}
+
+.logo-4 { 
+  top: 30%; 
+  right: 25%; 
+  width: 110px; 
+  height: 110px;
+}
+
+.logo-5 { 
+  top: 45%; 
+  left: 30%; 
+  width: 115px; 
+  height: 115px;
+}
+
+.logo-6 { 
+  bottom: 35%; 
+  right: 35%; 
+  width: 105px; 
+  height: 105px;
+}
+
+:root {
+  --scroll-y: 0px;
+  --scroll-scale: 1;
+} 
