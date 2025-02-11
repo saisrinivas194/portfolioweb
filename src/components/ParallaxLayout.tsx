@@ -230,7 +230,17 @@ interface ParallaxLayoutProps {
 
 const ParallaxLayout: React.FC<ParallaxLayoutProps> = ({ children }) => {
   const [scrollY, setScrollY] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   
+  useEffect(() => {
+    // Show loading animation for 2.5 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleScroll = useCallback(() => {
     requestAnimationFrame(() => {
       setScrollY(window.scrollY);
@@ -261,6 +271,22 @@ const ParallaxLayout: React.FC<ParallaxLayoutProps> = ({ children }) => {
       document.documentElement.style.scrollBehavior = '';
     };
   }, [handleScroll]);
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-white z-50 loading-screen">
+        <div className="relative w-[300px] h-[300px]">
+          <Image
+            src="/SSR.gif"
+            alt="Loading Animation"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

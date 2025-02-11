@@ -245,11 +245,19 @@ const StyledComponents: React.FC<StyledComponentsProps> = ({ scrollY, children }
           }}
           priority
         />
-        <div className="floating-logo logo-1">
+        <div className="floating-logo logo-1d">e
           <Image src="/NJIT.png" alt="NJIT Logo" width={64} height={64} className="object-cover p-0.5" sizes="(max-width: 64px) 100vw, 64px" />
         </div>
         <div className="floating-logo logo-2">
-          <Image src="/KS.png" alt="KS Logo" width={64} height={64} className="object-cover p-0.5" sizes="(max-width: 64px) 100vw, 64px" />
+          <Image 
+            src="/KS.png" 
+            alt="Keshava Reddy School Logo" 
+            width={64} 
+            height={64} 
+            className="object-contain p-0.5" 
+            sizes="(max-width: 64px) 100vw, 64px"
+            priority 
+          />
         </div>
         <div className="floating-logo logo-3">
           <Image src="/sc.png" alt="Sri Chaitanya Logo" fill className="object-contain" />

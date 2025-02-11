@@ -65,7 +65,7 @@ const Education = () => {
       duration: "2016 - 2017",
       location: "Tirupati, AP, India",
       gpa: "9.2/10 GPA",
-      logo: "/ks.png",
+      logo: "/KS.png",
       courses: [
         "Mathematics",
         "Basic Computer Science",
