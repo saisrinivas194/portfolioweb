@@ -39,7 +39,7 @@ const Projects = () => {
         "Leveraged AI prompting through ChatGPT to guide the development process and troubleshoot challenges.",
         "Focused on creating a functional, user-friendly, and visually appealing web design for the real estate domain."
       ],
-      githubLink: "https://github.com/saisrinivas194/jcr-main-web",
+      githubLink: "",
       liveLink: "https://www.jcrbuilders.in"
     }
   ];
