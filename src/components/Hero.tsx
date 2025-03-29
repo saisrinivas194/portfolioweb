@@ -118,7 +118,7 @@ const Hero = () => {
 
   const navigationButtons = [
     { text: "EDUCATION", href: "#education" },
-    { text: "INTERNSHIPS", href: "#internships" },
+    { text: "EXPERIENCE", href: "#experience" },
     { text: "SKILLS", href: "#skills" },
     { text: "PROJECTS", href: "#projects" },
     { text: "CERTIFICATES", href: "#certificates" },
