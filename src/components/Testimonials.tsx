@@ -41,16 +41,16 @@ const Testimonials = () => {
 
   return (
     <ParallaxLayout>
-      <div className="min-h-screen pt-4 pb-16 px-4">
+      <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8" id="testimonials">
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          className="max-w-[1600px] mx-auto"
+          className="max-w-7xl mx-auto"
         >
+          <h1 className="text-3xl md:text-4xl font-bold mb-12 gradient-heading text-center">
+            Recommendations
+          </h1>
           <div className="flex flex-col items-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold gradient-heading text-center mb-4">
-              Testimonials
-            </h1>
             <a 
               href="https://www.linkedin.com/in/sai-srinivas-pedhapolla-345959256/details/recommendations/?detailScreenTabIndex=0"
               target="_blank"

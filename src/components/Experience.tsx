@@ -3,9 +3,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ParallaxLayout from './ParallaxLayout';
-import { FaMapMarkerAlt, FaClock, FaTrophy } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaClock, FaTrophy, FaQuoteRight } from 'react-icons/fa';
 
 const Experience = () => {
+  const handleScrollToTestimonials = () => {
+    document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const experienceData = [
     {
       company: "Webdaddy",
@@ -103,6 +107,22 @@ const Experience = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Testimonials Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex justify-center mt-12"
+          >
+            <button
+              onClick={handleScrollToTestimonials}
+              className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white rounded-2xl hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-[#a8c0ff] hover:to-[#3f2b96]"
+            >
+              <FaQuoteRight className="text-white text-xl group-hover:rotate-12 transition-transform duration-300" />
+              <span className="font-semibold tracking-wide">View Recommendations</span>
+            </button>
+          </motion.div>
         </motion.div>
       </div>
     </ParallaxLayout>
