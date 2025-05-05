@@ -150,7 +150,7 @@ const Hero = () => {
         <div className="lg:hidden absolute top-24 sm:top-2 right-4 z-50">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 rounded-lg bg-white/90 shadow-lg hover:bg-white transition-all duration-300"
+            className="p-2 rounded-lg bg-white/90 shadow-lg hover:bg-white/90 transition-all duration-300"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
@@ -163,7 +163,7 @@ const Hero = () => {
 
         {/* Mobile Menu */}
         <div 
-          className={`lg:hidden fixed top-0 right-0 h-screen w-64 bg-white/95 shadow-xl z-40 transform transition-transform duration-300 ease-in-out ${
+          className={`lg:hidden fixed top-0 right-0 h-screen w-64 bg-white/90 shadow-xl z-40 transform transition-transform duration-300 ease-in-out ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
@@ -180,7 +180,7 @@ const Hero = () => {
         {/* Overlay */}
         {isMenuOpen && (
           <div 
-            className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-30"
+            className="lg:hidden fixed inset-0 bg-black/10 backdrop-blur-sm z-30"
             onClick={() => setIsMenuOpen(false)}
           />
         )}
@@ -235,7 +235,10 @@ const Hero = () => {
               </div>
             </div>
             <p className="text-sm sm:text-base text-gray-700 tracking-wide animate-fade-in-up delay-500 leading-relaxed max-w-2xl">
-              Aspiring Data Scientist with a strong foundation in Python, AI prompting, Machine Learning, Deep Learning, and AI-driven content creation. Experienced in Research & Development through an internship, with hands-on expertise in Tableau and AI-powered web development. Passionate about leveraging AI tools and data-driven insights to solve complex problems, drive innovation, and contribute to cutting-edge advancements in AI and data science. Seeking a challenging role where I can apply my skills in research, development, and analytics to create impactful solutions.
+              Data Science graduate (May 2025) specializing in AI-powered web development, data analysis, and R&D. Skilled
+              in Python, ReactJS, SEO optimization, and machine learning, with hands-on experience building data-driven
+              solutions. Proven ability to lead teams, optimize workflows, and implement AI tools to solve complex problems. OPT
+              eligible.
             </p>
             <div className="flex flex-wrap gap-4 sm:gap-6 pt-4 animate-fade-in-up delay-1000">
               <SocialIconClient 

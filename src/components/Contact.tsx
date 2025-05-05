@@ -26,7 +26,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="max-w-3xl mx-auto p-8 rounded-[20px] bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-sm card transition-all duration-300 hover:shadow-[0_0_30px_1px_rgba(63,43,150,0.3)] border-2 border-transparent hover:border-[#3f2b96]/30"
+              className="max-w-3xl mx-auto p-8 rounded-[20px] bg-white/90 card transition-all duration-300 hover:shadow-[0_0_30px_1px_rgba(63,43,150,0.3)] border-2 border-transparent hover:border-[#3f2b96]/30"
             >
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex items-center gap-4">

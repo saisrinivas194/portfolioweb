@@ -50,47 +50,79 @@ const Testimonials = () => {
           <h1 className="text-3xl md:text-4xl font-bold mb-12 gradient-heading text-center">
             Recommendations
           </h1>
+          
+          {/* LinkedIn Link */}
           <div className="flex flex-col items-center mb-8">
             <a 
               href="https://www.linkedin.com/in/sai-srinivas-pedhapolla-345959256/details/recommendations/?detailScreenTabIndex=0"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[#3f2b96] hover:underline text-sm font-medium"
+              className="text-sm text-gray-600 hover:text-[#3f2b96] transition-colors duration-300 flex items-center gap-2"
             >
-              <FaLinkedin size={16} />
-              Verify on LinkedIn
-              <FaExternalLinkAlt size={10} />
+              View on LinkedIn
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
             </a>
           </div>
-          
-          <div className="flex justify-center items-stretch gap-4 overflow-x-auto pb-4 px-4 snap-x">
+
+          {/* Testimonials Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 max-w-[1600px] mx-auto">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-[300px] flex-shrink-0 snap-center p-6 rounded-[20px] bg-white/90 card flex flex-col transition-all duration-300 hover:scale-[0.98] hover:shadow-[0_0_30px_1px_rgba(63,43,150,0.3)] border-2 border-transparent hover:border-[#3f2b96]/30"
+                className="w-full h-[400px] p-6 rounded-[20px] bg-white/90 card flex flex-col transition-all duration-300 hover:scale-[0.98] hover:shadow-[0_0_30px_1px_rgba(63,43,150,0.3)] border-2 border-transparent hover:border-[#3f2b96]/30"
               >
-                <div className="relative h-full flex flex-col">
-                  <h3 className="text-lg font-bold text-gray-800 mb-1">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-1 line-clamp-2">
-                    {testimonial.role}
-                  </p>
-                  <div className="flex items-center gap-2 text-sm text-[#3f2b96] mb-4">
-                    <span>{testimonial.date}</span>
-                    <span>•</span>
-                    <span>{testimonial.relationship}</span>
+                <div className="flex flex-col h-full">
+                  {/* Header */}
+                  <div className="flex-shrink-0">
+                    <h3 className="text-lg font-bold text-gray-800 mb-1">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-1">
+                      {testimonial.role} {testimonial.company && `at ${testimonial.company}`}
+                    </p>
+                    <div className="flex items-center gap-2 text-sm text-[#3f2b96] mb-4">
+                      <span>{testimonial.date}</span>
+                      <span>•</span>
+                      <span>{testimonial.relationship}</span>
+                    </div>
                   </div>
-                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-[12]">
-                    "{testimonial.content}"
-                  </p>
+
+                  {/* Content with Scroll */}
+                  <div className="flex-grow overflow-y-auto custom-scrollbar pr-2">
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      "{testimonial.content}"
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Add custom scrollbar styles */}
+          <style jsx global>{`
+            .custom-scrollbar::-webkit-scrollbar {
+              width: 4px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-track {
+              background: transparent;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb {
+              background-color: rgba(63, 43, 150, 0.2);
+              border-radius: 20px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+              background-color: rgba(63, 43, 150, 0.4);
+            }
+            .custom-scrollbar {
+              scrollbar-width: thin;
+              scrollbar-color: rgba(63, 43, 150, 0.2) transparent;
+            }
+          `}</style>
         </motion.div>
       </div>
     </ParallaxLayout>
