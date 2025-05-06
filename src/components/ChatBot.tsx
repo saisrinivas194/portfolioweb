@@ -206,6 +206,14 @@ const ChatBot = () => {
   const generateResponse = (query: string): string => {
     const lowerQuery = query.toLowerCase();
     
+    // Function to check if query matches category keywords
+    const matchesCategory = (category: { keywords: string[] }): boolean => {
+      return category.keywords.some(keyword => {
+        return lowerQuery.includes(keyword) || 
+               lowerQuery.match(new RegExp(`\\b${keyword.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i'));
+      });
+    };
+
     // Is Sai still studying?
     if (lowerQuery.match(/(is|does|has|was).*sai.*(still|currently).*study|student|studying|in school|in college|in university/)) {
       return "Yes, Sai is currently a graduate student at NJIT, pursuing a Master's in Data Science and graduating in May 2025.";
@@ -260,19 +268,50 @@ const ChatBot = () => {
     }
 
     // Does Sai have experience with a field?
-    if (lowerQuery.match(/(does|has|is|did).*sai.*(experience|worked|work|background|skilled|expertise|knowledge|familiar|know|proficient).*in|with|on/)) {
+    if (lowerQuery.match(/(does|has|is|did).*sai.*(experience|worked|work|background|skilled|expertise|knowledge|familiar|know|proficient).*in|with|on/)
+      || lowerQuery.match(/what.*skill.*(related|about|in|with|on|for).*/)) {
       // Try to extract the field
-      const fieldMatch = lowerQuery.match(/in ([a-zA-Z ]+)/) || lowerQuery.match(/with ([a-zA-Z ]+)/) || lowerQuery.match(/on ([a-zA-Z ]+)/);
+      const fieldMatch = lowerQuery.match(/in ([a-zA-Z ]+)/) || lowerQuery.match(/with ([a-zA-Z ]+)/) || lowerQuery.match(/on ([a-zA-Z ]+)/) || lowerQuery.match(/related to ([a-zA-Z ]+)/) || lowerQuery.match(/about ([a-zA-Z ]+)/) || lowerQuery.match(/for ([a-zA-Z ]+)/);
       const field = fieldMatch ? fieldMatch[1].trim() : '';
       if (field) {
         // Check if field matches skills or experience
         if (profileInfo.skills.keywords.some(k => field.includes(k)) || profileInfo.experience.keywords.some(k => field.includes(k))) {
+          // Give a targeted, personalized answer for the field
+          if (field.includes('python')) {
+            return "Sai is highly proficient in Python, using it for data science, machine learning, and automation. He has built projects with Pandas, NumPy, scikit-learn, TensorFlow, and more.";
+          }
+          if (field.includes('react')) {
+            return "Sai is skilled in React, building modern, responsive web applications and integrating APIs for dynamic user experiences.";
+          }
+          if (field.includes('data analytics')) {
+            return "Sai has strong skills in data analytics, including data cleaning, visualization, and statistical analysis using tools like Tableau, Excel, and Python libraries.";
+          }
+          if (field.includes('ai') || field.includes('ml') || field.includes('machine learning')) {
+            return "Sai has hands-on experience in AI and machine learning, working with deep learning, NLP, and computer vision using TensorFlow and PyTorch.";
+          }
+          // Generic for other matched fields
           return `Yes, Sai has strong experience in ${field}. He has applied his skills in this area through hands-on projects and professional roles.`;
         } else {
           return `Sai is always eager to learn and adapt to new fields. If you have a specific area in mind, let me know and I can provide more details!`;
         }
       }
-      return "Sai has a diverse background in data science, AI, web development, and more. If you have a specific field in mind, please mention it for a detailed answer.";
+      // If the question is too vague or just a keyword, ask for more clarity
+      return "Can you give me more clarity on what you want to know about Sai?";
+    }
+
+    // If the question is a single keyword or too vague, ask for more clarity
+    if (query.trim().split(/\s+/).length <= 2) {
+      return "Can you give me more clarity on what you want to know about Sai?";
+    }
+
+    // Unusual or unrelated questions
+    if (!lowerQuery.includes('sai') && !matchesCategory(profileInfo.skills) && !matchesCategory(profileInfo.education) && !matchesCategory(profileInfo.experience) && !matchesCategory(profileInfo.projects) && !matchesCategory(profileInfo.contact) && !matchesCategory(profileInfo.personal)) {
+      return "I'm here to answer questions about Sai. For other topics, please refer to trusted sources like Wikipedia, Google, or relevant official websites.";
+    }
+
+    // Vulgar or inappropriate questions (check last)
+    if (lowerQuery.match(/(fuck|shit|bitch|asshole|idiot|dumb|stupid|sex|sexual|nude|naked|porn|suck|hate|kill|die|racist|abuse|offend|offensive|insult|harass|harassment|violence|violent|threat|threaten|bully|bullying|discriminate|discrimination)/)) {
+      return "I'm here to provide helpful and respectful information about Sai. Please keep questions appropriate.";
     }
 
     // Is Sai a perfect fit for this job/role?
@@ -299,14 +338,6 @@ const ChatBot = () => {
     if (/^(thanks|thank you|thx|ty|thanks a lot|appreciate it|thank you so much)[\s!.?]*$/i.test(query)) {
       return "You're welcome! Let me know if you need any other information about Sai. Dhasya is always here to help!";
     }
-
-    // Function to check if query matches category keywords
-    const matchesCategory = (category: { keywords: string[] }): boolean => {
-      return category.keywords.some(keyword => {
-        return lowerQuery.includes(keyword) || 
-               lowerQuery.match(new RegExp(`\\b${keyword.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, 'i'));
-      });
-    };
 
     // Process natural language patterns
     let processedQuery = lowerQuery;
