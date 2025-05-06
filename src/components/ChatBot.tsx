@@ -40,10 +40,11 @@ interface ProfileInfo {
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { text: "Hi! I'm Sai's AI assistant. I can help you learn more about Sai's background, skills, projects, and more. What would you like to know?", isBot: true }
+    { text: "Hi! I'm Dhasya, Sai's AI portfolio assistant. Ask me anything about Sai's background, skills, projects, and more. How can I help you today?", isBot: true }
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [feedbackGiven, setFeedbackGiven] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -53,6 +54,24 @@ const ChatBot = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Log ambiguous question to backend
+  const logAmbiguousQuestion = (question: string) => {
+    fetch('/api/log-question', {
+      method: 'POST',
+      body: JSON.stringify({ question, timestamp: Date.now() }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+  };
+
+  // Log feedback to backend
+  const logFeedback = (question: string, answer: string, feedback: string) => {
+    fetch('/api/log-feedback', {
+      method: 'POST',
+      body: JSON.stringify({ question, answer, feedback, timestamp: Date.now() }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+  };
 
   const profileInfo: ProfileInfo = {
     education: {
@@ -187,19 +206,98 @@ const ChatBot = () => {
   const generateResponse = (query: string): string => {
     const lowerQuery = query.toLowerCase();
     
+    // Is Sai still studying?
+    if (lowerQuery.match(/(is|does|has|was).*sai.*(still|currently).*study|student|studying|in school|in college|in university/)) {
+      return "Yes, Sai is currently a graduate student at NJIT, pursuing a Master's in Data Science and graduating in May 2025.";
+    }
+    if (lowerQuery.match(/(is|does|has|was).*sai.*(graduated|finished|completed).*study|degree|college|university/)) {
+      return "Sai will graduate in May 2025 from NJIT with a Master's in Data Science. He has already completed his Bachelor's in Computer Science from SCSVMV University.";
+    }
+
+    // Where is Sai from/location
+    if (lowerQuery.match(/where.*sai.*(from|based|live|location|reside|hometown|city|country)/)) {
+      return "Sai is originally from India and is currently based in Newark, New Jersey, USA, while pursuing his graduate studies at NJIT.";
+    }
+
+    // Sai's strengths
+    if (lowerQuery.match(/(what|which|tell).*sai.*(strength|strong|best|good at|excel|expertise)/)) {
+      return "Sai's strengths include data science, AI/ML, web development, problem-solving, and quickly adapting to new technologies. He is also known for his leadership and teamwork skills.";
+    }
+
+    // Sai's weaknesses
+    if (lowerQuery.match(/(what|which|tell).*sai.*(weakness|improve|not good|challenge|area of growth)/)) {
+      return "Sai is always striving to improve his public speaking and presentation skills, and he welcomes opportunities to grow in these areas.";
+    }
+
+    // Leadership/teamwork
+    if (lowerQuery.match(/(is|does|can|has|how).*sai.*(leader|leadership|team|teamwork|collaborate|work with others|manage|mentor)/)) {
+      return "Sai has demonstrated strong leadership and teamwork abilities, leading project teams and collaborating effectively with diverse groups to achieve shared goals.";
+    }
+
+    // Availability for work/collaboration
+    if (lowerQuery.match(/(is|does|can|would|will).*sai.*(available|open|interested|looking).*work|collaborate|project|opportunity/)) {
+      return "Sai is open to new opportunities and collaborations, especially in data science, AI, and web development. Feel free to reach out if you have a project or role in mind!";
+    }
+
+    // Motivation/goals
+    if (lowerQuery.match(/(what|why|how|tell).*sai.*(motivat|goal|aspirat|drive|ambition|future)/)) {
+      return "Sai is motivated by a passion for solving real-world problems with technology. His goal is to make a positive impact through innovative AI and data-driven solutions.";
+    }
+
+    // Certifications/awards
+    if (lowerQuery.match(/(does|has|what|which|any).*sai.*(certificat|award|recognition|accomplishment|achievement)/)) {
+      return "Sai has earned several academic awards and certifications in data science, AI, and web development, recognizing his technical excellence and commitment to learning.";
+    }
+
+    // Preferred technologies/tools
+    if (lowerQuery.match(/(what|which|does|is|are).*sai.*(prefer|favorite|best|top|use|tool|technology|framework|stack|platform)/)) {
+      return "Sai enjoys working with Python, React, TensorFlow, and modern web technologies. He is always exploring new tools to stay at the forefront of tech innovation.";
+    }
+
+    // Hobbies/interests
+    if (lowerQuery.match(/(what|which|does|is|are).*sai.*(hobby|interest|do for fun|outside work|free time|passion)/)) {
+      return "Outside of work, Sai enjoys reading about new tech trends, participating in hackathons, and exploring data-driven side projects. He also likes traveling and playing chess.";
+    }
+
+    // Does Sai have experience with a field?
+    if (lowerQuery.match(/(does|has|is|did).*sai.*(experience|worked|work|background|skilled|expertise|knowledge|familiar|know|proficient).*in|with|on/)) {
+      // Try to extract the field
+      const fieldMatch = lowerQuery.match(/in ([a-zA-Z ]+)/) || lowerQuery.match(/with ([a-zA-Z ]+)/) || lowerQuery.match(/on ([a-zA-Z ]+)/);
+      const field = fieldMatch ? fieldMatch[1].trim() : '';
+      if (field) {
+        // Check if field matches skills or experience
+        if (profileInfo.skills.keywords.some(k => field.includes(k)) || profileInfo.experience.keywords.some(k => field.includes(k))) {
+          return `Yes, Sai has strong experience in ${field}. He has applied his skills in this area through hands-on projects and professional roles.`;
+        } else {
+          return `Sai is always eager to learn and adapt to new fields. If you have a specific area in mind, let me know and I can provide more details!`;
+        }
+      }
+      return "Sai has a diverse background in data science, AI, web development, and more. If you have a specific field in mind, please mention it for a detailed answer.";
+    }
+
+    // Is Sai a perfect fit for this job/role?
+    if (lowerQuery.match(/(is|does|would|can).*sai.*(fit|perfect|good|right|suitable|match).*job|role|position|opening/)) {
+      return "Sai is a highly adaptable and skilled professional with a proven track record in data science, AI, and web development. He is a quick learner, a strong team player, and is passionate about delivering results—making him an excellent fit for a wide range of roles, including the one you have in mind.";
+    }
+
+    // Direct graduation date question
+    if (lowerQuery.match(/(when|what\s*date|which year).*graduat/i)) {
+      return "Sai is graduating in May 2025 from NJIT with a Master's in Data Science.";
+    }
+
     // Simple greetings
     if (/^(hi|hello|hey|greetings|good\s*(morning|afternoon|evening))[\s!.?]*$/i.test(query)) {
-      return "Hello! I can provide accurate information about Sai's education, skills, experience, and projects. What would you like to know?";
+      return "Hello! I'm Dhasya, your portfolio assistant. I can provide accurate information about Sai's education, skills, experience, and projects. What would you like to know?";
     }
 
     // Handle conversation starters
     if (/^(how are you|how(')?s it going|how do you do|nice to meet you)[\s!.?]*$/i.test(query)) {
-      return "I'm here to help you learn about Sai's background and experience. What specific information are you looking for?";
+      return "I'm Dhasya, here to help you learn about Sai's background and experience. What specific information are you looking for?";
     }
 
     // Handle thank you messages
     if (/^(thanks|thank you|thx|ty|thanks a lot|appreciate it|thank you so much)[\s!.?]*$/i.test(query)) {
-      return "You're welcome! Let me know if you need any other information about Sai's background or experience.";
+      return "You're welcome! Let me know if you need any other information about Sai. Dhasya is always here to help!";
     }
 
     // Function to check if query matches category keywords
@@ -221,6 +319,26 @@ const ChatBot = () => {
         .replace(/^what (can|do) you (know|tell me) about/i, '');
     }
 
+    // Personalized answers for each category
+    if (matchesCategory(profileInfo.skills)) {
+      return "Sai is highly skilled in Python, React, AI/ML, data analytics, and web development. He has hands-on experience with modern tools and frameworks, and excels at building data-driven and AI-powered solutions.";
+    }
+    if (matchesCategory(profileInfo.education)) {
+      return "Sai holds a Master's in Data Science from NJIT (graduating May 2025) and a Bachelor's in Computer Science from SCSVMV University, with top grades and a strong foundation in AI, web development, and analytics.";
+    }
+    if (matchesCategory(profileInfo.experience)) {
+      return "Sai has hands-on experience in research and development roles, working with companies like Webdaddy and Findem. He has built AI-powered tools, optimized ML models, and managed large-scale data projects.";
+    }
+    if (matchesCategory(profileInfo.projects)) {
+      return "Sai has led impactful projects such as Real Traffic Analysis, Loan Wise, and an AI-powered real estate website. His work focuses on using AI and data science to solve real-world problems and improve user experiences.";
+    }
+    if (matchesCategory(profileInfo.contact)) {
+      return "You can reach Sai at pedhapollasaisrinivas@gmail.com, or connect on LinkedIn, GitHub, or Twitter. He's based in Newark, New Jersey, USA.";
+    }
+    if (matchesCategory(profileInfo.personal)) {
+      return "Sai is a passionate data science graduate student, specializing in AI-powered web development and analytics. He's known for his problem-solving skills, leadership, and drive to create innovative solutions.";
+    }
+
     // Check for multiple categories
     const matchedCategories: string[] = [];
     Object.entries(profileInfo).forEach(([category, info]) => {
@@ -237,18 +355,17 @@ const ChatBot = () => {
       return response.trim();
     }
 
-    // Handle single category matches
-    for (const [category, info] of Object.entries(profileInfo)) {
-      if (matchesCategory(info)) {
-        return info.details.join('\n');
-      }
+    // If the question is ambiguous or doesn't match a known category, ask for clarity
+    if (query.trim().length > 0) {
+      logAmbiguousQuestion(query);
+      return "Can you give me more clarity on what you want to know about Sai?";
     }
 
     // Handle general queries
     if (processedQuery.includes('help') || 
         processedQuery.includes('what can you') || 
         processedQuery.match(/^(what|how|who|tell me)/i)) {
-      return "I can provide accurate information about:\n\n" +
+      return "Dhasya can provide accurate information about:\n\n" +
              "• Sai's educational background (NJIT and SCSVMV)\n" +
              "• Technical skills and expertise\n" +
              "• Work experience and internships\n" +
@@ -258,7 +375,9 @@ const ChatBot = () => {
     }
 
     // Default response for unclear queries
-    return "I can provide accurate information about Sai's education, skills, work experience, or projects. Could you please specify what you'd like to know?";
+    return "I'm Dhasya, Sai's portfolio assistant. I can provide accurate information about Sai's education, skills, work experience, or projects. Could you please specify what you'd like to know?";
+
+    // Placeholder: In the future, add logic here to log ambiguous questions for self-learning and improvement.
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -285,7 +404,7 @@ const ChatBot = () => {
           <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-4 rounded-t-lg flex justify-between items-center">
             <div className="flex items-center text-white">
               <FaRobot className="mr-2" />
-              <span>Chat Assistant</span>
+              <span>Dhasya, your portfolio assistant</span>
             </div>
             <button
               onClick={() => setIsOpen(false)}
@@ -323,6 +442,43 @@ const ChatBot = () => {
                   }`}
                 >
                   <p className="whitespace-pre-line">{message.text}</p>
+                  {/* Feedback buttons for the latest bot answer only */}
+                  {message.isBot && index === messages.length - 1 && !isTyping && !feedbackGiven && (
+                    <div className="flex gap-2 mt-2">
+                      <button
+                        className="text-green-600 hover:text-green-800 text-lg"
+                        aria-label="Helpful"
+                        onClick={() => {
+                          logFeedback(
+                            messages[messages.length - 2]?.text || '',
+                            message.text,
+                            'helpful'
+                          );
+                          setFeedbackGiven(true);
+                        }}
+                      >
+                        👍
+                      </button>
+                      <button
+                        className="text-red-600 hover:text-red-800 text-lg"
+                        aria-label="Not helpful"
+                        onClick={() => {
+                          logFeedback(
+                            messages[messages.length - 2]?.text || '',
+                            message.text,
+                            'not helpful'
+                          );
+                          setFeedbackGiven(true);
+                        }}
+                      >
+                        👎
+                      </button>
+                    </div>
+                  )}
+                  {/* Thank you message after feedback */}
+                  {message.isBot && index === messages.length - 1 && feedbackGiven && (
+                    <div className="text-xs text-gray-500 mt-2">Thank you for your feedback!</div>
+                  )}
                 </div>
               </div>
             ))}
@@ -346,7 +502,10 @@ const ChatBot = () => {
               <input
                 type="text"
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => {
+                  setInput(e.target.value);
+                  setFeedbackGiven(false);
+                }}
                 placeholder="Type your message..."
                 className="flex-1 border rounded-l-lg px-4 py-2 focus:outline-none focus:border-blue-500"
                 aria-label="Chat message"
