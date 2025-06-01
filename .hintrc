@@ -10,6 +10,12 @@
           "-webkit-overflow-scrolling"
         ]
       }
+    ],
+    "axe/aria": [
+      "default",
+      {
+        "aria-valid-attr-value": "off"
+      }
     ]
   }
 }

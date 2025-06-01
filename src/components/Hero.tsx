@@ -235,10 +235,7 @@ const Hero = () => {
               </div>
             </div>
             <p className="text-sm sm:text-base text-gray-700 tracking-wide animate-fade-in-up delay-500 leading-relaxed max-w-2xl">
-              Data Science graduate (May 2025) specializing in AI-powered web development, data analysis, and R&D. Skilled
-              in Python, ReactJS, SEO optimization, and machine learning, with hands-on experience building data-driven
-              solutions. Proven ability to lead teams, optimize workflows, and implement AI tools to solve complex problems. OPT
-              eligible.
+              Graduate student in Data Science (May 2025) with strong expertise in Artificial Intelligence, Machine Learning, and data-driven product development. Adept at NLP, time series forecasting, and cloud-based deployment. Passionate about solving real-world problems through advanced data analytics and causal inference. OPT eligible.
             </p>
             <div className="flex flex-wrap gap-4 sm:gap-6 pt-4 animate-fade-in-up delay-1000">
               <SocialIconClient 

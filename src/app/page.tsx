@@ -11,7 +11,6 @@ import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
 import ScrollToTop from '@/components/ScrollToTop'
 import ChatBot from '@/components/ChatBot'
-import DataVisualization from '@/components/DataVisualization'
 
 export default function Home() {
   useEffect(() => {
@@ -26,7 +25,6 @@ export default function Home() {
         <Education />
         <Experience />
         <Skills />
-        <DataVisualization />
         <Projects />
         <Certificates />
         <Testimonials />

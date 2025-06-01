@@ -11,25 +11,25 @@ const Education = () => {
     {
       institution: "New Jersey Institute of Technology (NJIT)",
       degree: "Masters of Science (Data Science)",
-      duration: "2024 - 2025",
+      duration: "January 2024 - May 2025",
       location: "Newark, NJ, USA",
-      gpa: "3.313/4 CGPA",
+      gpa: "3.381/4 GPA",
       logo: "/NJIT.png",
       courses: [
-        "Machine Learning & Deep Learning",
-        "Artificial Intelligence & Prompt Engineering",
-        "Web Development & Full Stack",
-        "Data Visualization & Analytics",
-        "Big Data Processing & Python",
-        "Data Science & Statistical Analysis"
+        "Machine Learning",
+        "Deep Learning",
+        "Big Data Analytics",
+        "Data Visualization",
+        "Statistical Analysis",
+        "AI & Prompt Engineering"
       ]
     },
     {
       institution: "SCSVMV University",
       degree: "B.E., Computer Science and Engineering",
-      duration: "2019 - 2023",
+      duration: "June 2019 - June 2023",
       location: "Kanchipuram, TN, India",
-      gpa: "9.43/10 CGPA",
+      gpa: "9.43/10 GPA",
       logo: "/scsvmv.png",
       courses: [
         "Data Structures & Algorithms",

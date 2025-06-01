@@ -17,8 +17,9 @@ const Skills = () => {
         "scikit-learn",
         "TensorFlow",
         "PyTorch",
+        "Scala",
         "SQL",
-        "Jupyter Notebooks",
+        "Jupyter",
         "Google Colab"
       ]
     },
@@ -27,14 +28,14 @@ const Skills = () => {
       icon: <FaBrain className="text-[#3f2b96]" size={20} />,
       skills: [
         "Deep Learning",
-        "Natural Language Processing (NLP)",
+        "NLP (Intent Classification, NLU, NLG)",
         "Computer Vision",
-        "AI Prompt Engineering",
-        "Statistical Analysis",
-        "Dataset Curation",
-        "Labelling Tools",
-        "Quality Control",
-        "AI-Assisted Development (ChatGPT)"
+        "Time Series Forecasting",
+        "Semi-Supervised Learning",
+        "Explainable AI",
+        "Recommender Systems",
+        "Prompt Engineering",
+        "Data Labeling Tools"
       ]
     },
     {
@@ -43,10 +44,10 @@ const Skills = () => {
       skills: [
         "Tableau",
         "Excel",
-        "Data Analytics",
-        "Data Visualization",
-        "Exploratory Data Analysis",
         "Statistical Analysis",
+        "Causal Inference",
+        "Dataset Curation",
+        "Quality Control",
         "Data Preprocessing",
         "Data Cleaning"
       ]
@@ -61,20 +62,20 @@ const Skills = () => {
         "API Integration",
         "Git",
         "Version Control",
-        "Web Development",
-        "Frontend Development"
+        "ChatGPT",
+        "SEO Optimization"
       ]
     },
     {
-      category: "Cloud & Tools",
+      category: "Big Data & Cloud",
       icon: <FaCloud className="text-[#3f2b96]" size={20} />,
       skills: [
+        "Hadoop",
+        "Spark",
         "AWS (Basic)",
         "Cloud Computing",
         "Development Tools",
-        "Project Management",
-        "Collaboration Tools",
-        "Documentation"
+        "Project Management"
       ]
     }
   ];

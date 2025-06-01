@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Add this to your existing globals.css */
 
 @keyframes textShine {
@@ -167,4 +171,78 @@
   .custom-scrollbar:hover::-webkit-scrollbar {
     display: block;
   }
+}
+
+/* Hide scrollbar while maintaining functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  overflow-y: scroll;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for project cards */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(63, 43, 150, 0.2);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(63, 43, 150, 0.4);
+}
+
+/* Hide scrollbar by default and show on hover */
+@media (hover: hover) {
+  .custom-scrollbar::-webkit-scrollbar {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .custom-scrollbar:hover::-webkit-scrollbar {
+    opacity: 1;
+  }
+}
+
+/* Project card description points styling */
+.custom-scrollbar ul li {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.custom-scrollbar ul li:hover {
+  transform: translateX(2px);
+}
+
+.custom-scrollbar ul li span:first-child {
+  box-shadow: 0 0 8px rgba(63, 43, 150, 0.2);
+}
+
+.custom-scrollbar ul li:hover span:first-child {
+  box-shadow: 0 0 12px rgba(63, 43, 150, 0.4);
+  transform: scale(1.2);
+}
+
+.custom-scrollbar ul li span:last-child {
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+.custom-scrollbar ul li:hover span:last-child {
+  color: #2d3748;
 } 

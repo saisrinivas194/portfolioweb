@@ -13,28 +13,28 @@ const Experience = () => {
   const experienceData = [
     {
       company: "Webdaddy",
-      role: "Research & Development Intern",
-      duration: "Aug 2024 - Feb 2025",
-      location: "Singapore (Remote, Freelance)",
+      role: "Research & Development",
+      duration: "August 2024 - February 2025",
+      location: "Freelance",
       description: "Working on AI-powered solutions and machine learning implementations for data processing and analysis.",
       achievements: [
-        "Developed AI-powered data annotation tools in Python, improving labelling efficiency by 35%",
-        "Built and optimized ML models for text classification using TensorFlow and NLP techniques",
-        "Automated data collection and preprocessing pipelines, reducing manual effort by 40%",
-        "Conducted exploratory data analysis (EDA) to identify trends and improve model accuracy"
+        "Developed AI-powered data annotation tools in Python, leveraging document understanding techniques to improve labelling efficiency by 35%",
+        "Built and optimized ML models for text classification using TensorFlow and NLP techniques, focusing on intent classification and NLU",
+        "Automated data collection and preprocessing pipelines, reducing manual effort by 40% and improving data quality for machine learning tasks",
+        "Conducted exploratory data analysis (EDA) to identify trends and improve model accuracy, applying principles of causal inference to understand underlying relationships"
       ]
     },
     {
       company: "Findem, Inc.",
       role: "Research & Development",
-      duration: "Jul 2023 - Dec 2023",
+      duration: "July 2023 - December 2023",
       location: "Bengaluru, India",
       description: "Focused on machine learning model development and data processing optimization.",
       achievements: [
-        "Managed large-scale data annotation projects for training ML models with 98% accuracy",
-        "Developed Python scripts to clean, analyze, and visualize complex datasets",
-        "Optimized an email classification ML model, improving prediction accuracy by 25%",
-        "Created internal tools for automated data validation and quality assurance"
+        "Managed large-scale data annotation projects for training ML models with 98% accuracy, ensuring high-quality data for semi-supervised learning",
+        "Developed Python scripts to clean, analyze, and visualize complex datasets, applying knowledge engineering principles to extract meaningful insights",
+        "Optimized an email classification ML model, improving prediction accuracy by 25% through advanced feature engineering",
+        "Created internal tools for automated data validation and quality assurance, contributing to the reliability of ML services"
       ]
     }
   ];

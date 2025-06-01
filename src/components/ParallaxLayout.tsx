@@ -282,6 +282,7 @@ const ParallaxLayout: React.FC<ParallaxLayoutProps> = ({ children }) => {
             fill
             className="object-contain"
             priority
+            unoptimized
           />
         </div>
       </div>
