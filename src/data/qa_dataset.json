@@ -38,23 +38,35 @@
       "name": "Education",
       "questions": [
         {
-          "base_question": "What is Sai's educational background?",
+          "base_question": "What is your educational background?",
           "variations": [
-            "where did Sai study",
-            "what degrees does Sai have",
-            "tell me about Sai's education",
-            "what did Sai study"
+            "Tell me about your education",
+            "Where did you study?",
+            "What degrees do you have?",
+            "What's your academic background?",
+            "Which universities did you attend?"
           ],
-          "answer": "Sai has a strong educational background:\n\n• Currently pursuing M.S. in Data Science at New Jersey Institute of Technology (NJIT)\n- Expected graduation: May 2025\n- GPA: 3.313/4.0\n- Key courses: Machine Learning, Deep Learning, AI, Web Development\n\n• B.E. in Computer Science from SCSVMV University (2019-2023)\n- CGPA: 9.43/10\n- Key courses: Data Structures, Algorithms, Database Management"
+          "answer": "🎓 Education:\n\n**New Jersey Institute of Technology (NJIT)** ✅\n- Master of Science in Data Science\n- Graduated: December 2023\n- GPA: 3.91/4.0\n- Key Courses: Machine Learning, Deep Learning, Natural Language Processing, Big Data\n\n**SCSVMV University**\n- Bachelor of Technology in Computer Science\n- Graduated: 2022\n- First Class with Distinction\n- Key Courses: Data Structures, Algorithms, Database Management Systems\n\nI completed my Master's degree at NJIT with a strong focus on AI/ML and Data Science applications. During my time there, I was actively involved in research projects and maintained excellent academic performance."
         },
         {
-          "base_question": "What is Sai studying at NJIT?",
+          "base_question": "Tell me about your time at NJIT",
           "variations": [
-            "tell me about Sai's masters",
-            "what is Sai's major at NJIT",
-            "what program is Sai in"
+            "How was your experience at NJIT?",
+            "What did you study at NJIT?",
+            "When did you graduate from NJIT?",
+            "What was your major at NJIT?"
           ],
-          "answer": "At NJIT, Sai is pursuing a Master of Science in Data Science. His coursework includes Machine Learning & Deep Learning, AI & Prompt Engineering, Web Development & Full Stack, Data Visualization & Analytics, Big Data Processing & Python, and Data Science & Statistical Analysis."
+          "answer": "I completed my Master's in Data Science at NJIT (New Jersey Institute of Technology) ✅\n\nHighlights of my NJIT journey:\n- 🎓 Graduated: December 2023\n- 📊 Major: Data Science (MS)\n- 🏆 GPA: 3.91/4.0\n- 🔬 Research Assistant in ML/AI projects\n- 📚 Key Coursework:\n  • Advanced Machine Learning\n  • Deep Learning\n  • Natural Language Processing\n  • Big Data Analytics\n  • Statistical Data Analysis\n\nI particularly enjoyed working on practical projects that combined theoretical knowledge with real-world applications. The program provided me with strong foundations in both traditional ML methods and cutting-edge AI technologies."
+        },
+        {
+          "base_question": "When did you graduate?",
+          "variations": [
+            "When did you complete your studies?",
+            "What year did you graduate?",
+            "Have you completed your degree?",
+            "Are you still studying?"
+          ],
+          "answer": "✅ I completed my Master's degree in Data Science from NJIT in December 2023!\n\nMy academic timeline:\n- 🎓 MS in Data Science (NJIT) - Completed December 2023\n- 🎓 BTech in Computer Science (SCSVMV) - Completed 2022\n\nI'm now fully focused on applying my knowledge and skills in professional settings, particularly in AI/ML and data science roles. My recent graduation from NJIT has equipped me with the latest knowledge in data science, machine learning, and AI technologies."
         }
       ]
     },

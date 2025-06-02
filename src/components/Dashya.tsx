@@ -3,8 +3,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { QADataset, Category } from '../types/qa';
 import qaData from '../data/qa_dataset.json';
-import { FaRobot, FaUser, FaPaperPlane, FaRegLightbulb, FaCopy, FaMicrophone, FaHistory, FaThumbsUp, FaThumbsDown, FaTimes } from 'react-icons/fa';
+import { FaRobot, FaUser, FaPaperPlane, FaRegLightbulb, FaCopy, FaMicrophone, FaHistory, FaThumbsUp, FaThumbsDown, FaTimes, FaArrowUp } from 'react-icons/fa';
+import { RiRobot2Fill, RiRobotFill, RiRobotLine } from 'react-icons/ri';
+import { BsPersonCircle, BsStars, BsLightning } from 'react-icons/bs';
+import { FaCircle } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // TypeScript declarations for the Web Speech API
 declare global {
@@ -59,6 +63,302 @@ interface ConversationContext {
   followUps: string[];
 }
 
+// Enhanced Avatar components with advanced effects
+const BotAvatar = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) {
+      setIsAnimating(true);
+    }
+    const timer = setTimeout(() => setIsAnimating(false), 2000);
+    return () => clearTimeout(timer);
+  }, [isHovered]);
+
+  return (
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      className="relative flex-shrink-0 w-10 h-10"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Dynamic background gradient */}
+      <motion.div
+        className="absolute inset-0 rounded-full bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff]"
+        animate={{
+          rotate: isHovered ? 360 : 0,
+          scale: isHovered ? [1, 1.1, 1] : 1,
+        }}
+        transition={{ 
+          rotate: { duration: 2, ease: "linear", repeat: Infinity },
+          scale: { duration: 0.5, ease: "easeInOut" }
+        }}
+      />
+      
+      {/* Avatar container with interactive effects */}
+      <motion.div
+        className="absolute inset-[2px] rounded-full bg-white p-1"
+        whileHover={{ scale: 1.1 }}
+        animate={{
+          boxShadow: isHovered 
+            ? "0 0 15px rgba(63, 43, 150, 0.5)"
+            : "0 0 0px rgba(63, 43, 150, 0)"
+        }}
+      >
+        <div className="w-full h-full rounded-full bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] flex items-center justify-center relative overflow-hidden">
+          <motion.div
+            animate={{
+              rotateY: isHovered ? [0, 360] : 0,
+              scale: isHovered ? [1, 1.2, 1] : 1,
+            }}
+            transition={{
+              duration: 0.6,
+              ease: "easeInOut"
+            }}
+          >
+            {isHovered ? (
+              <RiRobotFill className="text-white text-xl z-10" />
+            ) : (
+              <RiRobot2Fill className="text-white text-xl z-10" />
+            )}
+          </motion.div>
+          
+          {/* Enhanced particle effects */}
+          <AnimatePresence>
+            {isHovered && (
+              <>
+                {[...Array(5)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ y: 20, x: 0, opacity: 0 }}
+                    animate={{ 
+                      y: -20,
+                      x: [-10, 10],
+                      opacity: [0, 1, 0],
+                      scale: [0.5, 1, 0.5]
+                    }}
+                    exit={{ opacity: 0 }}
+                    transition={{
+                      duration: 1,
+                      delay: i * 0.1,
+                      repeat: Infinity,
+                      repeatDelay: 0.2
+                    }}
+                    className="absolute"
+                  >
+                    {i % 2 === 0 ? (
+                      <BsStars className="text-white/50 text-sm" />
+                    ) : (
+                      <BsLightning className="text-white/50 text-sm" />
+                    )}
+                  </motion.div>
+                ))}
+              </>
+            )}
+          </AnimatePresence>
+
+          {/* Ripple effect */}
+          <AnimatePresence>
+            {isAnimating && (
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0.5 }}
+                animate={{ scale: 1.5, opacity: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0 rounded-full border-2 border-white/30"
+              />
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
+
+      {/* Enhanced status indicator */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 0.2 }}
+        className="absolute -bottom-1 -right-1 w-3 h-3"
+      >
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.5, 0.8, 0.5]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+          className="absolute inset-0 rounded-full bg-green-400"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [1, 0.8, 1]
+          }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+          className="relative w-full h-full rounded-full bg-green-400 border-2 border-white"
+        />
+      </motion.div>
+
+      {/* Hover tooltip */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white px-2 py-1 rounded-md shadow-lg text-xs text-gray-700 whitespace-nowrap"
+          >
+            AI Assistant
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
+const UserAvatar = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) {
+      setIsAnimating(true);
+    }
+    const timer = setTimeout(() => setIsAnimating(false), 2000);
+    return () => clearTimeout(timer);
+  }, [isHovered]);
+
+  return (
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      className="relative flex-shrink-0 w-10 h-10"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Dynamic background with rotation */}
+      <motion.div
+        className="absolute inset-0 rounded-full bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff]"
+        animate={{
+          rotate: isHovered ? 360 : 0,
+          scale: isHovered ? [1, 1.1, 1] : 1,
+        }}
+        transition={{
+          rotate: { duration: 2, ease: "linear", repeat: Infinity },
+          scale: { duration: 0.5, ease: "easeInOut" }
+        }}
+      />
+      
+      {/* Enhanced avatar container */}
+      <motion.div
+        className="absolute inset-[2px] rounded-full bg-white p-1"
+        whileHover={{ scale: 1.1 }}
+        animate={{
+          boxShadow: isHovered 
+            ? "0 0 15px rgba(63, 43, 150, 0.5)"
+            : "0 0 0px rgba(63, 43, 150, 0)"
+        }}
+      >
+        <div className="w-full h-full rounded-full bg-gradient-to-br from-[#3f2b96] to-[#a8c0ff] flex items-center justify-center relative overflow-hidden">
+          <motion.div
+            animate={{
+              scale: isHovered ? [1, 1.1, 1] : 1,
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            <BsPersonCircle className="text-white text-xl z-10" />
+          </motion.div>
+          
+          {/* Enhanced shine effect */}
+          <motion.div
+            initial={{ x: "-100%", opacity: 0.5 }}
+            animate={isHovered ? {
+              x: ["-100%", "100%"],
+              opacity: [0.3, 0.6, 0.3]
+            } : { x: "-100%" }}
+            transition={{
+              duration: 1,
+              repeat: isHovered ? Infinity : 0,
+              repeatDelay: 0.5
+            }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          />
+
+          {/* Ripple effect */}
+          <AnimatePresence>
+            {isAnimating && (
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0.5 }}
+                animate={{ scale: 1.5, opacity: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0 rounded-full border-2 border-white/30"
+              />
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
+
+      {/* Enhanced status indicator */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 0.2 }}
+        className="absolute -bottom-1 -right-1 w-3 h-3"
+      >
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.5, 0.8, 0.5]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+          className="absolute inset-0 rounded-full bg-green-400"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [1, 0.8, 1]
+          }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+          className="relative w-full h-full rounded-full bg-green-400 border-2 border-white"
+        />
+      </motion.div>
+
+      {/* Hover tooltip */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white px-2 py-1 rounded-md shadow-lg text-xs text-gray-700 whitespace-nowrap"
+          >
+            You
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
 const Dashya: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -67,6 +367,7 @@ const Dashya: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isListening, setIsListening] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [context, setContext] = useState<ConversationContext>({ followUps: [] });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -96,7 +397,13 @@ const Dashya: React.FC = () => {
   // Initial greeting
   useEffect(() => {
     const greeting = {
-      text: "Hi! I'm Dashya, Sai's AI assistant. I can help you learn about Sai's education, experience, skills, projects, and more! Feel free to ask me anything or try one of the suggested questions below.",
+      text: "👋 Hello! I'm Dashya, your AI portfolio assistant for Sai Srinivas.\n\n" +
+            "I'm here to help you learn about:\n" +
+            "🎓 Sai's education at NJIT\n" +
+            "💻 His technical skills and projects\n" +
+            "🚀 Professional experience\n" +
+            "📱 Contact information\n\n" +
+            "Feel free to ask me anything! You can also try the suggested questions below or use voice input. I'm designed to give you accurate, detailed information about Sai's background and capabilities.",
       isUser: false,
       timestamp: new Date(),
       id: 'greeting'
@@ -138,6 +445,23 @@ const Dashya: React.FC = () => {
       };
     }
   }, []);
+
+  // Add scroll to top functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const startListening = () => {
     if (typeof window !== 'undefined' && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
@@ -424,16 +748,48 @@ const Dashya: React.FC = () => {
   ];
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className="fixed bottom-4 right-4 z-50 flex items-center gap-2">
+      {/* Scroll to top button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.1 }}
+            onClick={scrollToTop}
+            className="bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white p-4 rounded-full shadow-lg hover:opacity-90 transition-all relative group"
+            aria-label="Scroll to top"
+          >
+            <motion.div
+              animate={{
+                y: [0, -4, 0]
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut"
+              }}
+            >
+              <FaArrowUp size={24} />
+            </motion.div>
+            <div className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white text-gray-800 text-xs px-2 py-1 rounded-full shadow-md whitespace-nowrap">
+              Scroll to top
+            </div>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
       {isOpen ? (
         <div className="bg-white rounded-lg shadow-xl w-96 h-[600px] flex flex-col">
           {/* Chat header */}
           <div className="bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] p-4 rounded-t-lg flex justify-between items-center">
             <div className="flex items-center text-white gap-2">
-              <FaRobot className="text-2xl" />
+              <BotAvatar />
               <div>
-                <h2 className="text-xl font-bold">Dashya - AI Assistant</h2>
-                <p className="text-sm opacity-80">Ask me anything about Sai!</p>
+                <h2 className="text-xl font-bold">Dashya</h2>
+                <p className="text-sm opacity-80">AI Portfolio Assistant</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -469,7 +825,9 @@ const Dashya: React.FC = () => {
                 key={message.id}
                 className={`flex items-start gap-2 ${message.isUser ? 'justify-end' : 'justify-start'}`}
               >
-                {!message.isUser && <FaRobot className="mt-2 text-[#3f2b96] text-xl flex-shrink-0" />}
+                {!message.isUser && (
+                  <BotAvatar />
+                )}
                 <div className="group relative">
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
@@ -546,12 +904,14 @@ const Dashya: React.FC = () => {
                     )}
                   </div>
                 </div>
-                {message.isUser && <FaUser className="mt-2 text-[#3f2b96] text-xl flex-shrink-0" />}
+                {message.isUser && (
+                  <UserAvatar />
+                )}
               </div>
             ))}
             {isTyping && (
               <div className="flex items-start gap-2">
-                <FaRobot className="mt-2 text-[#3f2b96] text-xl" />
+                <BotAvatar />
                 <div className="bg-gray-100 p-3 rounded-lg">
                   <div className="flex gap-1">
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
@@ -620,10 +980,14 @@ const Dashya: React.FC = () => {
       ) : (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white p-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+          className="bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white p-4 rounded-full shadow-lg hover:opacity-90 transition-opacity relative group"
           aria-label="Open chat assistant"
         >
-          <FaRobot size={24} />
+          <RiRobot2Fill size={24} />
+          <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-white"></div>
+          <div className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white text-gray-800 text-xs px-2 py-1 rounded-full shadow-md whitespace-nowrap">
+            Chat with Dashya
+          </div>
         </button>
       )}
     </div>
