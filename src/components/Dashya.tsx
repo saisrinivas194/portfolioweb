@@ -63,6 +63,13 @@ interface ConversationContext {
   followUps: string[];
 }
 
+const typingDotsStyles = {
+  base: "w-2 h-2 bg-gray-400 rounded-full animate-bounce",
+  delay1: "animate-delay-[0ms]",
+  delay2: "animate-delay-[150ms]",
+  delay3: "animate-delay-[300ms]"
+} as const;
+
 // Enhanced Avatar components with advanced effects
 const BotAvatar = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -522,14 +529,15 @@ const Dashya: React.FC = () => {
 
   const findBestMatch = (question: string): { answer: string; category?: string; topic?: string } => {
     try {
-      const normalizedQuestion = question.toLowerCase();
+      const normalizedQuestion = question.toLowerCase().trim();
       
       // First, try exact matches from QA dataset
       const typedQAData = qaData as QADataset;
       for (const [categoryName, category] of Object.entries<Category>(typedQAData.categories)) {
         for (const qa of category.questions) {
           // Check base question
-          if (normalizedQuestion.includes(qa.base_question.toLowerCase())) {
+          if (qa.base_question.toLowerCase().includes(normalizedQuestion) || 
+              normalizedQuestion.includes(qa.base_question.toLowerCase())) {
             return {
               answer: qa.answer,
               category: categoryName,
@@ -539,7 +547,8 @@ const Dashya: React.FC = () => {
 
           // Check variations
           for (const variation of qa.variations) {
-            if (normalizedQuestion.includes(variation.toLowerCase())) {
+            if (variation.toLowerCase().includes(normalizedQuestion) || 
+                normalizedQuestion.includes(variation.toLowerCase())) {
               return {
                 answer: qa.answer,
                 category: categoryName,
@@ -550,48 +559,43 @@ const Dashya: React.FC = () => {
         }
       }
 
-      // If no exact match, try skill-specific questions
-      if (normalizedQuestion.includes('skill') || normalizedQuestion.includes('know') || normalizedQuestion.includes('experience with')) {
-        for (const [key, category] of Object.entries(skillCategories)) {
-          const categoryMentioned = normalizedQuestion.includes(key.toLowerCase()) || 
-                                  normalizedQuestion.includes(category.title.toLowerCase());
-          
-          if (categoryMentioned) {
-            const answer = `In ${category.title}, Sai is proficient in: ${category.skills.join(', ')}. Would you like to know more about any specific skill?`;
-            return { 
-              answer,
-              category: 'skills',
-              topic: category.title
-            };
-          }
+      // If no exact match, try keyword matching
+      const keywords = {
+        education: ['education', 'study', 'degree', 'university', 'college', 'academic', 'school', 'graduate', 'graduation', 'njit', 'scsvmv'],
+        personal: ['location', 'live', 'based', 'who', 'about', 'background'],
+        experience: ['work', 'job', 'company', 'experience', 'professional', 'webdaddy', 'findem'],
+        skills: ['skill', 'technology', 'programming', 'language', 'framework', 'tool'],
+        projects: ['project', 'portfolio', 'build', 'create', 'develop'],
+        contact: ['contact', 'email', 'github', 'linkedin', 'reach']
+      };
 
-          const mentionedSkills = category.skills.filter(skill => 
-            normalizedQuestion.includes(skill.toLowerCase())
-          );
-
-          if (mentionedSkills.length > 0) {
-            const answer = `Yes, Sai is experienced with ${mentionedSkills.join(', ')}. These skills fall under ${category.title}. Would you like to know about specific projects where these skills were used?`;
-            return { 
-              answer,
-              category: 'skills',
-              topic: mentionedSkills[0]
+      for (const [category, categoryKeywords] of Object.entries(keywords)) {
+        if (categoryKeywords.some(keyword => normalizedQuestion.includes(keyword))) {
+          const categoryData = typedQAData.categories[category as keyof typeof typedQAData.categories];
+          if (categoryData && categoryData.questions.length > 0) {
+            // Return the most relevant answer from the category
+            const mainQuestion = categoryData.questions[0];
+            return {
+              answer: mainQuestion.answer,
+              category: category,
+              topic: mainQuestion.base_question
             };
           }
         }
-
-        const answer = `Sai has expertise in several areas:\n\n${Object.values(skillCategories)
-          .map(category => `${category.title}:\n- ${category.skills.join('\n- ')}`)
-          .join('\n\n')}\n\nWhich area would you like to know more about?`;
-        return { 
-          answer,
-          category: 'skills'
-        };
       }
 
       // If still no match, try fuzzy matching
       let bestMatch = {
         score: 0,
-        answer: "I apologize, but I don't have specific information about that. Could you please ask something about Sai's education, experience, skills, projects, or contact information?",
+        answer: "I apologize, but I don't have specific information about that. Here are some things you can ask me about:\n\n" +
+                "• Personal Information (location, graduation, OPT status)\n" +
+                "• Education (NJIT, SCSVMV University, courses)\n" +
+                "• Professional Experience (Webdaddy, Findem)\n" +
+                "• Skills (programming, AI/ML, data science)\n" +
+                "• Projects (Traffic Analysis, Loan Wise, AI real estate)\n" +
+                "• Certifications (ExcelR, Data Science)\n" +
+                "• Contact Information (email, GitHub, LinkedIn)\n\n" +
+                "What would you like to know about?",
         category: undefined as string | undefined,
         topic: undefined as string | undefined
       };
@@ -605,11 +609,15 @@ const Dashya: React.FC = () => {
           let score = 0;
           const allQuestionWords = [
             ...qa.base_question.toLowerCase().split(/\s+/),
-            ...qa.variations.flatMap((v: string) => v.toLowerCase().split(/\s+/))
+            ...qa.variations.flatMap(v => v.toLowerCase().split(/\s+/))
           ];
 
-          const uniqueKeywords = Array.from(new Set(allQuestionWords)).filter(word => !stopWords.includes(word));
-          const matchingWords = filteredWords.filter(word => uniqueKeywords.includes(word));
+          const uniqueKeywords = Array.from(new Set(allQuestionWords))
+            .filter(word => !stopWords.includes(word));
+          
+          const matchingWords = filteredWords.filter(word => 
+            uniqueKeywords.some(keyword => keyword.includes(word) || word.includes(keyword))
+          );
           
           score = matchingWords.length / Math.max(filteredWords.length, uniqueKeywords.length);
 
@@ -624,23 +632,12 @@ const Dashya: React.FC = () => {
         }
       }
 
-      // If we have a good match, return it with follow-up suggestions
-      if (bestMatch.score > 0.3) {
-        return bestMatch;
-      }
-
-      // If no good match, return a helpful message
-      return {
-        answer: "I'm not quite sure about that. Here are some things you can ask me about:\n\n" +
-                "• Personal Information (location, graduation, OPT status)\n" +
-                "• Education (NJIT, SCSVMV University, courses)\n" +
-                "• Professional Experience (Webdaddy, Findem)\n" +
-                "• Skills (programming, AI/ML, data science)\n" +
-                "• Projects (Traffic Analysis, Loan Wise, AI real estate)\n" +
-                "• Certifications (ExcelR, Data Science)\n" +
-                "• Contact Information (email, GitHub, LinkedIn)\n\n" +
-                "What would you like to know about?"
+      return bestMatch.score > 0.2 ? bestMatch : {
+        answer: bestMatch.answer,
+        category: undefined,
+        topic: undefined
       };
+
     } catch (err) {
       console.error('Error in findBestMatch:', err);
       return {
@@ -840,7 +837,13 @@ const Dashya: React.FC = () => {
                       components={{
                         p: ({node, ...props}) => <p className="text-sm whitespace-pre-wrap" {...props} />,
                         ul: ({node, ...props}) => <ul className="list-disc ml-4 mt-2" {...props} />,
-                        li: ({node, ...props}) => <li className="text-sm text-gray-700" {...props} />
+                        ol: ({node, ...props}) => <ol className="list-decimal ml-4 mt-2" {...props} />,
+                        li: ({node, children, ...props}: any) => {
+                          const parent = node?.parent as { type?: string } | undefined;
+                          return parent?.type === 'list' ? 
+                            <li className="text-sm text-gray-700">{children}</li> :
+                            <span className="text-sm text-gray-700">{children}</span>;
+                        }
                       }}
                     >
                       {message.text}
@@ -914,9 +917,9 @@ const Dashya: React.FC = () => {
                 <BotAvatar />
                 <div className="bg-gray-100 p-3 rounded-lg">
                   <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    <div className={`${typingDotsStyles.base} ${typingDotsStyles.delay1}`}></div>
+                    <div className={`${typingDotsStyles.base} ${typingDotsStyles.delay2}`}></div>
+                    <div className={`${typingDotsStyles.base} ${typingDotsStyles.delay3}`}></div>
                   </div>
                 </div>
               </div>

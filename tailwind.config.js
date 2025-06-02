@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -44,6 +47,9 @@ module.exports = {
         'parallax-slow': 'parallax 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both',
         'parallax-medium': 'parallax 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both',
         'parallax-fast': 'parallax 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both',
+        'delay-[0ms]': 'bounce 1s infinite 0ms',
+        'delay-[150ms]': 'bounce 1s infinite 150ms',
+        'delay-[300ms]': 'bounce 1s infinite 300ms',
       },
       keyframes: {
         fadeIn: {

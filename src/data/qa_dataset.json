@@ -46,7 +46,7 @@
             "What's your academic background?",
             "Which universities did you attend?"
           ],
-          "answer": "🎓 Education:\n\n**New Jersey Institute of Technology (NJIT)** ✅\n- Master of Science in Data Science\n- Graduated: December 2023\n- GPA: 3.91/4.0\n- Key Courses: Machine Learning, Deep Learning, Natural Language Processing, Big Data\n\n**SCSVMV University**\n- Bachelor of Technology in Computer Science\n- Graduated: 2022\n- First Class with Distinction\n- Key Courses: Data Structures, Algorithms, Database Management Systems\n\nI completed my Master's degree at NJIT with a strong focus on AI/ML and Data Science applications. During my time there, I was actively involved in research projects and maintained excellent academic performance."
+          "answer": "🎓 Education:\n\n**New Jersey Institute of Technology (NJIT)**\n- Master of Science in Data Science\n- Expected Graduation: May 2025\n- Current GPA: 3.31/4.0\n- Key Courses: Machine Learning, Deep Learning, Natural Language Processing, Big Data\n\n**SCSVMV University**\n- Bachelor of Technology in Computer Science\n- Graduated: 2022\n- First Class with Distinction\n- Key Courses: Data Structures, Algorithms, Database Management Systems\n\nI'm currently pursuing my Master's degree at NJIT with a strong focus on AI/ML and Data Science applications. During my time here, I've been actively involved in research projects while maintaining good academic performance."
         },
         {
           "base_question": "Tell me about your time at NJIT",
@@ -56,7 +56,7 @@
             "When did you graduate from NJIT?",
             "What was your major at NJIT?"
           ],
-          "answer": "I completed my Master's in Data Science at NJIT (New Jersey Institute of Technology) ✅\n\nHighlights of my NJIT journey:\n- 🎓 Graduated: December 2023\n- 📊 Major: Data Science (MS)\n- 🏆 GPA: 3.91/4.0\n- 🔬 Research Assistant in ML/AI projects\n- 📚 Key Coursework:\n  • Advanced Machine Learning\n  • Deep Learning\n  • Natural Language Processing\n  • Big Data Analytics\n  • Statistical Data Analysis\n\nI particularly enjoyed working on practical projects that combined theoretical knowledge with real-world applications. The program provided me with strong foundations in both traditional ML methods and cutting-edge AI technologies."
+          "answer": "I'm currently pursuing my Master's in Data Science at NJIT (New Jersey Institute of Technology)\n\nHighlights of my NJIT journey:\n- 🎓 Expected Graduation: May 2025\n- 📊 Major: Data Science (MS)\n- 🏆 Current GPA: 3.31/4.0\n- 🔬 Research Assistant in ML/AI projects\n- 📚 Key Coursework:\n  • Advanced Machine Learning\n  • Deep Learning\n  • Natural Language Processing\n  • Big Data Analytics\n  • Statistical Data Analysis\n\nI particularly enjoy working on practical projects that combine theoretical knowledge with real-world applications. The program is providing me with strong foundations in both traditional ML methods and cutting-edge AI technologies."
         },
         {
           "base_question": "When did you graduate?",
@@ -66,7 +66,7 @@
             "Have you completed your degree?",
             "Are you still studying?"
           ],
-          "answer": "✅ I completed my Master's degree in Data Science from NJIT in December 2023!\n\nMy academic timeline:\n- 🎓 MS in Data Science (NJIT) - Completed December 2023\n- 🎓 BTech in Computer Science (SCSVMV) - Completed 2022\n\nI'm now fully focused on applying my knowledge and skills in professional settings, particularly in AI/ML and data science roles. My recent graduation from NJIT has equipped me with the latest knowledge in data science, machine learning, and AI technologies."
+          "answer": "I'm currently pursuing my Master's degree in Data Science at NJIT, with an expected graduation date of May 2025.\n\nMy academic timeline:\n- 🎓 MS in Data Science (NJIT) - Expected May 2025\n- 🎓 BTech in Computer Science (SCSVMV) - Completed 2022\n\nI'm focusing on developing my skills in AI/ML and data science through coursework and practical projects. My current GPA is 3.31/4.0, and I'm actively involved in research projects while maintaining a strong academic performance."
         }
       ]
     },
