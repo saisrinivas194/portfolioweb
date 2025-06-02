@@ -1,0 +1,155 @@
+{
+  "categories": {
+    "personal_information": {
+      "name": "Personal Information",
+      "questions": [
+        {
+          "base_question": "Who is Sai?",
+          "variations": [
+            "tell me about Sai",
+            "introduce Sai",
+            "what can you tell me about Sai",
+            "who is Sai Srinivas"
+          ],
+          "answer": "Sai is a Data Science graduate student at NJIT (graduating May 2025), specializing in AI-powered web development, data analysis, and R&D. He's skilled in Python, ReactJS, SEO optimization, and machine learning, with hands-on experience building data-driven solutions. He has a proven ability to lead teams, optimize workflows, and implement AI tools to solve complex problems."
+        },
+        {
+          "base_question": "Where is Sai located?",
+          "variations": [
+            "where does Sai live",
+            "what is Sai's location",
+            "where is Sai based",
+            "which city is Sai in"
+          ],
+          "answer": "Sai is currently based in Newark, New Jersey, United States, where he is pursuing his graduate studies at NJIT."
+        },
+        {
+          "base_question": "Is Sai eligible for OPT?",
+          "variations": [
+            "what is Sai's work authorization",
+            "can Sai work in the US",
+            "is Sai authorized to work"
+          ],
+          "answer": "Yes, Sai will be eligible for OPT (Optional Practical Training) upon graduation in May 2025."
+        }
+      ]
+    },
+    "education": {
+      "name": "Education",
+      "questions": [
+        {
+          "base_question": "What is Sai's educational background?",
+          "variations": [
+            "where did Sai study",
+            "what degrees does Sai have",
+            "tell me about Sai's education",
+            "what did Sai study"
+          ],
+          "answer": "Sai has a strong educational background:\n\n• Currently pursuing M.S. in Data Science at New Jersey Institute of Technology (NJIT)\n- Expected graduation: May 2025\n- GPA: 3.313/4.0\n- Key courses: Machine Learning, Deep Learning, AI, Web Development\n\n• B.E. in Computer Science from SCSVMV University (2019-2023)\n- CGPA: 9.43/10\n- Key courses: Data Structures, Algorithms, Database Management"
+        },
+        {
+          "base_question": "What is Sai studying at NJIT?",
+          "variations": [
+            "tell me about Sai's masters",
+            "what is Sai's major at NJIT",
+            "what program is Sai in"
+          ],
+          "answer": "At NJIT, Sai is pursuing a Master of Science in Data Science. His coursework includes Machine Learning & Deep Learning, AI & Prompt Engineering, Web Development & Full Stack, Data Visualization & Analytics, Big Data Processing & Python, and Data Science & Statistical Analysis."
+        }
+      ]
+    },
+    "professional_experience": {
+      "name": "Professional Experience",
+      "questions": [
+        {
+          "base_question": "What is Sai's work experience?",
+          "variations": [
+            "where has Sai worked",
+            "tell me about Sai's professional experience",
+            "what companies has Sai worked for"
+          ],
+          "answer": "Sai has valuable professional experience:\n\n• Webdaddy (Aug 2024 - Feb 2025)\n- Research & Development Intern\n- Developed AI-powered data annotation tools\n- Built ML models for text classification\n- Automated data pipelines\n\n• Findem, Inc. (Jul 2023 - Dec 2023)\n- Research & Development\n- Managed data annotation projects\n- Optimized ML models\n- Created automation tools"
+        },
+        {
+          "base_question": "What did Sai do at Webdaddy?",
+          "variations": [
+            "tell me about Sai's role at Webdaddy",
+            "what was Sai's experience at Webdaddy",
+            "what did Sai achieve at Webdaddy"
+          ],
+          "answer": "At Webdaddy, as a Research & Development Intern, Sai:\n- Developed AI-powered data annotation tools in Python, improving labelling efficiency by 35%\n- Built and optimized ML models for text classification using TensorFlow and NLP\n- Automated data collection and preprocessing pipelines, reducing manual effort by 40%\n- Conducted exploratory data analysis to identify trends and improve model accuracy"
+        }
+      ]
+    },
+    "skills": {
+      "name": "Skills",
+      "questions": [
+        {
+          "base_question": "What are Sai's technical skills?",
+          "variations": [
+            "what technologies does Sai know",
+            "what can Sai do",
+            "what is Sai good at",
+            "what are Sai's abilities"
+          ],
+          "answer": "Sai's technical skills include:\n\n• Programming & Data Science:\n- Python, Pandas, NumPy, scikit-learn, TensorFlow, PyTorch, SQL\n\n• AI & Machine Learning:\n- Deep Learning, NLP, Computer Vision, Prompt Engineering\n\n• Data Analytics:\n- Tableau, Statistical Analysis, Data Visualization\n\n• Web Development:\n- ReactJS, Next.js, HTML, CSS, API Integration\n\n• Tools & Platforms:\n- Git, AWS, Docker, Jupyter Notebooks"
+        },
+        {
+          "base_question": "What programming languages does Sai know?",
+          "variations": [
+            "which languages can Sai code in",
+            "what languages is Sai proficient in",
+            "tell me about Sai's programming skills"
+          ],
+          "answer": "Sai is proficient in several programming languages and frameworks:\n- Python (including data science libraries like Pandas, NumPy, scikit-learn)\n- JavaScript/TypeScript (React.js, Next.js)\n- SQL for database management\n- HTML/CSS for web development"
+        }
+      ]
+    },
+    "projects": {
+      "name": "Projects",
+      "questions": [
+        {
+          "base_question": "What projects has Sai worked on?",
+          "variations": [
+            "tell me about Sai's projects",
+            "what has Sai built",
+            "show me Sai's portfolio"
+          ],
+          "answer": "Sai has worked on several impressive projects:\n\n• Real Traffic Analysis\n- Monitored 10,000+ daily web requests\n- Analyzed HTTP/HTTPS protocols\n- Built diagnostic dashboards\n\n• Loan Wise (Webdaddy)\n- Improved loan application workflows\n- Developed AI-driven content strategies\n- Created analytics dashboards\n\n• AI Real Estate Website\n- Built with Next.js and AI integration\n- Implemented dynamic property listings\n- Integrated Google Maps API"
+        },
+        {
+          "base_question": "Tell me about the Real Traffic Analysis project",
+          "variations": [
+            "what is the Traffic Analysis tool",
+            "explain the traffic monitoring project",
+            "describe the HTTP analysis project"
+          ],
+          "answer": "The Real Traffic Analysis project is a sophisticated tool that:\n- Monitors and analyzes 10,000+ daily web requests across servers\n- Identifies traffic patterns using Python\n- Optimizes performance and reduces latency by 15%\n- Detects security vulnerabilities in critical endpoints\n- Features real-time diagnostic dashboards\n\nYou can view the project at: https://github.com/saisrinivas194/Traffic-analysis-tool-"
+        }
+      ]
+    },
+    "contact_information": {
+      "name": "Contact Information",
+      "questions": [
+        {
+          "base_question": "How can I contact Sai?",
+          "variations": [
+            "what is Sai's contact information",
+            "how do I reach Sai",
+            "what is Sai's email"
+          ],
+          "answer": "You can reach Sai through:\n\n• Email: pedhapollasaisrinivas@gmail.com\n• LinkedIn: linkedin.com/in/sai-srinivas-pedhapolla-345959256\n• GitHub: github.com/saisrinivas194\n• Twitter: x.com/SaiSrinivas194"
+        },
+        {
+          "base_question": "What is Sai's GitHub?",
+          "variations": [
+            "show me Sai's GitHub profile",
+            "where can I find Sai's code",
+            "link to Sai's GitHub"
+          ],
+          "answer": "You can find Sai's projects and contributions on GitHub at: github.com/saisrinivas194"
+        }
+      ]
+    }
+  }
+} 

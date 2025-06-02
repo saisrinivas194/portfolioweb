@@ -10,7 +10,7 @@ import Certificates from '@/components/Certificates'
 import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
 import ScrollToTop from '@/components/ScrollToTop'
-import ChatBot from '@/components/ChatBot'
+import Dashya from '@/components/Dashya'
 
 export default function Home() {
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Home() {
         <Testimonials />
         <Contact />
         <ScrollToTop />
-        <ChatBot />
+        <Dashya />
       </div>
     </main>
   );
