@@ -39,9 +39,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <a
-                  href="https://docs.google.com/document/d/1tFfXxKCVO1WK7Bqapgehb3CJtUchPavK/edit?usp=sharing&ouid=117263324562410406009&rtpof=true&sd=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/resume"
                   className="group relative overflow-hidden px-8 py-4 bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white rounded-2xl hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-[#a8c0ff] hover:to-[#3f2b96]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
