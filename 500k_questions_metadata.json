@@ -1,0 +1,17 @@
+{
+  "total_questions": 500000,
+  "generation_date": "2025-06-04T17:51:51.858366",
+  "description": "500,000 questions with misspellings and grammar variations based on portfolio data",
+  "sample_questions": [
+    "did sai achived any thing?",
+    "did sai has machine learning exprience?",
+    "dos sai gud at pyhton?",
+    "wat sai experiance?",
+    "tel bout sai porfolio?",
+    "iz srinivas gud at programing?",
+    "haz sai experiance wit AI?",
+    "wher sai workd?",
+    "cn sai use tensorflow?",
+    "explan sai skils?"
+  ]
+}

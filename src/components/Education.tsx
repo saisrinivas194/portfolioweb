@@ -21,7 +21,8 @@ const Education = () => {
         "Big Data Analytics",
         "Data Visualization",
         "Statistical Analysis",
-        "AI & Prompt Engineering"
+        "AI & Prompt Engineering",
+        "Frontend using AI"
       ]
     },
     {
@@ -39,8 +40,7 @@ const Education = () => {
         "Operating Systems",
         "Software Engineering",
         "Web Technologies",
-        "Python Programming",
-        "Java Development"
+        "Python Programming"
       ]
     }
   ];

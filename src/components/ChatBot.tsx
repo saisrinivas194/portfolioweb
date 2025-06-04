@@ -94,8 +94,8 @@ const ChatBot = () => {
       ]
     },
     skills: {
-      keywords: ['skills', 'technology', 'tech', 'stack', 'programming', 'languages', 'tools', 'framework',
-        'software', 'proficient', 'expertise', 'knowledge', 'python', 'react', 'ai', 'ml'],
+      keywords: ['skills', 'skils', 'skiils', 'skillz', 'technology', 'tech', 'stack', 'programming', 'programing', 'languages', 'tools', 'framework',
+        'software', 'proficient', 'expertise', 'knowledge', 'python', 'pyhton', 'pythong', 'react', 'ai', 'ml', 'machine learning', 'machien learing', 'data science', 'dat scince'],
       details: [
         "Here are my technical skills:",
         
@@ -125,7 +125,7 @@ const ChatBot = () => {
       ]
     },
     experience: {
-      keywords: ['experience', 'work', 'job', 'career', 'position', 'role', 'company', 'employment',
+      keywords: ['experience', 'experiance', 'expirience', 'experence', 'exprience', 'work', 'wrk', 'wok', 'job', 'career', 'position', 'role', 'company', 'employment',
         'intern', 'internship', 'professional', 'webdaddy', 'findem'],
       details: [
         "Here's my professional experience:",
@@ -252,9 +252,27 @@ const ChatBot = () => {
       return "Sai is motivated by a passion for solving real-world problems with technology. His goal is to make a positive impact through innovative AI and data-driven solutions.";
     }
 
-    // Certifications/awards
-    if (lowerQuery.match(/(does|has|what|which|any).*sai.*(certificat|award|recognition|accomplishment|achievement)/)) {
-      return "Sai has earned several academic awards and certifications in data science, AI, and web development, recognizing his technical excellence and commitment to learning.";
+    // Certifications/awards (Handle misspellings of "achieved")
+    if (lowerQuery.match(/(does|has|what|which|any|did).*sai.*(certificat|award|recognition|accomplishment|achievement|achived|acheived|achievd)/) ||
+        lowerQuery.match(/(did|has|what|is).*sai.*(achived|acheived|achievd|achieved).*(any thing|anything|something)/)) {
+      return "**Yes, Sai has achieved significant accomplishments!** Here are his key achievements:\n\n" +
+             "🎓 **Academic Excellence:**\n" +
+             "• Masters in Data Science at NJIT - GPA: 3.381/4\n" +
+             "• Bachelor's in Computer Science - CGPA: 9.43/10\n\n" +
+             "💼 **Professional Achievements:**\n" +
+             "• Improved ML model efficiency by 35% at Webdaddy\n" +
+             "• Achieved 98% accuracy in ML models at Findem, Inc.\n" +
+             "• Optimized email classification improving accuracy by 25%\n" +
+             "• Reduced manual effort by 40% through automation\n\n" +
+             "📊 **Project Success:**\n" +
+             "• Built AI-powered real estate website reducing development time by 50%\n" +
+             "• Created traffic analysis tool reducing latency by 15%\n" +
+             "• Developed loan processing workflows cutting time by 30%\n" +
+             "• Improved user engagement by 25% through AI-driven strategies\n\n" +
+             "🏆 **Recognition:**\n" +
+             "• Academic awards and certifications in data science and AI\n" +
+             "• Technical excellence recognition\n" +
+             "• Leadership in project teams";
     }
 
     // Preferred technologies/tools
@@ -267,9 +285,34 @@ const ChatBot = () => {
       return "Outside of work, Sai enjoys reading about new tech trends, participating in hackathons, and exploring data-driven side projects. He also likes traveling and playing chess.";
     }
 
-    // Does Sai have experience with a field?
-    if (lowerQuery.match(/(does|has|is|did).*sai.*(experience|worked|work|background|skilled|expertise|knowledge|familiar|know|proficient).*in|with|on/)
-      || lowerQuery.match(/what.*skill.*(related|about|in|with|on|for).*/)) {
+    // Does Sai have experience with a field? (Handle grammar errors and misspellings)
+    if (lowerQuery.match(/(does|has|is|did|do).*sai.*(experience|experiance|expirience|experence|exprience|worked|work|background|skilled|expertise|knowledge|familiar|know|proficient).*in|with|on/)
+      || lowerQuery.match(/what.*skill.*(related|about|in|with|on|for).*/)
+      || lowerQuery.match(/(did|does|is|has|do).*sai.*(has|have|hav).*(machine|machien|machin).*(learning|learing|lerning)/)
+      || lowerQuery.match(/(did|does|is|has|do).*sai.*(has|have|hav).*(experience|experiance|expirience|experence|exprience)/)
+      || lowerQuery.match(/(did|does|is|has|do).*sai.*(has|have|hav).*(ai|ml|data|programming|python|pyhton)/)) {
+      
+      // Special handling for machine learning questions
+      if (lowerQuery.match(/(machine|machien|machin).*(learning|learing|lerning)/) || 
+          lowerQuery.match(/(ai|ml|artificial.*intelligence)/)) {
+        return "**Yes, Sai has extensive machine learning experience!** Here's a comprehensive overview:\n\n" +
+               "🎓 **Education:**\n" +
+               "• Masters in Data Science at NJIT (2024-2025) - Key courses: Machine Learning, Deep Learning, AI & Prompt Engineering\n" +
+               "• GPA: 3.381/4\n\n" +
+               "💼 **Professional Experience:**\n" +
+               "• **Webdaddy (Aug 2024 - Feb 2025):** Developed AI-powered data annotation tools, built ML models for text classification using TensorFlow and NLP, improved efficiency by 35%\n" +
+               "• **Findem, Inc. (Jul 2023 - Dec 2023):** Managed large-scale data annotation projects for ML models with 98% accuracy, optimized email classification ML model improving accuracy by 25%\n\n" +
+               "🛠️ **Technical Skills:**\n" +
+               "• ML Frameworks: TensorFlow, PyTorch, scikit-learn\n" +
+               "• Specializations: NLP, Deep Learning, Computer Vision, Time Series Forecasting\n" +
+               "• Languages: Python, Pandas, NumPy\n\n" +
+               "📊 **ML Projects:**\n" +
+               "• AI-Powered Real Estate Website\n" +
+               "• Recipe Health Dashboard with data analytics\n" +
+               "• Real Traffic Analysis with predictive modeling\n\n" +
+               "✅ **Results:** 35% efficiency improvement, 98% model accuracy, 25% prediction accuracy improvement";
+      }
+      
       // Try to extract the field
       const fieldMatch = lowerQuery.match(/in ([a-zA-Z ]+)/) || lowerQuery.match(/with ([a-zA-Z ]+)/) || lowerQuery.match(/on ([a-zA-Z ]+)/) || lowerQuery.match(/related to ([a-zA-Z ]+)/) || lowerQuery.match(/about ([a-zA-Z ]+)/) || lowerQuery.match(/for ([a-zA-Z ]+)/);
       const field = fieldMatch ? fieldMatch[1].trim() : '';
@@ -277,7 +320,7 @@ const ChatBot = () => {
         // Check if field matches skills or experience
         if (profileInfo.skills.keywords.some(k => field.includes(k)) || profileInfo.experience.keywords.some(k => field.includes(k))) {
           // Give a targeted, personalized answer for the field
-          if (field.includes('python')) {
+          if (field.includes('python') || field.includes('pyhton')) {
             return "Sai is highly proficient in Python, using it for data science, machine learning, and automation. He has built projects with Pandas, NumPy, scikit-learn, TensorFlow, and more.";
           }
           if (field.includes('react')) {
