@@ -55,7 +55,6 @@ import {
   SiJavascript,
   SiTypescript,
   SiR,
-  SiPowerbi,
   SiGraphql,
   SiPostman
 } from 'react-icons/si';
