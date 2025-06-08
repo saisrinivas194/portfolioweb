@@ -51,9 +51,7 @@
 .timeline-item {
   min-width: 400px;
   max-width: 500px;
-  background: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: white;
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -80,7 +78,7 @@
   contain: strict;
   overflow: hidden;
   padding: 0;
-  background: white;
+  background: linear-gradient(to right, #06b6d4, #0f766e);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-out;
 }
@@ -100,7 +98,7 @@
 
 /* Style for icons (non-logo nodes) */
 .timeline-node:has(svg) {
-  background: linear-gradient(to right, #3f2b96, #a8c0ff);
+  background: linear-gradient(to right, #06b6d4, #0f766e);
   padding: 1rem;
 }
 

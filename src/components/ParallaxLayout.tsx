@@ -2,22 +2,9 @@
 
 import React, { useEffect, useState, useCallback } from 'react';
 import { Open_Sans } from 'next/font/google';
-import Image from 'next/image';
 import styled from 'styled-components';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
-
-const ParallaxContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-  will-change: transform;
-`;
 
 const ParallaxContent = styled.div<{ $scrollY: number }>`
   position: relative;
@@ -35,13 +22,7 @@ const ParallaxContent = styled.div<{ $scrollY: number }>`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.1)
-    );
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: transparent;
     z-index: -1;
   }
 
@@ -70,16 +51,8 @@ const ParallaxContent = styled.div<{ $scrollY: number }>`
 
   .card {
     position: relative;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: white;
     transition: all 0.3s ease;
-
-    &:hover {
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.95);
-    }
   }
 
   .horizontal-scroll-section {
@@ -164,7 +137,7 @@ const ParallaxContent = styled.div<{ $scrollY: number }>`
   }
 
   .gradient-heading {
-    background: linear-gradient(to right, #3f2b96, #a8c0ff);
+    background: linear-gradient(to right, #06b6d4, #0f766e);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -275,14 +248,11 @@ const ParallaxLayout: React.FC<ParallaxLayoutProps> = ({ children }) => {
   if (isLoading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-white/90 backdrop-blur-sm z-50 loading-screen">
-        <div className="relative w-[300px] h-[300px]">
-          <Image
-            src="/SSR.gif"
-            alt="Loading Animation"
-            fill
-            className="object-contain"
-            priority
-            unoptimized
+        <div className="relative flex items-center justify-center">
+          <img 
+            src="/SSR.gif" 
+            alt="Loading..." 
+            className="w-80 h-80 object-contain"
           />
         </div>
       </div>
@@ -291,19 +261,6 @@ const ParallaxLayout: React.FC<ParallaxLayoutProps> = ({ children }) => {
 
   return (
     <>
-      <ParallaxContainer>
-        <Image
-          src="/SSR.jpg"
-          alt="Background Pattern"
-          fill
-          className="object-cover opacity-20"
-          style={{ 
-            transform: `translateY(${scrollY * 0.15}px) scale(${1 + Math.sin(scrollY * 0.002) * 0.05})`,
-            transition: 'transform 1s cubic-bezier(0.165, 0.84, 0.44, 1)',
-            willChange: 'transform'
-          }}
-        />
-      </ParallaxContainer>
       <ParallaxContent $scrollY={scrollY} className={openSans.className}>
         {children}
       </ParallaxContent>

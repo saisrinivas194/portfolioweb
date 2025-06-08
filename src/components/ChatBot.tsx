@@ -290,7 +290,9 @@ const ChatBot = () => {
       || lowerQuery.match(/what.*skill.*(related|about|in|with|on|for).*/)
       || lowerQuery.match(/(did|does|is|has|do).*sai.*(has|have|hav).*(machine|machien|machin).*(learning|learing|lerning)/)
       || lowerQuery.match(/(did|does|is|has|do).*sai.*(has|have|hav).*(experience|experiance|expirience|experence|exprience)/)
-      || lowerQuery.match(/(did|does|is|has|do).*sai.*(has|have|hav).*(ai|ml|data|programming|python|pyhton)/)) {
+      || lowerQuery.match(/(did|does|is|has|do).*sai.*(has|have|hav).*(ai|ml|data|programming|python|pyhton)/)
+      || lowerQuery.match(/(is|does).*(he|sai).*(knows?|know).*(machine|machien|machin).*(learning|learing|lerning)/)
+      || lowerQuery.match(/(is|does).*(he|sai).*(knows?|know).*(ai|ml|data|programming|python|pyhton|experience|experiance|expirience|experence|exprience)/)) {
       
       // Special handling for machine learning questions
       if (lowerQuery.match(/(machine|machien|machin).*(learning|learing|lerning)/) || 

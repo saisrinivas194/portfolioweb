@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ParallaxLayout from './ParallaxLayout';
-import { FaMapMarkerAlt, FaClock, FaTrophy } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaClock, FaTrophy, FaCheck, FaGraduationCap } from 'react-icons/fa';
 import Image from 'next/image';
 
 const Education = () => {
@@ -13,35 +13,24 @@ const Education = () => {
       degree: "Masters of Science (Data Science)",
       duration: "January 2024 - May 2025",
       location: "Newark, NJ, USA",
-      gpa: "3.381/4 GPA",
+      gpa: "3.350/4 GPA",
       logo: "/NJIT.png",
-      courses: [
-        "Machine Learning",
-        "Deep Learning",
-        "Big Data Analytics",
-        "Data Visualization",
-        "Statistical Analysis",
-        "AI & Prompt Engineering",
-        "Frontend using AI"
-      ]
+      status: "completed",
+      statusText: "Completed",
+      graduationYear: "2025",
+      description: "Studies in Machine Learning, Deep Learning, Big Data Analytics, Data Visualization, Statistical Analysis, and AI & Prompt Engineering."
     },
     {
       institution: "SCSVMV University",
-      degree: "B.E., Computer Science and Engineering",
+      degree: "Bachelor of Engineering (Computer Science)",
       duration: "June 2019 - June 2023",
       location: "Kanchipuram, TN, India",
       gpa: "9.43/10 GPA",
       logo: "/scsvmv.png",
-      courses: [
-        "Data Structures & Algorithms",
-        "Object-Oriented Programming",
-        "Database Management Systems",
-        "Computer Networks",
-        "Operating Systems",
-        "Software Engineering",
-        "Web Technologies",
-        "Python Programming"
-      ]
+      status: "completed",
+      statusText: "Completed",
+      graduationYear: "2023",
+      description: "Studies in Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Computer Networks, Operating Systems, and Software Engineering."
     }
   ];
 
@@ -53,77 +42,252 @@ const Education = () => {
           animate={{ opacity: 1 }}
           className="max-w-7xl mx-auto"
         >
-          <h1 className="text-3xl md:text-4xl font-bold mb-12 gradient-heading text-center">
-            Education
+          {/* Large background title */}
+          <h1 className="education-bg-title">
+            EDUCATION
           </h1>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {educationData.map((education, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-full p-6 sm:p-8 rounded-[20px] bg-white/90 card flex flex-col transition-all duration-300 hover:scale-[0.98] hover:shadow-[0_0_30px_1px_rgba(63,43,150,0.3)] border-2 border-transparent hover:border-[#3f2b96]/30"
-              >
-                {/* Header Section */}
-                <div className="flex items-start gap-6 mb-6">
-                  <div className="w-20 h-20 flex-shrink-0 relative rounded-full overflow-hidden border-2 border-gray-200 bg-white">
-                    <Image
-                      src={education.logo}
-                      alt={education.institution}
-                      fill
-                      className="object-cover p-1"
-                      sizes="(max-width: 80px) 100vw, 80px"
-                      priority
-                    />
+          <div className="max-w-4xl mx-auto mt-20 px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="education-card"
+            >
+              <div className="card-body">
+                {educationData.map((education, index) => (
+                  <div key={index} className="education-card-row">
+                    <div className="education-card-row-pic">
+                      <Image
+                        src={education.logo}
+                        alt={education.institution}
+                        width={80}
+                        height={80}
+                        className="img-fluid rounded"
+                        priority
+                      />
+                    </div>
+                    <div className="education-card-row-text">
+                      <h5 className="mb-0 mt-0">{education.duration}</h5>
+                      <p className="description">
+                        <b>{education.institution.toUpperCase()}</b><br/>
+                        <b>{education.degree}</b><br/>
+                        <b>Location:</b> {education.location}<br/>
+                        <b>GPA:</b> {education.gpa}<br/>
+                        {education.description}
+                      </p>
+                      {index < educationData.length - 1 && <hr />}
+                    </div>
                   </div>
-                  <div className="flex-grow">
-                    <h2 className="text-xl font-bold mb-2 bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] bg-clip-text text-transparent">
-                      {education.institution}
-                    </h2>
-                    <h3 className="text-lg text-gray-700">
-                      {education.degree}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Details Section */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-base text-gray-600 mb-6">
-                  <div className="flex items-center gap-2">
-                    <FaClock className="text-[#3f2b96] flex-shrink-0" size={16} />
-                    <span>{education.duration}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FaMapMarkerAlt className="text-[#3f2b96] flex-shrink-0" size={16} />
-                    <span>{education.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FaTrophy className="text-[#3f2b96] flex-shrink-0" size={16} />
-                    <span className="font-medium">{education.gpa}</span>
-                  </div>
-                </div>
-
-                {/* Courses Section */}
-                <div className="flex-grow">
-                  <div className="flex items-center gap-2 mb-4">
-                    <FaTrophy className="text-[#3f2b96] flex-shrink-0" size={16} />
-                    <span className="text-base font-semibold text-gray-700">Key Areas of Study</span>
-                  </div>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {education.courses.map((course, idx) => (
-                      <li key={idx} className="text-gray-600 text-base leading-relaxed flex items-start gap-2">
-                        <span className="text-[#3f2b96]">•</span>
-                        <span>{course}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
+                ))}
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
+
+      <style jsx>{`
+        .education-bg-title {
+          font-size: clamp(2.5rem, 8vw, 5rem);
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: -0.02em;
+          position: absolute;
+          top: clamp(10px, 2vw, 20px);
+          left: 50%;
+          transform: translateX(-50%);
+          pointer-events: none;
+          white-space: nowrap;
+          font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+          background: linear-gradient(
+            to bottom,
+            rgba(6, 182, 212, 0.6) 30%,
+            rgba(15, 118, 110, 0.4) 76%
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          text-align: center;
+          width: 100%;
+          padding: 0 1rem;
+        }
+
+        .education-card {
+          position: relative;
+          width: 100%;
+          padding-right: 15px;
+          padding-left: 15px;
+          box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
+          background: white;
+          border-radius: 15px;
+        }
+
+        .card-body {
+          flex: 1 1 auto;
+          padding: 1.5rem;
+        }
+
+        .education-card-row {
+          display: flex;
+          flex-wrap: wrap;
+          margin-right: -15px;
+          margin-bottom: 20px;
+        }
+
+        .education-card-row:last-child {
+          margin-bottom: 0;
+        }
+
+        .education-card-row-pic {
+          flex: 0 0 16.666667%;
+          max-width: 16.666667%;
+          flex: 0 0 25%;
+          max-width: 25%;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          padding-top: 10px;
+        }
+
+        .education-card-row-pic img {
+          max-width: 100%;
+          height: auto;
+          width: 80px;
+          object-fit: contain;
+        }
+
+        .img-fluid {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .rounded {
+          border-radius: 8px;
+        }
+
+        .education-card-row-text {
+          padding-left: 0.5rem !important;
+          flex: 0 0 66.666667%;
+          max-width: 66.666667%;
+          flex: 0 0 75%;
+          max-width: 75%;
+        }
+
+        .education-card-row-text h5 {
+          color: #06b6d4;
+          font-weight: 700;
+          font-size: 1.1rem;
+          margin-bottom: 0.5rem;
+          margin-top: 0;
+        }
+
+        .education-card-row-text .description {
+          color: #4a5568;
+          line-height: 1.6;
+          margin-bottom: 0.5rem;
+          font-size: 0.95rem;
+        }
+
+        .education-card-row-text .description b {
+          color: #2d3748;
+        }
+
+        .education-card-row-text hr {
+          border: 0;
+          height: 1px;
+          background: linear-gradient(
+            to right,
+            transparent,
+            rgba(6, 182, 212, 0.3),
+            transparent
+          );
+          margin: 1.5rem 0;
+        }
+
+        .mb-0 {
+          margin-bottom: 0;
+        }
+
+        .mt-0 {
+          margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+          .education-bg-title {
+            font-size: 2.5rem;
+            top: 8px;
+          }
+
+          .education-card-row {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 30px;
+          }
+
+          .education-card-row-pic {
+            flex: none;
+            max-width: none;
+            margin-bottom: 15px;
+          }
+
+          .education-card-row-text {
+            flex: none;
+            max-width: none;
+            padding-left: 0 !important;
+          }
+
+          .card-body {
+            padding: 1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .education-bg-title {
+            font-size: 2rem;
+            top: 5px;
+          }
+
+          .education-card {
+            padding-right: 8px;
+            padding-left: 8px;
+          }
+
+          .card-body {
+            padding: 0.75rem;
+          }
+
+          .education-card-row-text h5 {
+            font-size: 1rem;
+          }
+
+          .education-card-row-text .description {
+            font-size: 0.9rem;
+          }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+          .education-bg-title {
+            font-size: 3rem;
+            top: 8px;
+          }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .education-bg-title {
+            font-size: 4rem;
+            top: 12px;
+          }
+        }
+
+        .graduation-year {
+          color: #0d9488;
+          font-size: 1.2rem;
+          font-weight: 700;
+          text-align: center;
+          margin-bottom: 15px;
+        }
+      `}</style>
     </ParallaxLayout>
   );
 };

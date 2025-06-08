@@ -2,15 +2,29 @@
   transform: translateY(var(--scroll-y));
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   will-change: transform;
-  opacity: 0.9;
+  opacity: 1;
+  position: relative;
+  z-index: 50;
 }
 
 .logo-image {
   filter: brightness(1) contrast(1);
+  transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+@media (max-width: 640px) {
+  .logo-container {
+    transform: translateY(calc(var(--scroll-y) * 0.8));
+  }
 }
 
 .welcome-text {
-  background: linear-gradient(to right, #3f2b96, #a8c0ff);
+  background: linear-gradient(to right, #06b6d4, #0f766e);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -20,13 +34,13 @@
 }
 
 .name-text {
-  background: linear-gradient(to right, #3f2b96, #a8c0ff);
+  background: linear-gradient(to right, #06b6d4, #0f766e);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: textShine 4s ease-in-out infinite;
-  text-shadow: 2px 2px 4px rgba(63, 43, 150, 0.2);
+  text-shadow: 2px 2px 4px rgba(6, 182, 212, 0.2);
 }
 
 .floating-image {
@@ -46,8 +60,6 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   padding: 5px;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -111,4 +123,32 @@
 :root {
   --scroll-y: 0px;
   --scroll-scale: 1;
+}
+
+.logo-position {
+  margin-left: -120px;
+}
+
+.nav-position {
+  margin-left: 60px;
+}
+
+.menu-item-enter {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.menu-item-exit {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
+.logo-fixed-position {
+  left: -120px;
+}
+
+.skill-network-canvas {
+  z-index: -10;
+  background: transparent;
+  opacity: 1;
 } 

@@ -1,23 +1,15 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaGithub, FaGlobe, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import ParallaxLayout from './ParallaxLayout';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Projects = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 400; // Adjust this value to control scroll distance
-      const newScrollPosition = scrollContainerRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
-      scrollContainerRef.current.scrollTo({
-        left: newScrollPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [scrollMomentum, setScrollMomentum] = useState(0);
 
   const projectsData = [
     {
@@ -30,7 +22,8 @@ const Projects = () => {
         "Used Dv_Final.csv as a data source for nutritional modeling and user behavior analysis"
       ],
       githubLink: "https://github.com/saisrinivas194/Recipe_Health_Dashboard",
-      liveLink: ""
+      liveLink: "",
+      image: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?q=80&w=1000&auto=format&fit=crop"
     },
     {
       title: "Real Traffic Analysis (Http/Https) – NJIT",
@@ -42,7 +35,8 @@ const Projects = () => {
         "Detected and resolved security vulnerabilities in 5+ critical endpoints"
       ],
       githubLink: "https://github.com/saisrinivas194/Traffic-analysis-tool-",
-      liveLink: ""
+      liveLink: "",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
     },
     {
       title: "Loan Wise – Webdaddy",
@@ -54,7 +48,8 @@ const Projects = () => {
         "Proposed UX improvements that reduced form abandonment by 20%"
       ],
       githubLink: "",
-      liveLink: "https://loanwise.sg"
+      liveLink: "https://loanwise.sg",
+      image: "https://image.thum.io/get/width/1200/crop/800/https://loanwise.sg"
     },
     {
       title: "AI-Powered Real Estate Website - JCR Builders",
@@ -67,7 +62,8 @@ const Projects = () => {
         "Integrated Google Maps API with location metadata, boosting local traffic by 150%"
       ],
       githubLink: "",
-      liveLink: "https://www.jcrbuilders.in"
+      liveLink: "https://www.jcrbuilders.in",
+      image: "https://image.thum.io/get/width/1200/crop/800/https://www.jcrbuilders.in"
     },
     {
       title: "Stock Market Forecasting",
@@ -79,7 +75,8 @@ const Projects = () => {
         "Integrated multiple data sources for comprehensive market analysis"
       ],
       githubLink: "https://github.com/saisrinivas194/Stock_market_prediction",
-      liveLink: ""
+      liveLink: "",
+      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1000&auto=format&fit=crop"
     },
     {
       title: "Netflix Data Analysis",
@@ -91,7 +88,8 @@ const Projects = () => {
         "Built interactive dashboards for content performance analysis"
       ],
       githubLink: "https://github.com/saisrinivas194/Netflix-Movies-and-TV-shows-analysis",
-      liveLink: ""
+      liveLink: "",
+      image: "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?q=80&w=1000&auto=format&fit=crop"
     },
     {
       title: "Customer Personality Insights",
@@ -103,9 +101,146 @@ const Projects = () => {
         "Created visualization dashboards for customer behavior analysis"
       ],
       githubLink: "https://github.com/saisrinivas194/Customer-Personality-Analysis-",
-      liveLink: ""
+      liveLink: "",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop"
     }
   ];
+
+  const updateCarousel = (newIndex: number, momentum = 0) => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setIsScrolling(true);
+    setScrollMomentum(momentum);
+    
+    const targetIndex = (newIndex + projectsData.length) % projectsData.length;
+    setCurrentIndex(targetIndex);
+    
+    // Smooth momentum decay
+    if (momentum > 0) {
+      setTimeout(() => {
+        setScrollMomentum(momentum * 0.8);
+      }, 100);
+    }
+    
+    setTimeout(() => {
+      setIsAnimating(false);
+      setScrollMomentum(0);
+    }, 800);
+
+    setTimeout(() => {
+      setIsScrolling(false);
+    }, 1000);
+  };
+
+  const getCardClass = (index: number) => {
+    const offset = (index - currentIndex + projectsData.length) % projectsData.length;
+    
+    if (offset === 0) {
+      return "center";
+    } else if (offset === 1) {
+      return "right-1";
+    } else if (offset === 2) {
+      return "right-2";
+    } else if (offset === projectsData.length - 1) {
+      return "left-1";
+    } else if (offset === projectsData.length - 2) {
+      return "left-2";
+    } else {
+      return "hidden";
+    }
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        updateCarousel(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        updateCarousel(currentIndex + 1);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [currentIndex]);
+
+  // Touch navigation
+  useEffect(() => {
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX = e.changedTouches[0].screenX;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          updateCarousel(currentIndex + 1);
+        } else {
+          updateCarousel(currentIndex - 1);
+        }
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchend', handleTouchEnd);
+    
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [currentIndex]);
+
+  // Enhanced smooth wheel navigation
+  useEffect(() => {
+    let wheelTimeout: NodeJS.Timeout;
+    let accumulatedDelta = 0;
+    let lastWheelTime = Date.now();
+    
+    const handleWheel = (e: Event) => {
+      const wheelEvent = e as WheelEvent;
+      wheelEvent.preventDefault();
+      
+      const currentTime = Date.now();
+      const timeDiff = currentTime - lastWheelTime;
+      
+      // Calculate velocity for smoother scrolling
+      const velocity = Math.abs(wheelEvent.deltaY) / Math.max(timeDiff, 1);
+      const momentum = Math.min(velocity / 10, 3);
+      
+      accumulatedDelta += wheelEvent.deltaY;
+      lastWheelTime = currentTime;
+      
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(() => {
+        if (Math.abs(accumulatedDelta) > 30) {
+          if (accumulatedDelta > 0) {
+            updateCarousel(currentIndex + 1, momentum);
+          } else {
+            updateCarousel(currentIndex - 1, momentum);
+          }
+        }
+        accumulatedDelta = 0;
+      }, 100);
+    };
+
+    const carouselElement = document.querySelector('.carousel-container');
+    if (carouselElement) {
+      carouselElement.addEventListener('wheel', handleWheel, { passive: false });
+    }
+    
+    return () => {
+      if (carouselElement) {
+        carouselElement.removeEventListener('wheel', handleWheel);
+      }
+      clearTimeout(wheelTimeout);
+    };
+  }, [currentIndex]);
 
   return (
     <ParallaxLayout>
@@ -115,87 +250,498 @@ const Projects = () => {
           animate={{ opacity: 1 }}
           className="max-w-7xl mx-auto"
         >
-          <h1 className="text-3xl md:text-4xl font-bold mb-12 gradient-heading text-center">
-            Projects
+          {/* Large background title */}
+          <h1 className="projects-bg-title">
+            PROJECTS
           </h1>
           
-          <div className="relative w-full group">
-            {/* Left Arrow */}
+          {/* Carousel Container */}
+          <div className="carousel-container">
+
+
+            {/* Navigation Arrows */}
             <button
-              onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 p-3 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-110 opacity-0 group-hover:opacity-100 -translate-x-1/2"
-              aria-label="Scroll left"
+              onClick={() => updateCarousel(currentIndex - 1)}
+              className="nav-arrow left"
+              aria-label="Previous project"
             >
-              <FaChevronLeft className="text-[#3f2b96]" size={20} />
+              <FaChevronLeft />
             </button>
 
-            {/* Right Arrow */}
             <button
-              onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 p-3 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-110 opacity-0 group-hover:opacity-100 translate-x-1/2"
-              aria-label="Scroll right"
+              onClick={() => updateCarousel(currentIndex + 1)}
+              className="nav-arrow right"
+              aria-label="Next project"
             >
-              <FaChevronRight className="text-[#3f2b96]" size={20} />
+              <FaChevronRight />
             </button>
 
-            <div ref={scrollContainerRef} className="overflow-x-auto pb-8 hide-scrollbar">
-              <div className="flex gap-6 sm:gap-8 min-w-max px-4">
+            {/* Carousel Track */}
+            <div className="carousel-track">
                 {projectsData.map((project, index) => (
+                <div
+                  key={index}
+                  className={`card ${getCardClass(index)}`}
+                  onClick={() => updateCarousel(index)}
+                  data-index={index}
+                >
+                  <img src={project.image} alt={project.title} />
+                </div>
+              ))}
+            </div>
+
+
+          </div>
+
+          {/* Project Info */}
+          <div className="project-info">
+            <AnimatePresence mode="wait">
                   <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex flex-col h-[500px] w-[350px] p-4 sm:p-6 rounded-[20px] bg-white/90 card transition-all duration-300 hover:scale-[0.98] hover:shadow-[0_0_30px_1px_rgba(63,43,150,0.3)] border-2 border-transparent hover:border-[#3f2b96]/30"
-                  >
-                    {/* Content */}
-                    <div className="relative flex flex-col h-full">
-                      <h3 className="text-xl font-bold text-gray-800 mb-2 bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] bg-clip-text text-transparent min-h-[56px] flex items-center">
-                        {project.title}
-                      </h3>
-                      <p className="text-[#3f2b96] text-sm font-medium mb-4">
-                        {project.duration}
-                      </p>
-                      <div className="flex-grow overflow-y-auto custom-scrollbar">
-                        <ul className="space-y-3 mb-6 pr-2">
-                          {project.description.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-gray-600 text-sm leading-relaxed">
-                              <span className="flex-shrink-0 w-2 h-2 mt-1.5 rounded-full bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff]"></span>
-                              <span className="flex-grow">{item}</span>
+                key={currentIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ 
+                  duration: 0.4, 
+                  ease: [0.4, 0, 0.2, 1]
+                }}
+              >
+                <h2 className="project-name">{projectsData[currentIndex].title}</h2>
+                <p className="project-duration">{projectsData[currentIndex].duration}</p>
+                
+                <div className="project-description">
+                  <ul>
+                    {projectsData[currentIndex].description.map((item, idx) => (
+                      <li key={idx}>
+                        <span className="bullet"></span>
+                        {item}
                             </li>
                           ))}
                         </ul>
                       </div>
-                      <div className="flex gap-4 pt-4 border-t border-gray-100 mt-4">
-                        {project.githubLink && (
-                          <a href={project.githubLink} 
+
+                <div className="project-links">
+                  {projectsData[currentIndex].githubLink && (
+                    <a 
+                      href={projectsData[currentIndex].githubLink} 
                              target="_blank" 
                              rel="noopener noreferrer" 
-                             className="text-gray-600 hover:text-[#3f2b96] transition-colors flex items-center gap-2"
-                             title="View Source Code">
-                            <FaGithub size={20} />
-                            <span className="text-sm">Source Code</span>
+                      className="project-link"
+                    >
+                      <FaGithub />
+                      <span>Source Code</span>
                           </a>
                         )}
-                        {project.liveLink && (
-                          <a href={project.liveLink} 
+                  {projectsData[currentIndex].liveLink && (
+                    <a 
+                      href={projectsData[currentIndex].liveLink} 
                              target="_blank" 
                              rel="noopener noreferrer"
-                             className="text-gray-600 hover:text-[#3f2b96] transition-colors flex items-center gap-2"
-                             title="Visit Website">
-                            <FaGlobe size={20} />
-                            <span className="text-sm">Live Site</span>
+                      className="project-link"
+                    >
+                      <FaGlobe />
+                      <span>Live Site</span>
                           </a>
                         )}
                       </div>
+              </motion.div>
+            </AnimatePresence>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+
+          {/* Dots Navigation */}
+          <div className="dots">
+            {projectsData.map((_, index) => (
+              <div
+                key={index}
+                className={`dot ${index === currentIndex ? 'active' : ''}`}
+                onClick={() => updateCarousel(index)}
+                data-index={index}
+              />
+            ))}
           </div>
         </motion.div>
       </div>
+
+      <style jsx>{`
+        * {
+          scroll-behavior: smooth;
+        }
+
+        .projects-bg-title {
+          font-size: clamp(2.5rem, 8vw, 5rem);
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: -0.02em;
+          position: absolute;
+          top: clamp(10px, 2vw, 20px);
+          left: 50%;
+          transform: translateX(-50%);
+          pointer-events: none;
+          white-space: nowrap;
+          font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+          background: linear-gradient(
+            to bottom,
+            rgba(6, 182, 212, 0.6) 30%,
+            rgba(15, 118, 110, 0.4) 76%
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          text-align: center;
+          width: 100%;
+          padding: 0 1rem;
+        }
+
+        .carousel-container {
+          width: 100%;
+          max-width: 1000px;
+          height: 350px;
+          position: relative;
+          perspective: 1000px;
+          margin: 60px auto 0 auto;
+        }
+
+        .carousel-track {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          transform-style: preserve-3d;
+          transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .card {
+          position: absolute;
+          width: 220px;
+          height: 300px;
+          background: white;
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          cursor: pointer;
+        }
+
+        .card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+
+
+        .card.center {
+          z-index: 10;
+          transform: scale(1.1) translateZ(0);
+        }
+
+        .card.center img {
+          filter: none;
+        }
+
+        .card.left-2 {
+          z-index: 1;
+          transform: translateX(-320px) scale(0.8) translateZ(-250px);
+          opacity: 0.7;
+        }
+
+        .card.left-2 img {
+          filter: grayscale(100%);
+        }
+
+        .card.left-1 {
+          z-index: 5;
+          transform: translateX(-160px) scale(0.9) translateZ(-80px);
+          opacity: 0.9;
+        }
+
+        .card.left-1 img {
+          filter: grayscale(100%);
+        }
+
+        .card.right-1 {
+          z-index: 5;
+          transform: translateX(160px) scale(0.9) translateZ(-80px);
+          opacity: 0.9;
+        }
+
+        .card.right-1 img {
+          filter: grayscale(100%);
+        }
+
+        .card.right-2 {
+          z-index: 1;
+          transform: translateX(320px) scale(0.8) translateZ(-250px);
+          opacity: 0.7;
+        }
+
+        .card.right-2 img {
+          filter: grayscale(100%);
+        }
+
+        .card.hidden {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+
+
+        .project-info {
+          text-align: center;
+          margin: 30px auto;
+          max-width: 700px;
+          transition: all 0.5s ease-out;
+        }
+
+        .project-name {
+          color: #06b6d4;
+          font-size: 1.8rem;
+          font-weight: 700;
+          margin-bottom: 8px;
+          position: relative;
+          display: inline-block;
+        }
+
+        .project-name::before,
+        .project-name::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          width: 60px;
+          height: 2px;
+          background: #06b6d4;
+        }
+
+        .project-name::before {
+          left: -80px;
+        }
+
+        .project-name::after {
+          right: -80px;
+        }
+
+        .project-duration {
+          color: #848696;
+          font-size: 1rem;
+          font-weight: 500;
+          opacity: 0.8;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          padding: 8px 0;
+          margin-top: -10px;
+          position: relative;
+        }
+
+        .project-description {
+          margin-bottom: 20px;
+          text-align: left;
+        }
+
+        .project-description ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        .project-description li {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          margin-bottom: 8px;
+          color: #666;
+          line-height: 1.5;
+          font-size: 0.9rem;
+        }
+
+        .bullet {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: linear-gradient(to right, #06b6d4, #0f766e);
+          margin-top: 6px;
+          flex-shrink: 0;
+        }
+
+        .project-links {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          margin-top: 15px;
+        }
+
+        .project-link {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 10px 20px;
+          background: linear-gradient(to right, #06b6d4, #0f766e);
+          color: white;
+          text-decoration: none;
+          border-radius: 20px;
+          transition: all 0.3s ease;
+          font-weight: 500;
+          font-size: 0.9rem;
+        }
+
+        .project-link:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 40px;
+        }
+
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: rgba(6, 182, 212, 0.2);
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .dot.active {
+          background: #06b6d4;
+          transform: scale(1.2);
+        }
+
+        .nav-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(63, 43, 150, 0.6);
+          color: white;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          z-index: 20;
+          transition: all 0.3s ease;
+          font-size: 1.5rem;
+          border: none;
+          outline: none;
+          padding-bottom: 4px;
+        }
+
+        .nav-arrow:hover {
+          background: rgba(0, 0, 0, 0.8);
+          transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-arrow.left {
+          left: 20px;
+          padding-right: 3px;
+        }
+
+        .nav-arrow.right {
+          right: 20px;
+          padding-left: 3px;
+        }
+
+
+
+
+
+
+
+
+
+         @media (max-width: 480px) {
+           .projects-bg-title {
+             font-size: 2rem;
+             top: 5px;
+           }
+         }
+
+         @media (min-width: 481px) and (max-width: 768px) {
+           .projects-bg-title {
+             font-size: 3rem;
+             top: 8px;
+           }
+         }
+
+         @media (min-width: 769px) and (max-width: 1024px) {
+           .projects-bg-title {
+             font-size: 4rem;
+             top: 12px;
+           }
+
+           .carousel-container {
+             height: 280px;
+             margin: 40px auto 0 auto;
+           }
+
+           .card {
+             width: 160px;
+             height: 220px;
+           }
+
+           .card.left-2 {
+             transform: translateX(-200px) scale(0.8) translateZ(-200px);
+           }
+
+           .card.left-1 {
+             transform: translateX(-100px) scale(0.9) translateZ(-80px);
+           }
+
+           .card.right-1 {
+             transform: translateX(100px) scale(0.9) translateZ(-80px);
+           }
+
+           .card.right-2 {
+             transform: translateX(200px) scale(0.8) translateZ(-200px);
+           }
+
+           .project-name {
+             font-size: 1.5rem;
+           }
+
+           .project-duration {
+             font-size: 0.9rem;
+           }
+
+           .project-description li {
+             font-size: 0.85rem;
+           }
+
+           .project-link {
+             font-size: 0.8rem;
+             padding: 8px 16px;
+           }
+
+           .project-name::before,
+           .project-name::after {
+             width: 40px;
+           }
+
+           .project-name::before {
+             left: -60px;
+           }
+
+           .project-name::after {
+             right: -60px;
+           }
+         }
+
+        /* Keyframe Animations */
+
+
+
+
+
+
+      `}</style>
     </ParallaxLayout>
   );
 };

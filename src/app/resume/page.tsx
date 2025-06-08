@@ -12,14 +12,15 @@ const ResumePage = () => {
         <div className="flex justify-between items-center mb-8">
           <Link 
             href="/"
-            className="flex items-center gap-2 text-[#3f2b96] hover:text-[#a8c0ff] transition-colors duration-300"
+            className="flex items-center gap-2 text-[#0d9488] hover:text-[#7dd3fc] transition-colors duration-300"
           >
             <FaArrowLeft />
-            <span>Back to Portfolio</span>
+            Back to Portfolio
           </Link>
           <a
-            href="https://drive.google.com/uc?export=download&id=1ckfuBq9dp_6m2X1v7wH36kI10E_2A5Hl"
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white rounded-lg hover:shadow-lg transition-all duration-300"
+            href="/resume.pdf"
+            download
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white rounded-lg hover:shadow-lg transition-all duration-300"
           >
             <FaDownload />
             <span>Download PDF</span>
@@ -32,6 +33,7 @@ const ResumePage = () => {
             src="https://drive.google.com/file/d/1ckfuBq9dp_6m2X1v7wH36kI10E_2A5Hl/preview"
             className="w-full h-full border-0"
             allow="autoplay"
+            title="Sai Srinivas Resume PDF Viewer"
           ></iframe>
         </div>
       </div>

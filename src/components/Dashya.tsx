@@ -94,7 +94,7 @@ const BotAvatar = () => {
     >
       {/* Dynamic background gradient */}
       <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff]"
+        className="absolute inset-0 rounded-full bg-gradient-to-r from-[#06b6d4] to-[#0f766e]"
         animate={{
           rotate: isHovered ? 360 : 0,
           scale: isHovered ? [1, 1.1, 1] : 1,
@@ -115,7 +115,7 @@ const BotAvatar = () => {
             : "0 0 0px rgba(63, 43, 150, 0)"
         }}
       >
-        <div className="w-full h-full rounded-full bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] flex items-center justify-center relative overflow-hidden">
+        <div className="w-full h-full rounded-full bg-gradient-to-r from-[#06b6d4] to-[#0f766e] flex items-center justify-center relative overflow-hidden">
           <motion.div
             animate={{
               rotateY: isHovered ? [0, 360] : 0,
@@ -255,7 +255,7 @@ const UserAvatar = () => {
     >
       {/* Dynamic background with rotation */}
       <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff]"
+        className="absolute inset-0 rounded-full bg-gradient-to-r from-[#06b6d4] to-[#0f766e]"
         animate={{
           rotate: isHovered ? 360 : 0,
           scale: isHovered ? [1, 1.1, 1] : 1,
@@ -276,7 +276,7 @@ const UserAvatar = () => {
             : "0 0 0px rgba(63, 43, 150, 0)"
         }}
       >
-        <div className="w-full h-full rounded-full bg-gradient-to-br from-[#3f2b96] to-[#a8c0ff] flex items-center justify-center relative overflow-hidden">
+        <div className="w-full h-full rounded-full bg-gradient-to-br from-[#06b6d4] to-[#0f766e] flex items-center justify-center relative overflow-hidden">
           <motion.div
             animate={{
               scale: isHovered ? [1, 1.1, 1] : 1,
@@ -531,13 +531,120 @@ const Dashya: React.FC = () => {
     try {
       const normalizedQuestion = question.toLowerCase().trim();
       
-      // First, try exact matches from QA dataset
+      // Enhanced misspelling dictionary for common errors
+      const misspellingMap = {
+        // Machine Learning variations
+        'machien': 'machine', 'machin': 'machine', 'mashine': 'machine', 'mechine': 'machine',
+        'learing': 'learning', 'lerning': 'learning', 'learnign': 'learning', 'learining': 'learning',
+        'exprience': 'experience', 'experiance': 'experience', 'expirience': 'experience', 'experence': 'experience',
+        
+        // Technical terms
+        'pyhton': 'python', 'pythong': 'python', 'phyton': 'python', 'pytho': 'python',
+        'skils': 'skills', 'skiils': 'skills', 'skillz': 'skills', 'skilles': 'skills',
+        'programing': 'programming', 'progrmming': 'programming', 'programmng': 'programming',
+        'edcuation': 'education', 'educaton': 'education', 'eductaion': 'education',
+        
+        // Achievement variations
+        'achived': 'achieved', 'acheived': 'achieved', 'achievd': 'achieved', 'achevied': 'achieved',
+        'accomplised': 'accomplished', 'acomplished': 'accomplished', 'accomplihsed': 'accomplished',
+        
+        // Common words
+        'porfolio': 'portfolio', 'portolio': 'portfolio', 'portfolo': 'portfolio', 'protfolio': 'portfolio',
+        'wat': 'what', 'wht': 'what', 'whta': 'what', 'waht': 'what',
+        'tel': 'tell', 'teel': 'tell', 'teell': 'tell',
+        'bout': 'about', 'abt': 'about',
+        'gud': 'good', 'gd': 'good',
+        'iz': 'is', 'iss': 'is',
+        'haz': 'has', 'hass': 'has',
+        'cn': 'can', 'cann': 'can',
+        'dos': 'does', 'dose': 'does', 'deos': 'does',
+        'wher': 'where', 'whre': 'where', 'were': 'where',
+        'explan': 'explain', 'explian': 'explain', 'expain': 'explain'
+      };
+      
+      // Function to correct misspellings
+      const correctMisspellings = (text: string): string => {
+        let corrected = text;
+        for (const [misspelled, correct] of Object.entries(misspellingMap)) {
+          const regex = new RegExp(`\\b${misspelled}\\b`, 'gi');
+          corrected = corrected.replace(regex, correct);
+        }
+        return corrected;
+      };
+      
+      // Normalize and correct the question
+      const correctedQuestion = correctMisspellings(normalizedQuestion);
+      
+      // Enhanced keyword matching with phonetic similarity
+      const enhancedKeywords = {
+        machine_learning_experience: [
+          'machine learning', 'machien learing', 'ml', 'ai', 'artificial intelligence',
+          'deep learning', 'neural network', 'tensorflow', 'pytorch', 'nlp',
+          'computer vision', 'data science', 'model', 'algorithm', 'training',
+          'classification', 'regression', 'supervised', 'unsupervised'
+        ],
+        education: [
+          'education', 'study', 'degree', 'university', 'college', 'academic', 'school', 
+          'graduate', 'graduation', 'njit', 'scsvmv', 'masters', 'bachelor', 'gpa', 'course'
+        ],
+        personal_information: [
+          'location', 'live', 'based', 'who', 'about', 'background', 'name', 'contact',
+          'phone', 'email', 'address', 'personal', 'info', 'introduction', 'opt', 'eligible'
+        ],
+        professional_experience: [
+          'work', 'job', 'company', 'experience', 'professional', 'webdaddy', 'findem',
+          'intern', 'internship', 'career', 'position', 'role', 'employment', 'worked'
+        ],
+        skills: [
+          'skill', 'technology', 'programming', 'language', 'framework', 'tool',
+          'python', 'react', 'javascript', 'sql', 'tableau', 'git', 'aws'
+        ],
+        projects: [
+          'project', 'portfolio', 'build', 'create', 'develop', 'built', 'created',
+          'traffic', 'loan', 'real estate', 'recipe', 'dashboard', 'website', 'app'
+        ],
+        contact_information: [
+          'contact', 'email', 'github', 'linkedin', 'reach', 'connect', 'social',
+          'phone', 'twitter', 'message', 'communication'
+        ]
+      };
+      
+      // Function to calculate similarity score between two strings
+      const calculateSimilarity = (str1: string, str2: string): number => {
+        const len1 = str1.length;
+        const len2 = str2.length;
+        const matrix = Array(len2 + 1).fill(null).map(() => Array(len1 + 1).fill(null));
+        
+        for (let i = 0; i <= len1; i++) matrix[0][i] = i;
+        for (let j = 0; j <= len2; j++) matrix[j][0] = j;
+        
+        for (let j = 1; j <= len2; j++) {
+          for (let i = 1; i <= len1; i++) {
+            if (str1[i - 1] === str2[j - 1]) {
+              matrix[j][i] = matrix[j - 1][i - 1];
+            } else {
+              matrix[j][i] = Math.min(
+                matrix[j - 1][i - 1] + 1,
+                matrix[j][i - 1] + 1,
+                matrix[j - 1][i] + 1
+              );
+            }
+          }
+        }
+        
+        const distance = matrix[len2][len1];
+        return 1 - distance / Math.max(len1, len2);
+      };
+      
+      // First, try exact matches from QA dataset with corrected question
       const typedQAData = qaData as QADataset;
       for (const [categoryName, category] of Object.entries<Category>(typedQAData.categories)) {
         for (const qa of category.questions) {
-          // Check base question
+          // Check base question with both original and corrected
           if (qa.base_question.toLowerCase().includes(normalizedQuestion) || 
-              normalizedQuestion.includes(qa.base_question.toLowerCase())) {
+              normalizedQuestion.includes(qa.base_question.toLowerCase()) ||
+              qa.base_question.toLowerCase().includes(correctedQuestion) || 
+              correctedQuestion.includes(qa.base_question.toLowerCase())) {
             return {
               answer: qa.answer,
               category: categoryName,
@@ -545,10 +652,12 @@ const Dashya: React.FC = () => {
             };
           }
 
-          // Check variations
+          // Check variations with both original and corrected
           for (const variation of qa.variations) {
             if (variation.toLowerCase().includes(normalizedQuestion) || 
-                normalizedQuestion.includes(variation.toLowerCase())) {
+                normalizedQuestion.includes(variation.toLowerCase()) ||
+                variation.toLowerCase().includes(correctedQuestion) || 
+                correctedQuestion.includes(variation.toLowerCase())) {
               return {
                 answer: qa.answer,
                 category: categoryName,
@@ -559,49 +668,68 @@ const Dashya: React.FC = () => {
         }
       }
 
-      // If no exact match, try keyword matching
-      const keywords = {
-        education: ['education', 'study', 'degree', 'university', 'college', 'academic', 'school', 'graduate', 'graduation', 'njit', 'scsvmv'],
-        personal: ['location', 'live', 'based', 'who', 'about', 'background'],
-        experience: ['work', 'job', 'company', 'experience', 'professional', 'webdaddy', 'findem'],
-        skills: ['skill', 'technology', 'programming', 'language', 'framework', 'tool'],
-        projects: ['project', 'portfolio', 'build', 'create', 'develop'],
-        contact: ['contact', 'email', 'github', 'linkedin', 'reach']
-      };
-
-      for (const [category, categoryKeywords] of Object.entries(keywords)) {
-        if (categoryKeywords.some(keyword => normalizedQuestion.includes(keyword))) {
-          const categoryData = typedQAData.categories[category as keyof typeof typedQAData.categories];
-          if (categoryData && categoryData.questions.length > 0) {
-            // Return the most relevant answer from the category
-            const mainQuestion = categoryData.questions[0];
-            return {
-              answer: mainQuestion.answer,
-              category: category,
-              topic: mainQuestion.base_question
-            };
+      // Enhanced keyword matching with similarity scoring
+      let bestCategoryMatch = { category: '', score: 0 };
+      
+      for (const [category, categoryKeywords] of Object.entries(enhancedKeywords)) {
+        let categoryScore = 0;
+        const questionWords = correctedQuestion.split(/\s+/);
+        
+        for (const keyword of categoryKeywords) {
+          for (const word of questionWords) {
+            // Exact match
+            if (word === keyword || correctedQuestion.includes(keyword)) {
+              categoryScore += 1.0;
+            }
+            // Similarity match
+            else if (word.length > 2 && keyword.length > 2) {
+              const similarity = calculateSimilarity(word, keyword);
+              if (similarity > 0.7) {
+                categoryScore += similarity * 0.8;
+              }
+            }
+            // Partial match
+            else if (word.includes(keyword) || keyword.includes(word)) {
+              categoryScore += 0.6;
+            }
           }
+        }
+        
+        if (categoryScore > bestCategoryMatch.score) {
+          bestCategoryMatch = { category, score: categoryScore };
+        }
+      }
+      
+      // If we found a strong category match, return the appropriate response
+      if (bestCategoryMatch.score > 0.5) {
+        const categoryData = typedQAData.categories[bestCategoryMatch.category as keyof typeof typedQAData.categories];
+        if (categoryData && categoryData.questions.length > 0) {
+          const mainQuestion = categoryData.questions[0];
+          return {
+            answer: mainQuestion.answer,
+            category: bestCategoryMatch.category,
+            topic: mainQuestion.base_question
+          };
         }
       }
 
-      // If still no match, try fuzzy matching
+      // Advanced fuzzy matching with multiple algorithms
       let bestMatch = {
         score: 0,
-        answer: "I apologize, but I don't have specific information about that. Here are some things you can ask me about:\n\n" +
-                "• Personal Information (location, graduation, OPT status)\n" +
-                "• Education (NJIT, SCSVMV University, courses)\n" +
-                "• Professional Experience (Webdaddy, Findem)\n" +
-                "• Skills (programming, AI/ML, data science)\n" +
-                "• Projects (Traffic Analysis, Loan Wise, AI real estate)\n" +
-                "• Certifications (ExcelR, Data Science)\n" +
-                "• Contact Information (email, GitHub, LinkedIn)\n\n" +
-                "What would you like to know about?",
+        answer: "I understand you're asking about Sai, but I need a bit more clarity. Here are some things you can ask me about:\n\n" +
+                "• **Machine Learning Experience** - 'does sai know machine learning?'\n" +
+                "• **Education** - 'where did sai study?'\n" +
+                "• **Work Experience** - 'where has sai worked?'\n" +
+                "• **Technical Skills** - 'what programming languages does sai know?'\n" +
+                "• **Projects** - 'what projects has sai built?'\n" +
+                "• **Contact Information** - 'how can I contact sai?'\n\n" +
+                "Try asking in any way you're comfortable with - I can understand misspellings and casual language!",
         category: undefined as string | undefined,
         topic: undefined as string | undefined
       };
 
-      const stopWords = ['what', 'where', 'when', 'how', 'who', 'which', 'tell', 'me', 'about', 'can', 'you', 'please'];
-      const questionWords = normalizedQuestion.split(/\s+/);
+      const stopWords = ['what', 'where', 'when', 'how', 'who', 'which', 'tell', 'me', 'about', 'can', 'you', 'please', 'the', 'is', 'are', 'do', 'does', 'did', 'has', 'have'];
+      const questionWords = correctedQuestion.split(/\s+/).filter(word => word.length > 2);
       const filteredWords = questionWords.filter(word => !stopWords.includes(word));
 
       for (const [categoryName, category] of Object.entries<Category>(typedQAData.categories)) {
@@ -610,16 +738,36 @@ const Dashya: React.FC = () => {
           const allQuestionWords = [
             ...qa.base_question.toLowerCase().split(/\s+/),
             ...qa.variations.flatMap(v => v.toLowerCase().split(/\s+/))
-          ];
+          ].filter(word => word.length > 2);
 
           const uniqueKeywords = Array.from(new Set(allQuestionWords))
             .filter(word => !stopWords.includes(word));
           
-          const matchingWords = filteredWords.filter(word => 
-            uniqueKeywords.some(keyword => keyword.includes(word) || word.includes(keyword))
-          );
+          // Multiple matching strategies
+          let exactMatches = 0;
+          let similarityMatches = 0;
+          let partialMatches = 0;
           
-          score = matchingWords.length / Math.max(filteredWords.length, uniqueKeywords.length);
+          for (const word of filteredWords) {
+            for (const keyword of uniqueKeywords) {
+              // Exact match
+              if (word === keyword) {
+                exactMatches++;
+              }
+              // High similarity match
+              else if (calculateSimilarity(word, keyword) > 0.8) {
+                similarityMatches++;
+              }
+              // Partial match
+              else if (word.includes(keyword) || keyword.includes(word)) {
+                partialMatches++;
+              }
+            }
+          }
+          
+          // Calculate composite score
+          score = (exactMatches * 1.0 + similarityMatches * 0.8 + partialMatches * 0.5) / 
+                  Math.max(filteredWords.length, uniqueKeywords.length);
 
           if (score > bestMatch.score) {
             bestMatch = {
@@ -632,7 +780,8 @@ const Dashya: React.FC = () => {
         }
       }
 
-      return bestMatch.score > 0.2 ? bestMatch : {
+      // Lower threshold for better coverage
+      return bestMatch.score > 0.1 ? bestMatch : {
         answer: bestMatch.answer,
         category: undefined,
         topic: undefined
@@ -641,7 +790,7 @@ const Dashya: React.FC = () => {
     } catch (err) {
       console.error('Error in findBestMatch:', err);
       return {
-        answer: "I apologize, but I encountered an error. Please try asking your question differently."
+        answer: "I apologize, but I encountered an error. Please try asking your question differently, and I'll do my best to help you learn about Sai!"
       };
     }
   };
@@ -755,7 +904,7 @@ const Dashya: React.FC = () => {
             exit={{ opacity: 0, scale: 0.5 }}
             whileHover={{ scale: 1.1 }}
             onClick={scrollToTop}
-            className="bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white p-4 rounded-full shadow-lg hover:opacity-90 transition-all relative group"
+            className="bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white p-4 rounded-full shadow-lg hover:opacity-90 transition-all relative group"
             aria-label="Scroll to top"
           >
             <motion.div
@@ -781,7 +930,7 @@ const Dashya: React.FC = () => {
       {isOpen ? (
         <div className="bg-white rounded-lg shadow-xl w-96 h-[600px] flex flex-col">
           {/* Chat header */}
-          <div className="bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] p-4 rounded-t-lg flex justify-between items-center">
+          <div className="bg-gradient-to-r from-[#06b6d4] to-[#0f766e] p-4 rounded-t-lg flex justify-between items-center">
             <div className="flex items-center text-white gap-2">
               <BotAvatar />
               <div>
@@ -829,7 +978,7 @@ const Dashya: React.FC = () => {
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
                       message.isUser
-                        ? 'bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white'
+                        ? 'bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white'
                         : 'bg-gray-100 text-gray-800'
                     }`}
                   >
@@ -838,12 +987,7 @@ const Dashya: React.FC = () => {
                         p: ({node, ...props}) => <p className="text-sm whitespace-pre-wrap" {...props} />,
                         ul: ({node, ...props}) => <ul className="list-disc ml-4 mt-2" {...props} />,
                         ol: ({node, ...props}) => <ol className="list-decimal ml-4 mt-2" {...props} />,
-                        li: ({node, children, ...props}: any) => {
-                          const parent = node?.parent as { type?: string } | undefined;
-                          return parent?.type === 'list' ? 
-                            <li className="text-sm text-gray-700">{children}</li> :
-                            <span className="text-sm text-gray-700">{children}</span>;
-                        }
+                        li: ({node, ...props}) => <li className="text-sm text-gray-700" {...props} />
                       }}
                     >
                       {message.text}
@@ -933,7 +1077,7 @@ const Dashya: React.FC = () => {
           {/* Minimized suggested questions */}
           <div className="border-t border-gray-100 px-4 py-2">
             <div className="flex items-center gap-2">
-              <FaRegLightbulb className="text-[#3f2b96] text-sm" />
+              <FaRegLightbulb className="text-[#06b6d4] text-sm" />
               <div className="flex gap-1 overflow-x-auto no-scrollbar">
                 {suggestedQuestions.map((q, index) => (
                   <button
@@ -956,14 +1100,14 @@ const Dashya: React.FC = () => {
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask me anything about Sai..."
-                className="flex-1 border rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#3f2b96] focus:border-transparent"
+                className="flex-1 border rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#06b6d4] focus:border-transparent"
                 rows={1}
               />
               <button
                 onClick={startListening}
                 className={`p-2 rounded-lg transition-colors ${
                   isListening 
-                    ? 'bg-red-500 text-white' 
+                    ? 'bg-green-500 text-white' 
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
                 title="Voice input"
@@ -972,7 +1116,7 @@ const Dashya: React.FC = () => {
               </button>
               <button
                 onClick={() => handleSend()}
-                className="px-4 py-2 bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2"
+                className="px-4 py-2 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2"
               >
                 <span>Send</span>
                 <FaPaperPlane className="text-sm" />
@@ -983,7 +1127,7 @@ const Dashya: React.FC = () => {
       ) : (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-gradient-to-r from-[#3f2b96] to-[#a8c0ff] text-white p-4 rounded-full shadow-lg hover:opacity-90 transition-opacity relative group"
+          className="bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white p-4 rounded-full shadow-lg hover:opacity-90 transition-opacity relative group"
           aria-label="Open chat assistant"
         >
           <RiRobot2Fill size={24} />
