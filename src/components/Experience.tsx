@@ -181,21 +181,21 @@ const Experience = () => {
                     </div>
                     
                     <div className="mt-4 space-y-4">
-                                              {/* Advanced company name with shine effect */}
-                        <div className="relative">
+                      {/* Advanced company name with shine effect */}
+                      <div className="relative">
                           <h3 className="text-2xl font-bold bg-gradient-to-r from-[#06b6d4] via-[#0f766e] to-[#06b6d4] bg-size-200 bg-clip-text text-transparent animate-gradient group-hover:animate-shine transition-all duration-300">
-                            {experience.company}
-                          </h3>
+                          {experience.company}
+                        </h3>
                           <div className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] group-hover:w-full transition-all duration-500 rounded-full"></div>
-                        </div>
+                      </div>
                       
-                                              {/* Enhanced role with badge style */}
-                        <div className="flex items-center gap-3">
+                      {/* Enhanced role with badge style */}
+                      <div className="flex items-center gap-3">
                           <div className="px-3 py-1 bg-gradient-to-r from-[#06b6d4]/10 to-[#0f766e]/10 rounded-full border border-[#06b6d4]/20">
                             <h4 className="text-base font-semibold text-[#06b6d4]">
-                              {experience.role}
-                            </h4>
-                          </div>
+                            {experience.role}
+                          </h4>
+                    </div>
                   </div>
 
                       {/* Enhanced description with better typography */}
@@ -213,15 +213,15 @@ const Experience = () => {
                                                    <div className="group/badge flex items-center gap-2 rounded-full bg-gradient-to-r from-[#06b6d4]/10 via-[#06b6d4]/5 to-transparent px-4 py-2 border border-[#06b6d4]/20 hover:border-[#06b6d4]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#06b6d4]/10">
                             <div className="w-8 h-8 rounded-full bg-[#06b6d4]/10 flex items-center justify-center group-hover/badge:scale-110 transition-transform duration-300">
                               <FaClock className="h-3 w-3 text-[#06b6d4]" />
-                            </div>
+                           </div>
                             <span className="text-xs sm:text-sm font-semibold text-[#06b6d4]">{experience.duration}</span>
-                          </div>
+                         </div>
                           <div className="group/badge flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0f766e]/10 via-[#0f766e]/5 to-transparent px-4 py-2 border border-[#0f766e]/20 hover:border-[#0f766e]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#0f766e]/10">
                             <div className="w-8 h-8 rounded-full bg-[#0f766e]/10 flex items-center justify-center group-hover/badge:scale-110 transition-transform duration-300">
                               <FaMapMarkerAlt className="h-3 w-3 text-[#0f766e]" />
-                            </div>
+                           </div>
                             <span className="text-xs sm:text-sm font-semibold text-[#0f766e]">{experience.location}</span>
-                          </div>
+                         </div>
                        </div>
                      </div>
 
@@ -243,11 +243,11 @@ const Experience = () => {
                         {experience.achievements.map((achievement, idx) => (
                           <div key={idx} className="group/achievement relative">
                                                          <div className="flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-gray-50/80 to-cyan-50/30 border border-gray-100/50 hover:border-[#06b6d4]/30 transition-all duration-300 hover:shadow-lg hover:shadow-[#06b6d4]/10 hover:bg-gradient-to-r hover:from-cyan-50/60 hover:to-teal-50/40">
-                                <div className="relative flex-shrink-0 mt-1">
+                              <div className="relative flex-shrink-0 mt-1">
                                   <div className="w-3 h-3 rounded-full bg-gradient-to-r from-[#06b6d4] to-[#0f766e] group-hover/achievement:scale-125 transition-all duration-300 group-hover/achievement:shadow-lg group-hover/achievement:shadow-[#06b6d4]/30">
-                                  </div>
-                                  <div className="absolute inset-0 w-3 h-3 rounded-full bg-gradient-to-r from-[#06b6d4] to-[#0f766e] opacity-30 group-hover/achievement:scale-150 transition-all duration-300"></div>
                                 </div>
+                                  <div className="absolute inset-0 w-3 h-3 rounded-full bg-gradient-to-r from-[#06b6d4] to-[#0f766e] opacity-30 group-hover/achievement:scale-150 transition-all duration-300"></div>
+                              </div>
                               <p className="text-gray-700 text-sm leading-relaxed font-medium flex-1 group-hover/achievement:text-gray-800 transition-colors duration-300">
                                 {achievement}
                               </p>
@@ -269,10 +269,10 @@ const Experience = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex justify-center mt-12"
           >
-                          <button
-                onClick={handleScrollToTestimonials}
+            <button
+              onClick={handleScrollToTestimonials}
                 className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white rounded-2xl hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-[#0f766e] hover:to-[#06b6d4]"
-              >
+            >
               <FaQuoteRight className="text-white text-xl group-hover:rotate-12 transition-transform duration-300" />
               <span className="font-semibold tracking-wide">View Recommendations</span>
             </button>
@@ -293,11 +293,11 @@ const Experience = () => {
           pointer-events: none;
           white-space: nowrap;
           font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
-                      background: linear-gradient(
-              to bottom,
+          background: linear-gradient(
+            to bottom,
               rgba(6, 182, 212, 0.6) 30%,
               rgba(15, 118, 110, 0.4) 76%
-            );
+          );
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;

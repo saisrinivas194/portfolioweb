@@ -140,13 +140,13 @@ const Hero = () => {
         <div className="flex items-center logo-position">
           <Link href="/">
             <div className="relative w-[280px] sm:w-[320px] lg:w-[360px] xl:w-[400px] h-[140px] sm:h-[160px] lg:h-[180px] xl:h-[200px]">
-              <Image
-                src="/logo.png"
-                alt="Logo"
-                fill
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            fill
                 className="hover:scale-105 transition-all duration-300 object-contain mix-blend-normal logo-image"
-                priority
-              />
+            priority
+          />
             </div>
           </Link>
         </div>
@@ -155,8 +155,8 @@ const Hero = () => {
         <div className="hidden lg:flex items-center absolute left-1/2 transform -translate-x-1/2 nav-position">
           <div className="flex items-center space-x-4 xl:space-x-6 2xl:space-x-8">
             {navigationButtons.map((button) => renderButton(button.text, button.href))}
-          </div>
         </div>
+      </div>
 
         {/* Mobile Menu Button - Right Side */}
         <div className="lg:hidden flex-shrink-0">
@@ -172,14 +172,14 @@ const Hero = () => {
             )}
           </button>
         </div>
-      </div>
+        </div>
 
-      {/* Mobile Menu */}
-      <div 
+        {/* Mobile Menu */}
+        <div 
         className={`lg:hidden fixed top-0 right-0 h-screen w-72 sm:w-80 bg-white/95 backdrop-blur-md shadow-2xl z-50 transform transition-all duration-300 ease-in-out border-l border-white/20 ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
         {/* Close Button */}
         <div className="flex justify-end p-4">
           <button
@@ -190,7 +190,7 @@ const Hero = () => {
             <FaTimes className="w-5 h-5 text-[#06b6d4]" />
           </button>
         </div>
-        
+
         <div className="flex flex-col pt-4 px-6 space-y-6">
           {navigationButtons.map((button, index) => (
             <div 
@@ -201,89 +201,89 @@ const Hero = () => {
             </div>
           ))}
         </div>
-      </div>
+        </div>
 
       {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div 
+        {isMenuOpen && (
+          <div 
           className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-30 transition-opacity duration-300"
-          onClick={() => setIsMenuOpen(false)}
-        />
-      )}
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
 
       {/* Main Hero Content */}
       <div className="flex-1 flex items-center justify-center">
         <div className="text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6 md:gap-12 lg:gap-16 items-center mt-12 sm:mt-0">
-            {/* Image section */}
+          {/* Image section */}
             <div className="order-2 md:order-none relative flex flex-col justify-center items-center min-h-[300px] sm:min-h-[400px] space-y-8">
-              <div 
+            <div 
                 className="animate-float relative z-10 w-full max-w-[250px] sm:max-w-[350px] floating-image"
-              >
-                <img
-                  src="/image.png"
-                  alt="Sai Srinivas"
+            >
+              <img
+                src="/image.png"
+                alt="Sai Srinivas"
                   className="w-full h-auto max-h-[250px] sm:max-h-[350px] object-contain"
-                />
+              />
               </div>
               
               {/* Social Media Icons below image */}
               <div className="relative z-50 flex flex-wrap justify-center gap-3 sm:gap-4 animate-fade-in-up delay-1000 mt-4 mb-8">
-                <SocialIconClient 
-                  type="github"
-                  url="https://github.com/saisrinivas194"
-                  tooltip={{
-                    initials: "SP",
-                    name: "Sai Srinivas",
-                    username: "saisrinivas194",
-                    description: "19+ Repositories"
-                  }}
-                  color="#333"
-                />
-                <SocialIconClient
-                  type="linkedin"
-                  url="https://www.linkedin.com/in/sai-srinivas-pedhapolla-345959256/"
-                  tooltip={{
-                    initials: "SP",
-                    name: "Sai Srinivas",
-                    username: "saisrinivas",
-                    description: "500+ Connections"
-                  }}
-                  color="#0a66c2"
-                />
-                <SocialIconClient
-                  type="twitter"
-                  url="https://x.com/SaiSrinivas194"
-                  tooltip={{
-                    initials: "SP",
-                    name: "Sai Srinivas",
-                    username: "SaiSrinivas194",
-                    description: "Follow me on X"
-                  }}
-                  color="#000000"
-                />
-                <SocialIconClient 
-                  type="email"
-                  url="mailto:pedhapollasaisrinivas@gmail.com"
-                  tooltip={{
-                    initials: "SP",
-                    name: "Sai Srinivas",
-                    username: "saisrinivas",
-                    description: "pedhapollasaisrinivas@gmail.com"
-                  }}
-                  color="#EA4335"
-                />
-                <SocialIconClient 
-                  type="phone"
-                  url="tel:+12017059891"
-                  tooltip={{
-                    initials: "SP",
-                    name: "Sai Srinivas",
-                    username: "saisrinivas",
-                    description: "+1 (201) 705-9891"
-                  }}
-                  color="#34A853"
-                />
+              <SocialIconClient 
+                type="github"
+                url="https://github.com/saisrinivas194"
+                tooltip={{
+                  initials: "SP",
+                  name: "Sai Srinivas",
+                  username: "saisrinivas194",
+                  description: "19+ Repositories"
+                }}
+                color="#333"
+              />
+              <SocialIconClient
+                type="linkedin"
+                url="https://www.linkedin.com/in/sai-srinivas-pedhapolla-345959256/"
+                tooltip={{
+                  initials: "SP",
+                  name: "Sai Srinivas",
+                  username: "saisrinivas",
+                  description: "500+ Connections"
+                }}
+                color="#0a66c2"
+              />
+              <SocialIconClient
+                type="twitter"
+                url="https://x.com/SaiSrinivas194"
+                tooltip={{
+                  initials: "SP",
+                  name: "Sai Srinivas",
+                  username: "SaiSrinivas194",
+                  description: "Follow me on X"
+                }}
+                color="#000000"
+              />
+              <SocialIconClient 
+                type="email"
+                url="mailto:pedhapollasaisrinivas@gmail.com"
+                tooltip={{
+                  initials: "SP",
+                  name: "Sai Srinivas",
+                  username: "saisrinivas",
+                  description: "pedhapollasaisrinivas@gmail.com"
+                }}
+                color="#EA4335"
+              />
+              <SocialIconClient 
+                type="phone"
+                url="tel:+12017059891"
+                tooltip={{
+                  initials: "SP",
+                  name: "Sai Srinivas",
+                  username: "saisrinivas",
+                  description: "+1 (201) 705-9891"
+                }}
+                color="#34A853"
+              />
               </div>
             </div>
 

@@ -250,7 +250,7 @@ const ParallaxLayout: React.FC<ParallaxLayoutProps> = ({ children }) => {
       <div className="fixed inset-0 flex items-center justify-center bg-white/90 backdrop-blur-sm z-50 loading-screen">
         <div className="relative flex items-center justify-center">
           <img 
-            src="/SSR.gif" 
+            src="/SSR.gif"
             alt="Loading..." 
             className="w-80 h-80 object-contain"
           />

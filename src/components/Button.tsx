@@ -105,11 +105,11 @@ const StyledWrapper = styled.div`
   .btn:hover {
     color: #ffffff;
     transition-delay: 0.5s;
-  }
+    }
 
   .btn:hover::before {
     width: 100%;
-  }
+    }
 
   .btn::after {
     content: "";

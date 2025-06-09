@@ -48,9 +48,9 @@ const Education = () => {
           </h1>
           
           <div className="max-w-4xl mx-auto mt-20 px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="education-card"
             >
@@ -58,15 +58,15 @@ const Education = () => {
                 {educationData.map((education, index) => (
                   <div key={index} className="education-card-row">
                     <div className="education-card-row-pic">
-                      <Image
-                        src={education.logo}
-                        alt={education.institution}
+                    <Image
+                      src={education.logo}
+                      alt={education.institution}
                         width={80}
                         height={80}
                         className="img-fluid rounded"
-                        priority
-                      />
-                    </div>
+                      priority
+                    />
+                  </div>
                     <div className="education-card-row-text">
                       <h5 className="mb-0 mt-0">{education.duration}</h5>
                       <p className="description">
@@ -77,11 +77,11 @@ const Education = () => {
                         {education.description}
                       </p>
                       {index < educationData.length - 1 && <hr />}
-                    </div>
+                          </div>
                   </div>
                 ))}
-              </div>
-            </motion.div>
+                </div>
+              </motion.div>
           </div>
         </motion.div>
       </div>
