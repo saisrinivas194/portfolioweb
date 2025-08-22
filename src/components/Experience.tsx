@@ -97,39 +97,27 @@ const Experience = () => {
   const experienceData = [
     {
       company: "Webdaddy",
-      role: "Research & Development",
+      role: "Python Developer R&D Specialist",
       duration: "August 2024 - February 2025",
-      location: "Freelance",
+      location: "Bengaluru, India",
       description: "Leading AI-powered solutions and machine learning implementations with advanced data science techniques and ChatGPT integration for enhanced development workflows.",
       achievements: [
-        "Developed AI-powered data annotation tools in Python using TensorFlow, PyTorch, and scikit-learn, leveraging document understanding techniques to improve labelling efficiency by 35%",
-        "Utilized ChatGPT API for intelligent code generation and debugging, reducing development time by 50% through advanced AI prompting techniques and automated documentation",
-        "Built and optimized ML models for text classification using TensorFlow, Keras, and NLP libraries (NLTK, spaCy, Transformers), focusing on intent classification and NLU with 92% accuracy",
-        "Implemented advanced data science techniques including feature engineering, dimensionality reduction (PCA, t-SNE), and ensemble methods (Random Forest, XGBoost, LightGBM)",
-        "Applied ChatGPT for automated code review, testing strategies, and architectural decisions, improving code quality and reducing bugs by 40%",
-        "Automated data collection and preprocessing pipelines using Pandas, NumPy, and Apache Airflow, reducing manual effort by 40% and improving data quality for ML tasks",
-        "Conducted comprehensive EDA using Matplotlib, Seaborn, and Plotly, applying statistical analysis, hypothesis testing, and causal inference to identify actionable insights",
-        "Leveraged ChatGPT for documentation generation, technical writing, and creating training materials, enhancing team knowledge sharing and onboarding processes",
-        "Implemented MLOps practices using Docker, Kubernetes, and MLflow for model versioning, deployment, and monitoring in production environments"
+        "Built from the ground up AI applications end-to-end with Python (FastAPI, Django) and React/Next. js, resulting in a 30% accord feature velocity gain.",
+        "Developed API's and 2 Automation Pipe lines increased lead gen by 40% and automated 20+ hours of manual work a week.",
+        "Built real-time KPI dashboards in Tableau and Dash to help make decisions 25% faster.",
+        "Integrated large language models(STD/LLMs) with cloud providers (AWS, GCP), shrinking development life period by 15%, and enlarging overall product coverage.",
       ]
     },
     {
       company: "Findem, Inc.",
-      role: "Research & Development",
+      role: "R&D Data Science Analyst",
       duration: "July 2023 - December 2023",
       location: "Bengaluru, India",
       description: "Specialized in machine learning model development, data processing optimization, and AI-assisted development using cutting-edge data science tools and methodologies.",
       achievements: [
-        "Managed large-scale data annotation projects using Label Studio and Prodigy, training ML models with 98% accuracy through semi-supervised learning and active learning techniques",
-        "Utilized ChatGPT for intelligent data preprocessing strategies, feature selection guidance, and model architecture recommendations, improving development efficiency by 45%",
-        "Developed Python scripts using Pandas, NumPy, and Dask for big data processing, applying advanced statistical methods and machine learning algorithms for complex dataset analysis",
-        "Implemented deep learning models using TensorFlow, Keras, and PyTorch for computer vision and NLP tasks, achieving significant performance improvements through transfer learning",
-        "Applied ChatGPT API for automated report generation, data insights summarization, and technical documentation, streamlining communication with stakeholders",
-        "Optimized email classification ML model using advanced feature engineering techniques (TF-IDF, Word2Vec, BERT embeddings), improving prediction accuracy by 25%",
-        "Leveraged data science tools including Jupyter Notebooks, Google Colab, and Databricks for collaborative development and model experimentation",
-        "Used ChatGPT for debugging complex algorithms, optimizing code performance, and generating unit tests, reducing debugging time by 35%",
-        "Created internal tools for automated data validation using Great Expectations and Evidently AI, ensuring data quality and model reliability in production",
-        "Applied advanced statistical techniques including A/B testing, confidence intervals, and Bayesian analysis for data-driven decision making and model evaluation"
+        "Preprocessed and validated 1M+ data records for ML training, increasing classification accuracy by 25% for emails with supervised learning and annotation.",
+        "Standardized automated ETL pipelines and KPI reporting in SQL resulting in 30% less resources spent and reducing errors.",
+        "Championed Agile process (Jira, Trello), decreasing project turn around time by 20%.,
       ]
     }
   ];
