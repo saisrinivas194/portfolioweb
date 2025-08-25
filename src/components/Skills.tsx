@@ -1,135 +1,75 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import ParallaxLayout from './ParallaxLayout';
 import { 
-  FaPython, 
-  FaDatabase, 
-  FaChartBar, 
-  FaBrain, 
-  FaCode, 
-  FaCloud,
-  FaReact,
-  FaHtml5,
-  FaCss3Alt,
-  FaGitAlt,
-  FaAws,
-  FaEye,
-  FaFileExcel,
-  FaRobot,
-  FaProjectDiagram,
-  FaSearch,
-  FaCogs,
-  FaChartLine,
-  FaFilter,
-  FaBroom,
-  FaLink,
-  FaGit,
-  FaSearchPlus,
-  FaLightbulb,
-  FaUsers,
-  FaChartPie,
-  FaLayerGroup,
-  FaNetworkWired,
-  FaServer,
-  FaShieldAlt
+  FaPython, FaDatabase, FaChartBar, FaBrain, FaCode, FaCloud, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaAws, FaEye, FaRobot, FaProjectDiagram, FaSearch, FaCogs, FaChartLine, FaFilter, FaBroom, FaLink, FaGit, FaSearchPlus, FaLightbulb, FaUsers, FaChartPie, FaLayerGroup, FaNetworkWired, FaServer, FaShieldAlt, FaTrophy, FaBookOpen, FaFileAlt, FaVial, FaSpider, FaRocket
 } from 'react-icons/fa';
 import { 
-  SiTensorflow,
-  SiPytorch,
-  SiScala,
-  SiMysql,
-  SiJupyter,
-  SiGooglecolab,
-  SiTableau,
-  SiApachespark,
-  SiPandas,
-  SiNumpy,
-  SiScikitlearn,
-  SiKeras,
-  SiOpenai,
-  SiDocker,
-  SiKubernetes,
-  SiApachehadoop,
-  SiJavascript,
-  SiTypescript,
-  SiR,
-  SiGraphql,
-  SiPostman
+  SiTensorflow, SiPytorch, SiScala, SiMysql, SiJupyter, SiGooglecolab, SiTableau, SiApachespark, SiPandas, SiNumpy, SiScikitlearn, SiKeras, SiOpenai, SiDocker, SiKubernetes, SiApachehadoop, SiJavascript, SiTypescript, SiR, SiGraphql, SiPostman, SiPlotly
 } from 'react-icons/si';
 
 const Skills = () => {
   const skillsData = [
     {
-      category: "Programming & Data Science",
-      icon: <FaPython className="text-[#0d9488]" size={24} />,
+      category: "Programming & Frameworks",
       skills: [
-        { icon: <FaPython className="text-[#306998]" size={32} />, name: "Python" },
+        { icon: <FaPython className="text-[#306998]" size={32} />, name: "Python (FastAPI, Django, Pandas, NumPy,\nscikit-learn, TensorFlow, PyTorch)" },
+        { icon: <SiR className="text-[#276DC3]" size={32} />, name: "R" },
+        { icon: <SiMysql className="text-[#4479A1]" size={32} />, name: "SQL (MySQL, PostgreSQL, T-SQL)" },
+        { icon: <FaReact className="text-[#61DAFB]" size={32} />, name: "JavaScript/TypeScript (React.js, Next.js)" }
+      ]
+    },
+    {
+      category: "Data Analysis & Machine Learning",
+      skills: [
         { icon: <SiPandas className="text-[#150458]" size={32} />, name: "Pandas" },
         { icon: <SiNumpy className="text-[#013243]" size={32} />, name: "NumPy" },
-        { icon: <SiScikitlearn className="text-[#F7931E]" size={32} />, name: "Scikit-learn" },
+        { icon: <SiScikitlearn className="text-[#F7931E]" size={32} />, name: "scikit-learn" },
         { icon: <SiTensorflow className="text-[#FF6F00]" size={32} />, name: "TensorFlow" },
         { icon: <SiPytorch className="text-[#EE4C2C]" size={32} />, name: "PyTorch" },
-        { icon: <SiScala className="text-[#DC322F]" size={32} />, name: "Scala" },
-        { icon: <SiMysql className="text-[#4479A1]" size={32} />, name: "SQL" },
-        { icon: <SiJupyter className="text-[#F37626]" size={32} />, name: "Jupyter" },
-        { icon: <SiGooglecolab className="text-[#F9AB00]" size={32} />, name: "Google Colab" }
+        { icon: <FaSearch className="text-[#0d9488]" size={32} />, name: "Exploratory Data Analysis (EDA)" },
+        { icon: <FaBroom className="text-[#EF4444]" size={32} />, name: "Data Cleaning" },
+        { icon: <FaFilter className="text-[#F59E0B]" size={32} />, name: "Data Wrangling" },
+        { icon: <FaChartPie className="text-[#3B82F6]" size={32} />, name: "Statistical Modeling" },
+        { icon: <FaChartLine className="text-[#0d9488]" size={32} />, name: "Predictive Analytics" },
+        { icon: <FaChartBar className="text-[#0d9488]" size={32} />, name: "Sentiment Analysis" },
+        { icon: <FaVial className="text-[#6366F1]" size={32} />, name: "A/B Testing" },
+        { icon: <FaTrophy className="text-[#FFD700]" size={32} />, name: "KPI Development" }
       ]
     },
     {
-      category: "AI & Machine Learning",
-      icon: <FaBrain className="text-[#0d9488]" size={24} />,
-      skills: [
-        { icon: <FaLayerGroup className="text-[#FF6F00]" size={32} />, name: "Deep Learning" },
-        { icon: <SiOpenai className="text-[#412991]" size={32} />, name: "NLP & ChatGPT" },
-        { icon: <SiKeras className="text-[#D00000]" size={32} />, name: "Keras" },
-        { icon: <FaEye className="text-[#EE4C2C]" size={32} />, name: "Computer Vision" },
-        { icon: <FaChartLine className="text-[#0d9488]" size={32} />, name: "Time Series" },
-        { icon: <FaShieldAlt className="text-[#6B46C1]" size={32} />, name: "Semi-Supervised" },
-        { icon: <FaLightbulb className="text-[#10A37F]" size={32} />, name: "Explainable AI" },
-        { icon: <FaUsers className="text-[#8B5CF6]" size={32} />, name: "Recommender" },
-        { icon: <FaRobot className="text-[#FF6B35]" size={32} />, name: "Prompt Engineering" }
-      ]
-    },
-    {
-      category: "Data Analytics & Visualization",
-      icon: <FaChartBar className="text-[#0d9488]" size={24} />,
+      category: "Business Intelligence & Visualization",
       skills: [
         { icon: <SiTableau className="text-[#E97627]" size={32} />, name: "Tableau" },
-        { icon: <FaFileExcel className="text-[#217346]" size={32} />, name: "Excel" },
-        { icon: <FaChartPie className="text-[#3B82F6]" size={32} />, name: "Statistical Analysis" },
-        { icon: <FaProjectDiagram className="text-[#6366F1]" size={32} />, name: "Causal Inference" },
-        { icon: <FaDatabase className="text-[#8B5CF6]" size={32} />, name: "Dataset Curation" },
-        { icon: <FaShieldAlt className="text-[#10B981]" size={32} />, name: "Quality Control" },
-        { icon: <FaFilter className="text-[#F59E0B]" size={32} />, name: "Data Preprocessing" },
-        { icon: <FaBroom className="text-[#EF4444]" size={32} />, name: "Data Cleaning" }
+        { icon: <FaChartBar className="text-[#F2C811]" size={32} />, name: "Power BI" },
+        { icon: <SiPlotly className="text-[#3F4F75]" size={32} />, name: "Plotly Dash" },
+        { icon: <FaEye className="text-[#0d9488]" size={32} />, name: "Matplotlib" },
+        { icon: <FaChartPie className="text-[#3B82F6]" size={32} />, name: "Seaborn" },
+        { icon: <FaBookOpen className="text-[#6366F1]" size={32} />, name: "Data Storytelling" },
+        { icon: <FaChartBar className="text-[#0d9488]" size={32} />, name: "Dashboard Development" },
+        { icon: <FaFileAlt className="text-[#6366F1]" size={32} />, name: "Reporting" }
       ]
     },
     {
-      category: "Web Development",
-      icon: <FaCode className="text-[#0d9488]" size={24} />,
+      category: "Cloud & Emerging Tech",
       skills: [
-        { icon: <FaReact className="text-[#61DAFB]" size={32} />, name: "ReactJS" },
-        { icon: <FaHtml5 className="text-[#E34F26]" size={32} />, name: "HTML5" },
-        { icon: <FaCss3Alt className="text-[#1572B6]" size={32} />, name: "CSS3" },
+        { icon: <FaAws className="text-[#FF9900]" size={32} />, name: "AWS (EC2, S3)" },
+        { icon: <FaCloud className="text-[#0d9488]" size={32} />, name: "Google Cloud Platform" },
         { icon: <FaLink className="text-[#6366F1]" size={32} />, name: "API Integration" },
-        { icon: <FaGitAlt className="text-[#F05032]" size={32} />, name: "Git" },
-        { icon: <FaGit className="text-[#8B5CF6]" size={32} />, name: "Version Control" },
-        { icon: <SiOpenai className="text-[#412991]" size={32} />, name: "ChatGPT API" },
-        { icon: <FaSearchPlus className="text-[#10B981]" size={32} />, name: "SEO Optimization" }
+        { icon: <SiApachehadoop className="text-[#66CCFF]" size={32} />, name: "Big Data (Hadoop, Spark)" },
+        { icon: <FaSpider className="text-[#6366F1]" size={32} />, name: "Web Scraping (BeautifulSoup, Selenium, Scrapy)" },
+        { icon: <SiOpenai className="text-[#412991]" size={32} />, name: "LLMs/AI" }
       ]
     },
     {
-      category: "Cloud & DevOps",
-      icon: <FaCloud className="text-[#0d9488]" size={24} />,
+      category: "Development & Tools",
       skills: [
-        { icon: <SiApachehadoop className="text-[#66CCFF]" size={32} />, name: "Hadoop" },
-        { icon: <SiApachespark className="text-[#E25A1C]" size={32} />, name: "Apache Spark" },
-        { icon: <FaAws className="text-[#FF9900]" size={32} />, name: "AWS" },
-        { icon: <FaServer className="text-[#3B82F6]" size={32} />, name: "Cloud Computing" },
-        { icon: <SiDocker className="text-[#2496ED]" size={32} />, name: "Docker" },
-        { icon: <SiKubernetes className="text-[#326CE5]" size={32} />, name: "Kubernetes" }
+        { icon: <FaGitAlt className="text-[#F05032]" size={32} />, name: "Version Control (Git, GitHub)" },
+        { icon: <FaCogs className="text-[#6366F1]" size={32} />, name: "Automation & ETL Pipelines" },
+        { icon: <FaRocket className="text-[#10B981]" size={32} />, name: "CI/CD" },
+        { icon: <FaProjectDiagram className="text-[#6366F1]" size={32} />, name: "Agile Project Management (Jira, Trello)" }
       ]
     }
   ];
@@ -157,27 +97,58 @@ const Skills = () => {
                 className="group relative p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#0d9488]/30"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  {category.icon}
+                  <FaChartBar className="text-[#0d9488]" size={24} />
                   <h3 className="text-lg font-bold text-gray-800 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] bg-clip-text text-transparent">
                     {category.category}
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  {category.skills.map((skill, idx) => (
-                    <div
-                      key={idx}
-                      className="group relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-md border border-gray-100 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 cursor-pointer"
-                      title={skill.name}
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#0d9488]/5 to-[#14b8a6]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
-                        {skill.icon}
-                      </div>
-                      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-20">
-                        {skill.name}
-                      </div>
-                    </div>
-                  ))}
+                  {category.skills.map((skill, idx) => {
+                    const [showTooltip, setShowTooltip] = useState(false);
+                    const [tooltipPos, setTooltipPos] = useState({ left: 0, top: 0 });
+                    const iconRef = useRef<HTMLDivElement>(null);
+
+                    const handleMouseEnter = (e: React.MouseEvent) => {
+                      if (iconRef.current) {
+                        const rect = iconRef.current.getBoundingClientRect();
+                        const tooltipHeight = 32; // Approximate height of tooltip
+                        let top = rect.top - tooltipHeight - 8;
+                        if (top < 0) top = rect.bottom + 8; // If too close to top, show below
+                        setTooltipPos({ left: rect.left + rect.width / 2, top });
+                        setShowTooltip(true);
+                      }
+                    };
+                    const handleMouseLeave = () => setShowTooltip(false);
+
+                    return (
+                      <React.Fragment key={idx}>
+                        <div
+                          className="skill-icon-container"
+                          title={typeof skill.name === 'string' ? skill.name : 'Skill'}
+                          ref={iconRef}
+                          onMouseEnter={handleMouseEnter}
+                          onMouseLeave={handleMouseLeave}
+                        >
+                          <div className="relative z-10 transition-transform duration-300 hover:scale-110">
+                            {skill.icon}
+                          </div>
+                        </div>
+                        {showTooltip && (
+                          <div
+                            className="skill-tooltip skill-tooltip-positioned"
+                            style={{
+                              '--tooltip-left': `${tooltipPos.left}px`,
+                              '--tooltip-top': `${tooltipPos.top}px`
+                            } as React.CSSProperties}
+                          >
+                            {typeof skill.name === 'string' ? skill.name.split('\n').map((line, i) => (
+                              <div key={i}>{line}</div>
+                            )) : 'Skill'}
+                          </div>
+                        )}
+                      </React.Fragment>
+                    );
+                  })}
                 </div>
               </motion.div>
             ))}
@@ -229,6 +200,52 @@ const Skills = () => {
           .skills-bg-title {
             font-size: 4rem;
             top: 12px;
+          }
+        }
+
+        .skill-icon-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 4rem;
+          height: 4rem;
+          background: linear-gradient(to bottom right, #fff, #f9fafb);
+          border-radius: 1rem;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+          border: 1px solid #f3f4f6;
+          transition: box-shadow 0.3s, transform 0.3s;
+          cursor: pointer;
+        }
+        .skill-icon-container:hover {
+          box-shadow: 0 4px 16px rgba(139,92,246,0.2);
+          transform: scale(1.1);
+        }
+        .skill-tooltip {
+          background: #1f2937;
+          color: #fff;
+          font-size: 0.75rem;
+          padding: 0.25rem 0.75rem;
+          border-radius: 0.375rem;
+          white-space: nowrap;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+          transition: opacity 0.3s;
+          opacity: 1;
+          pointer-events: none;
+        }
+        .skill-tooltip-positioned {
+          position: fixed;
+          left: var(--tooltip-left);
+          top: var(--tooltip-top);
+          transform: translate(-50%, 0);
+          z-index: 9999;
+          pointer-events: none;
+        }
+        @media (max-width: 480px) {
+          .skill-tooltip {
+            font-size: 0.65rem;
+            padding: 0.15rem 0.5rem;
+            top: -2rem;
           }
         }
       `}</style>

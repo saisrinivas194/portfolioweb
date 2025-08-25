@@ -98,26 +98,24 @@ const Experience = () => {
     {
       company: "Webdaddy",
       role: "Python Developer R&D Specialist",
-      duration: "August 2024 - February 2025",
+      duration: "Aug 2024 - Feb 2025",
       location: "Bengaluru, India",
-      description: "Leading AI-powered solutions and machine learning implementations with advanced data science techniques and ChatGPT integration for enhanced development workflows.",
       achievements: [
-        "Built from the ground up AI applications end-to-end with Python (FastAPI, Django) and React/Next. js, resulting in a 30% accord feature velocity gain.",
-        "Developed API's and 2 Automation Pipe lines increased lead gen by 40% and automated 20+ hours of manual work a week.",
+        "Built from the ground up AI applications end-to-end with Python (FastAPI, Django) and React/Next.js, resulting in a 30% accord feature velocity gain.",
+        "Developed API's and 2 Automation Pipelines, increased lead gen by 40% and automated 20+ hours of manual work a week.",
         "Built real-time KPI dashboards in Tableau and Dash to help make decisions 25% faster.",
-        "Integrated large language models(STD/LLMs) with cloud providers (AWS, GCP), shrinking development life period by 15%, and enlarging overall product coverage.",
+        "Integrated large language models (STD/LLMs) with cloud providers (AWS, GCP), shrinking development life period by 15%, and enlarging overall product coverage."
       ]
     },
     {
       company: "Findem, Inc.",
       role: "R&D Data Science Analyst",
-      duration: "July 2023 - December 2023",
+      duration: "Jul 2023 - Dec 2023",
       location: "Bengaluru, India",
-      description: "Specialized in machine learning model development, data processing optimization, and AI-assisted development using cutting-edge data science tools and methodologies.",
       achievements: [
         "Preprocessed and validated 1M+ data records for ML training, increasing classification accuracy by 25% for emails with supervised learning and annotation.",
         "Standardized automated ETL pipelines and KPI reporting in SQL resulting in 30% less resources spent and reducing errors.",
-        "Championed Agile process (Jira, Trello), decreasing project turn around time by 20%.,
+        "Championed Agile process (Jira, Trello), decreasing project turn around time by 20%."
       ]
     }
   ];
@@ -187,12 +185,7 @@ const Experience = () => {
                   </div>
 
                       {/* Enhanced description with better typography */}
-                      <div className="relative p-4 bg-gradient-to-r from-gray-50/80 to-purple-50/40 rounded-xl border border-gray-100/50">
-                        <p className="text-gray-700 text-sm leading-relaxed font-medium">
-                        {experience.description}
-                      </p>
-                                                  <div className="absolute top-2 right-2 w-2 h-2 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] rounded-full opacity-50"></div>
-                      </div>
+                      {/* Removed description section - not needed */}
                     </div>
                     
                                          {/* Advanced info badges */}

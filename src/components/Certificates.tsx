@@ -10,11 +10,27 @@ import Image from 'next/image';
 const Certificates = () => {
   const certificatesData = [
     {
-      title: "Data Science Certification",
+      title: "Python Basic",
+      issuer: "HackerRank",
+      date: "2024",
+      credentialLink: "https://www.hackerrank.com/certificates/cfa21a08e874",
+      description: "Python (Basic) certification covering Scalar Types, Operators and Control Flow, Strings, Collections and Iteration, Modularity, Objects and Types and Classes. Verified skill certification from HackerRank.",
+      image: "/python_basic certificate_1.png"
+    },
+    {
+      title: "SQL Intermediate",
+      issuer: "HackerRank",
+      date: "2024",
+      credentialLink: "https://www.hackerrank.com/certificates/7f36216e8829",
+      description: "SQL (Intermediate) certification covering complex joins, unions, and sub-queries. Advanced database query skills verified by HackerRank's comprehensive testing platform.",
+      image: "/sql_intermediate certificate_1.png"
+    },
+    {
+      title: "Data Science",
       issuer: "ExcelR",
       date: "19th April 2024",
       credentialLink: "https://www.linkedin.com/in/sai-srinivas-pedhapolla-345959256/details/certifications/",
-      description: "Comprehensive Data Science certification with distinction covering statistical analysis, machine learning, data visualization, and practical applications using Python and related tools.",
+      description: "Comprehensive Data Science certification with distinction covering machine learning algorithms, statistical analysis, data visualization, and end-to-end ML pipeline development using Python, TensorFlow, and industry tools.",
       image: "/certificates.jpeg"
     }
   ];
@@ -32,61 +48,61 @@ const Certificates = () => {
             CERTIFICATIONS
           </h1>
           
-          <div className="flex justify-center gap-8 flex-wrap px-4 mt-20">
+          <div className="flex justify-center gap-6 flex-wrap px-4 mt-32">
             {certificatesData.map((certificate, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="w-[450px] relative h-[520px] overflow-hidden group mx-auto bg-white shadow-2xl border border-gray-100 rounded-2xl flex flex-col cursor-pointer transform transition-all duration-500 hover:shadow-3xl hover:-translate-y-2"
+                className="w-[320px] relative h-[380px] overflow-hidden group mx-auto bg-gradient-to-br from-white via-gray-50 to-blue-50 shadow-xl border border-gray-200 rounded-3xl flex flex-col cursor-pointer transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:scale-102"
               >
                 {/* Certificate Image Background */}
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
                   {certificate.image ? (
                     <Image
                       src={certificate.image}
                       alt={`${certificate.title} Certificate`}
                       width={700}
                       height={700}
-                      className="max-w-full max-h-full object-contain transition-all duration-500 rounded-xl shadow-lg group-hover:scale-105"
+                      className="max-w-full max-h-full object-contain transition-all duration-500 rounded-2xl shadow-lg group-hover:scale-110 group-hover:shadow-2xl"
                     />
                   ) : (
-                    <div className="h-full w-full bg-gradient-to-br from-[#0d9488] to-[#7dd3fc] transition-all duration-500 rounded-xl"></div>
+                    <div className="h-full w-full bg-gradient-to-br from-[#0d9488] to-[#7dd3fc] transition-all duration-500 rounded-2xl"></div>
                   )}
                 </div>
 
                 {/* Hover Overlay - Full Details */}
-                <article className="p-8 w-full h-full overflow-hidden z-10 absolute top-0 flex flex-col justify-center rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 opacity-0 group-hover:opacity-95 transition-all duration-500 backdrop-blur-sm">
-                  <div className="translate-y-8 group-hover:translate-y-0 transition-all duration-500 space-y-6">
-                    <div className="border-l-4 border-blue-400 pl-4">
-                      <h1 className="text-2xl font-bold text-white mb-1">{certificate.title}</h1>
-                      <p className="text-blue-300 font-medium text-lg">{certificate.issuer}</p>
+                <article className="p-4 w-full h-full overflow-y-auto z-10 absolute top-0 left-0 flex flex-col justify-start rounded-3xl bg-gradient-to-br from-slate-900/90 via-slate-800/90 to-slate-900/90 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-sm">
+                  <div className="space-y-4 pt-2">
+                    <div className="border-l-4 border-blue-400 pl-3">
+                      <h1 className="text-lg font-bold text-white mb-1">{certificate.title}</h1>
+                      <p className="text-blue-300 font-medium text-sm">{certificate.issuer}</p>
                     </div>
                     
-                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 space-y-3">
+                    <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 space-y-2">
                       <div className="flex items-center text-white">
-                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
-                          <FaCalendar size={14} />
+                        <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-2 flex-shrink-0">
+                          <FaCalendar size={12} />
                         </div>
-                        <div>
-                          <p className="text-xs text-gray-300 uppercase tracking-wide">Completion Date</p>
-                          <p className="font-semibold">{certificate.date}</p>
+                        <div className="min-w-0">
+                          <p className="text-xs text-gray-300 uppercase tracking-wide">Date</p>
+                          <p className="font-semibold text-xs truncate">{certificate.date}</p>
                         </div>
                       </div>
                       
                       <div className="flex items-center text-white">
-                        <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
-                          <FaCertificate size={14} />
+                        <div className="w-6 h-6 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mr-2 flex-shrink-0">
+                          <FaCertificate size={12} />
                         </div>
-                        <div>
-                          <p className="text-xs text-gray-300 uppercase tracking-wide">Certification Status</p>
-                          <p className="font-semibold">Verified & Accredited</p>
+                        <div className="min-w-0">
+                          <p className="text-xs text-gray-300 uppercase tracking-wide">Status</p>
+                          <p className="font-semibold text-xs">Verified</p>
                         </div>
                       </div>
                     </div>
 
-                    <p className="text-gray-300 text-sm leading-relaxed bg-black/20 p-4 rounded-lg">
+                    <p className="text-gray-300 text-xs leading-relaxed bg-black/20 p-3 rounded-lg max-h-20 overflow-y-auto">
                       {certificate.description}
                     </p>
                     
@@ -94,30 +110,14 @@ const Certificates = () => {
                       href={certificate.credentialLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white rounded-xl font-semibold hover:from-[#0f766e] hover:to-[#06b6d4] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                      className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white rounded-lg font-semibold hover:from-[#0f766e] hover:to-[#06b6d4] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-xs w-full"
                     >
-                      <FaExternalLinkAlt className="mr-2" size={16} />
+                      <FaExternalLinkAlt className="mr-2" size={12} />
                       View Credential
                     </a>
                   </div>
                 </article>
-
-                {/* Default Bottom Info */}
-                <article className="p-6 w-full h-[30%] flex flex-col justify-end overflow-hidden absolute bottom-0 rounded-b-2xl bg-gradient-to-t from-slate-900 via-slate-800/90 to-transparent opacity-100 group-hover:opacity-0 group-hover:-bottom-4 transition-all duration-500">
-                  <div className="space-y-2">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                      <span className="text-blue-300 text-xs font-medium uppercase tracking-wider">Certified</span>
-                    </div>
-                    <h1 className="text-xl font-bold text-white leading-tight">{certificate.title}</h1>
-                    <div className="flex items-center space-x-3 text-gray-300">
-                      <span className="text-sm font-medium">{certificate.issuer}</span>
-                      <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                      <span className="text-sm">{certificate.date}</span>
-                    </div>
-                  </div>
-                </article>
-                              </motion.div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

@@ -8,8 +8,11 @@ const StyledWrapper = styled.div<{ color: string }>`
     transition: all 0.2s;
     font-size: 14px;
     border-radius: 10px;
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .tooltip {
@@ -46,16 +49,21 @@ const StyledWrapper = styled.div<{ color: string }>`
     color: #fff;
     display: block;
     position: relative;
+    width: 100%;
+    height: 100%;
   }
 
   .icon .layer {
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     border: 2px solid ${props => props.color};
     border-radius: 50%;
     transition: transform 0.3s, border 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0 12px ${props => props.color}b3, 0 0 16px ${props => props.color}80;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .icon:hover .layer {
@@ -121,7 +129,7 @@ const StyledWrapper = styled.div<{ color: string }>`
   }
 
   .layer span.fab {
-    font-size: 20px;
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,11 +143,13 @@ const StyledWrapper = styled.div<{ color: string }>`
       ${props => props.color}e6 75%,
       ${props => props.color} 100%
     );
+    width: 100%;
+    height: 100%;
   }
 
   .layer span.fab svg {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     fill: #fff;
   }
 
