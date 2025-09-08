@@ -110,7 +110,7 @@ const Experience = () => {
     {
       company: "Findem, Inc.",
       role: "R&D Data Science Analyst",
-      duration: "Jul 2023 - Dec 2023",
+      duration: "May 2022 - Dec 2023",
       location: "Bengaluru, India",
       achievements: [
         "Preprocessed and validated 1M+ data records for ML training, increasing classification accuracy by 25% for emails with supervised learning and annotation.",
