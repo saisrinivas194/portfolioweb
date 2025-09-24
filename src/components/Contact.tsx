@@ -39,7 +39,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <a
-                  href="http://drive.google.com/file/d/1ckfuBq9dp_6m2X1v7wH36kI10E_2A5Hl/view"
+                  href="https://drive.google.com/file/d/1UuACNItERO543n_9ZdK-C-sM8Z2Z_sQ9/view?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative overflow-hidden px-8 py-4 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white rounded-2xl hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-[#0f766e] hover:to-[#06b6d4]"

@@ -8,7 +8,7 @@ import Projects from '@/components/Projects'
 import Certificates from '@/components/Certificates'
 import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
-import Dashya from '@/components/Dashya'
+import ProfileChatBot from '@/components/ProfileChatBot'
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
         <Certificates />
         <Testimonials />
         <Contact />
-        <Dashya />
+        <ProfileChatBot />
       </div>
     </main>
   );

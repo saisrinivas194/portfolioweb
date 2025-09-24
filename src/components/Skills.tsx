@@ -114,8 +114,13 @@ const Skills = () => {
                         const tooltipHeight = 32; // Approximate height of tooltip
                         let top = rect.top - tooltipHeight - 8;
                         if (top < 0) top = rect.bottom + 8; // If too close to top, show below
-                        setTooltipPos({ left: rect.left + rect.width / 2, top });
+                        const left = rect.left + rect.width / 2;
+                        setTooltipPos({ left, top });
                         setShowTooltip(true);
+                        
+                        // Set CSS custom properties on the document root
+                        document.documentElement.style.setProperty('--tooltip-left', `${left}px`);
+                        document.documentElement.style.setProperty('--tooltip-top', `${top}px`);
                       }
                     };
                     const handleMouseLeave = () => setShowTooltip(false);
@@ -134,13 +139,7 @@ const Skills = () => {
                           </div>
                         </div>
                         {showTooltip && (
-                          <div
-                            className="skill-tooltip skill-tooltip-positioned"
-                            style={{
-                              '--tooltip-left': `${tooltipPos.left}px`,
-                              '--tooltip-top': `${tooltipPos.top}px`
-                            } as React.CSSProperties}
-                          >
+                          <div className="skill-tooltip skill-tooltip-positioned">
                             {typeof skill.name === 'string' ? skill.name.split('\n').map((line, i) => (
                               <div key={i}>{line}</div>
                             )) : 'Skill'}

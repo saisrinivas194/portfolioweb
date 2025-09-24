@@ -58,14 +58,16 @@ const Education = () => {
                 {educationData.map((education, index) => (
                   <div key={index} className="education-card-row">
                     <div className="education-card-row-pic">
-                    <Image
-                      src={education.logo}
-                      alt={education.institution}
+                    {education.logo && (
+                      <Image
+                        src={education.logo}
+                        alt={education.institution}
                         width={80}
                         height={80}
                         className="img-fluid rounded"
-                      priority
-                    />
+                        priority
+                      />
+                    )}
                   </div>
                     <div className="education-card-row-text">
                       <h5 className="mb-0 mt-0">{education.duration}</h5>

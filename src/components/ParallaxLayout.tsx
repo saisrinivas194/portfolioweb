@@ -206,10 +206,10 @@ const ParallaxLayout: React.FC<ParallaxLayoutProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   
   useEffect(() => {
-    // Show loading animation for 2.5 seconds
+    // Show loading animation for 1 second only
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
