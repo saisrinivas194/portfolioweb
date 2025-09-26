@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import ParallaxLayout from './ParallaxLayout';
 import { 
-  FaPython, FaDatabase, FaChartBar, FaBrain, FaCode, FaCloud, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaAws, FaEye, FaRobot, FaProjectDiagram, FaSearch, FaCogs, FaChartLine, FaFilter, FaBroom, FaLink, FaGit, FaSearchPlus, FaLightbulb, FaUsers, FaChartPie, FaLayerGroup, FaNetworkWired, FaServer, FaShieldAlt, FaTrophy, FaBookOpen, FaFileAlt, FaVial, FaSpider, FaRocket, FaSnowflake, FaComments, FaUserTie, FaMicrochip, FaTags, FaThumbsUp, FaWind, FaMicrosoft
+  FaPython, FaDatabase, FaChartBar, FaBrain, FaCode, FaCloud, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaAws, FaEye, FaRobot, FaProjectDiagram, FaSearch, FaCogs, FaChartLine, FaFilter, FaBroom, FaLink, FaGit, FaSearchPlus, FaLightbulb, FaUsers, FaChartPie, FaLayerGroup, FaNetworkWired, FaServer, FaShieldAlt, FaTrophy, FaBookOpen, FaFileAlt, FaVial, FaSpider, FaRocket, FaComments, FaUserTie, FaMicrochip, FaTags, FaThumbsUp, FaWind, FaMicrosoft
 } from 'react-icons/fa';
 import { 
   SiTensorflow, SiPytorch, SiScala, SiMysql, SiJupyter, SiGooglecolab, SiTableau, SiApachespark, SiPandas, SiNumpy, SiScikitlearn, SiKeras, SiOpenai, SiDocker, SiKubernetes, SiApachehadoop, SiJavascript, SiTypescript, SiR, SiGraphql, SiPostman, SiPlotly
