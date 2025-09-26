@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import ParallaxLayout from './ParallaxLayout';
 import { 
-  FaPython, FaDatabase, FaChartBar, FaBrain, FaCode, FaCloud, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaAws, FaEye, FaRobot, FaProjectDiagram, FaSearch, FaCogs, FaChartLine, FaFilter, FaBroom, FaLink, FaGit, FaSearchPlus, FaLightbulb, FaUsers, FaChartPie, FaLayerGroup, FaNetworkWired, FaServer, FaShieldAlt, FaTrophy, FaBookOpen, FaFileAlt, FaVial, FaSpider, FaRocket
+  FaPython, FaDatabase, FaChartBar, FaBrain, FaCode, FaCloud, FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaAws, FaEye, FaRobot, FaProjectDiagram, FaSearch, FaCogs, FaChartLine, FaFilter, FaBroom, FaLink, FaGit, FaSearchPlus, FaLightbulb, FaUsers, FaChartPie, FaLayerGroup, FaNetworkWired, FaServer, FaShieldAlt, FaTrophy, FaBookOpen, FaFileAlt, FaVial, FaSpider, FaRocket, FaSnowflake, FaComments, FaUserTie, FaMicrochip, FaTags, FaThumbsUp, FaWind, FaMicrosoft
 } from 'react-icons/fa';
 import { 
   SiTensorflow, SiPytorch, SiScala, SiMysql, SiJupyter, SiGooglecolab, SiTableau, SiApachespark, SiPandas, SiNumpy, SiScikitlearn, SiKeras, SiOpenai, SiDocker, SiKubernetes, SiApachehadoop, SiJavascript, SiTypescript, SiR, SiGraphql, SiPostman, SiPlotly
@@ -13,63 +13,59 @@ import {
 const Skills = () => {
   const skillsData = [
     {
-      category: "Programming & Frameworks",
+      category: "Generative AI & LLMs",
       skills: [
-        { icon: <FaPython className="text-[#306998]" size={32} />, name: "Python (FastAPI, Django, Pandas, NumPy,\nscikit-learn, TensorFlow, PyTorch)" },
-        { icon: <SiR className="text-[#276DC3]" size={32} />, name: "R" },
-        { icon: <SiMysql className="text-[#4479A1]" size={32} />, name: "SQL (MySQL, PostgreSQL, T-SQL)" },
-        { icon: <FaReact className="text-[#61DAFB]" size={32} />, name: "JavaScript/TypeScript (React.js, Next.js)" }
+        { icon: <SiOpenai className="text-[#412991]" size={32} />, name: "OpenAI" },
+        { icon: <FaRobot className="text-[#4285F4]" size={32} />, name: "Gemini" },
+        { icon: <FaBrain className="text-[#FF6B35]" size={32} />, name: "LLaMA" },
+        { icon: <FaAws className="text-[#FF9900]" size={32} />, name: "AWS Bedrock" },
+        { icon: <FaCloud className="text-[#29B5E8]" size={32} />, name: "Snowflake Cortex" },
+        { icon: <FaComments className="text-[#6366F1]" size={32} />, name: "Conversational AI" },
+        { icon: <FaUserTie className="text-[#10B981]" size={32} />, name: "Virtual Assistants" },
+        { icon: <FaCogs className="text-[#8B5CF6]" size={32} />, name: "Agentic Frameworks" },
+        { icon: <FaRocket className="text-[#F59E0B]" size={32} />, name: "Model Deployment" },
+        { icon: <FaChartLine className="text-[#EF4444]" size={32} />, name: "Monitoring & Drift Detection" },
+        { icon: <FaDatabase className="text-[#06B6D4]" size={32} />, name: "Synthetic Data Generation" }
       ]
     },
     {
-      category: "Data Analysis & Machine Learning",
+      category: "Programming & Development",
       skills: [
-        { icon: <SiPandas className="text-[#150458]" size={32} />, name: "Pandas" },
-        { icon: <SiNumpy className="text-[#013243]" size={32} />, name: "NumPy" },
-        { icon: <SiScikitlearn className="text-[#F7931E]" size={32} />, name: "scikit-learn" },
-        { icon: <SiTensorflow className="text-[#FF6F00]" size={32} />, name: "TensorFlow" },
-        { icon: <SiPytorch className="text-[#EE4C2C]" size={32} />, name: "PyTorch" },
-        { icon: <FaSearch className="text-[#0d9488]" size={32} />, name: "Exploratory Data Analysis (EDA)" },
+        { icon: <FaPython className="text-[#306998]" size={32} />, name: "Python" },
+        { icon: <FaServer className="text-[#009688]" size={32} />, name: "FastAPI" },
+        { icon: <FaCode className="text-[#092E20]" size={32} />, name: "Flask" },
+        { icon: <FaChartBar className="text-[#FF4B4B]" size={32} />, name: "Streamlit" },
+        { icon: <SiMysql className="text-[#4479A1]" size={32} />, name: "SQL" },
+        { icon: <FaLink className="text-[#6366F1]" size={32} />, name: "API Integration" },
+        { icon: <FaMicrochip className="text-[#7C3AED]" size={32} />, name: "Microservices" },
+        { icon: <FaRocket className="text-[#10B981]" size={32} />, name: "CI/CD" },
+        { icon: <SiDocker className="text-[#2496ED]" size={32} />, name: "Docker" }
+      ]
+    },
+    {
+      category: "Data & Analytics",
+      skills: [
         { icon: <FaBroom className="text-[#EF4444]" size={32} />, name: "Data Cleaning" },
-        { icon: <FaFilter className="text-[#F59E0B]" size={32} />, name: "Data Wrangling" },
-        { icon: <FaChartPie className="text-[#3B82F6]" size={32} />, name: "Statistical Modeling" },
-        { icon: <FaChartLine className="text-[#0d9488]" size={32} />, name: "Predictive Analytics" },
-        { icon: <FaChartBar className="text-[#0d9488]" size={32} />, name: "Sentiment Analysis" },
-        { icon: <FaVial className="text-[#6366F1]" size={32} />, name: "A/B Testing" },
-        { icon: <FaTrophy className="text-[#FFD700]" size={32} />, name: "KPI Development" }
+        { icon: <FaShieldAlt className="text-[#F59E0B]" size={32} />, name: "Bias Detection" },
+        { icon: <FaTags className="text-[#8B5CF6]" size={32} />, name: "Text Classification" },
+        { icon: <FaCogs className="text-[#6366F1]" size={32} />, name: "Feature Engineering" },
+        { icon: <FaChartLine className="text-[#0d9488]" size={32} />, name: "Predictive Modeling" },
+        { icon: <FaSearch className="text-[#3B82F6]" size={32} />, name: "Knowledge Extraction" },
+        { icon: <FaThumbsUp className="text-[#10B981]" size={32} />, name: "Recommendation Systems" }
       ]
     },
     {
-      category: "Business Intelligence & Visualization",
+      category: "Visualization & Tools",
       skills: [
         { icon: <SiTableau className="text-[#E97627]" size={32} />, name: "Tableau" },
         { icon: <FaChartBar className="text-[#F2C811]" size={32} />, name: "Power BI" },
-        { icon: <SiPlotly className="text-[#3F4F75]" size={32} />, name: "Plotly Dash" },
-        { icon: <FaEye className="text-[#0d9488]" size={32} />, name: "Matplotlib" },
-        { icon: <FaChartPie className="text-[#3B82F6]" size={32} />, name: "Seaborn" },
-        { icon: <FaBookOpen className="text-[#6366F1]" size={32} />, name: "Data Storytelling" },
-        { icon: <FaChartBar className="text-[#0d9488]" size={32} />, name: "Dashboard Development" },
-        { icon: <FaFileAlt className="text-[#6366F1]" size={32} />, name: "Reporting" }
-      ]
-    },
-    {
-      category: "Cloud & Emerging Tech",
-      skills: [
-        { icon: <FaAws className="text-[#FF9900]" size={32} />, name: "AWS (EC2, S3)" },
-        { icon: <FaCloud className="text-[#0d9488]" size={32} />, name: "Google Cloud Platform" },
-        { icon: <FaLink className="text-[#6366F1]" size={32} />, name: "API Integration" },
-        { icon: <SiApachehadoop className="text-[#66CCFF]" size={32} />, name: "Big Data (Hadoop, Spark)" },
-        { icon: <FaSpider className="text-[#6366F1]" size={32} />, name: "Web Scraping (BeautifulSoup, Selenium, Scrapy)" },
-        { icon: <SiOpenai className="text-[#412991]" size={32} />, name: "LLMs/AI" }
-      ]
-    },
-    {
-      category: "Development & Tools",
-      skills: [
-        { icon: <FaGitAlt className="text-[#F05032]" size={32} />, name: "Version Control (Git, GitHub)" },
-        { icon: <FaCogs className="text-[#6366F1]" size={32} />, name: "Automation & ETL Pipelines" },
-        { icon: <FaRocket className="text-[#10B981]" size={32} />, name: "CI/CD" },
-        { icon: <FaProjectDiagram className="text-[#6366F1]" size={32} />, name: "Agile Project Management (Jira, Trello)" }
+        { icon: <FaCloud className="text-[#00A1F1]" size={32} />, name: "Salesforce CRM Analytics" },
+        { icon: <FaWind className="text-[#017CEE]" size={32} />, name: "Airflow" },
+        { icon: <FaCogs className="text-[#00BCF2]" size={32} />, name: "Power Automate" },
+        { icon: <FaLink className="text-[#6366F1]" size={32} />, name: "REST APIs" },
+        { icon: <FaAws className="text-[#FF9900]" size={32} />, name: "AWS" },
+        { icon: <FaCloud className="text-[#0d9488]" size={32} />, name: "GCP" },
+        { icon: <FaMicrosoft className="text-[#00BCF2]" size={32} />, name: "Azure Cloud" }
       ]
     }
   ];
