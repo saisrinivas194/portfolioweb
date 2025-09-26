@@ -10,22 +10,6 @@ import Image from 'next/image';
 const Certificates = () => {
   const certificatesData = [
     {
-      title: "Python Basic",
-      issuer: "HackerRank",
-      date: "2024",
-      credentialLink: "https://www.hackerrank.com/certificates/cfa21a08e874",
-      description: "Python (Basic) certification covering Scalar Types, Operators and Control Flow, Strings, Collections and Iteration, Modularity, Objects and Types and Classes. Verified skill certification from HackerRank.",
-      image: "/python_basic certificate_1.png"
-    },
-    {
-      title: "SQL Intermediate",
-      issuer: "HackerRank",
-      date: "2024",
-      credentialLink: "https://www.hackerrank.com/certificates/7f36216e8829",
-      description: "SQL (Intermediate) certification covering complex joins, unions, and sub-queries. Advanced database query skills verified by HackerRank's comprehensive testing platform.",
-      image: "/sql_intermediate certificate_1.png"
-    },
-    {
       title: "Data Science",
       issuer: "ExcelR",
       date: "19th April 2024",

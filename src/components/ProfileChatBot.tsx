@@ -91,7 +91,7 @@ const ProfileChatBot = () => {
     const saiExperience = {
       education: 'Master of Science in Data Science from NJIT (May 2025)',
       workExperience: '2+ years professional experience',
-      companies: ['Webdaddy', 'Findem Inc.'],
+      companies: ['Bloomberg', 'Findem Inc.'],
       achievements: ['30% increase in feature development speed', '40% boost in lead generation', '25% improvement in ML accuracy', '20 hours saved weekly through automation']
     };
     
@@ -224,9 +224,9 @@ const ProfileChatBot = () => {
     // Phone number specific questions (check this BEFORE general contact)
     if (hasKeyword(['number', 'phone number', 'phone', 'contact number', 'mobile number', 'cell number', 'call', 'phone contact', 'what is his number', 'his number', 'number please', 'contact nu,ber', 'contact numbr', 'contact numbe', 'nu,ber', 'numbr', 'numbe'])) {
       return {
-        text: "Sai's contact number is +1 (201) 705-9891. You can reach him directly for professional inquiries, job opportunities, or collaboration. He is available for phone calls during business hours.",
+        text: "Sai's contact number is +1 (551) 223-1009. You can reach him directly for professional inquiries, job opportunities, or collaboration. He is available for phone calls during business hours.",
         links: [
-          { text: "+1 (201) 705-9891", url: "tel:+12017059891", type: "phone" }
+          { text: "+1 (551) 223-1009", url: "tel:+15512231009", type: "phone" }
         ]
       };
     }
@@ -234,9 +234,9 @@ const ProfileChatBot = () => {
     // Email specific questions (check this BEFORE general contact)
     if (hasKeyword(['email link', 'email address', 'mail link', 'contact email', 'email contact', 'send email', 'emial', 'emial address', 'emial link', 'mail address', 'mail contact', 'email', 'mail', 'email please', 'mail please', 'what is his email', 'his email', 'email address please'])) {
       return {
-        text: "Sai's professional email address is pedhapollasaisrinivas@gmail.com. You can contact him directly for professional inquiries, job opportunities, or collaboration. He responds promptly to business-related emails.",
+        text: "Sai's professional email address is sai.pedhapolla@gmail.com. You can contact him directly for professional inquiries, job opportunities, or collaboration. He responds promptly to business-related emails.",
         links: [
-          { text: "pedhapollasaisrinivas@gmail.com", url: "mailto:pedhapollasaisrinivas@gmail.com", type: "email" }
+          { text: "sai.pedhapolla@gmail.com", url: "mailto:sai.pedhapolla@gmail.com", type: "email" }
         ]
       };
     }
@@ -245,10 +245,10 @@ const ProfileChatBot = () => {
     if (hasKeyword(['contact', 'email', 'phone', 'reach', 'call', 'mail', 'number']) && 
         !hasKeyword(['number', 'phone number', 'phone', 'contact number', 'mobile number', 'cell number', 'call', 'phone contact', 'what is his number', 'his number', 'number please', 'contact nu,ber', 'contact numbr', 'contact numbe', 'nu,ber', 'numbr', 'numbe', 'email', 'mail', 'email please', 'mail please', 'what is his email', 'his email', 'email address please'])) {
       return {
-        text: "You can reach Sai through multiple channels. His professional email is pedhapollasaisrinivas@gmail.com and his contact number is +1 (201) 705-9891. He maintains an active LinkedIn presence with over 500 professional connections, and his GitHub profile showcases 19+ repositories. He's also available on Twitter/X for professional updates and networking.",
+        text: "You can reach Sai through multiple channels. His professional email is sai.pedhapolla@gmail.com and his contact number is +1 (551) 223-1009. He maintains an active LinkedIn presence with over 500 professional connections, and his GitHub profile showcases 19+ repositories. He's also available on Twitter/X for professional updates and networking.",
         links: [
-          { text: "pedhapollasaisrinivas@gmail.com", url: "mailto:pedhapollasaisrinivas@gmail.com", type: "email" },
-          { text: "+1 (201) 705-9891", url: "tel:+12017059891", type: "phone" },
+          { text: "sai.pedhapolla@gmail.com", url: "mailto:sai.pedhapolla@gmail.com", type: "email" },
+          { text: "+1 (551) 223-1009", url: "tel:+15512231009", type: "phone" },
           { text: "LinkedIn Profile", url: "https://www.linkedin.com/in/sai-srinivas-pedhapolla-345959256/", type: "linkedin" },
           { text: "GitHub Profile", url: "https://github.com/saisrinivas194", type: "github" },
           { text: "Twitter/X", url: "https://x.com/SaiSrinivas194", type: "twitter" }
@@ -261,7 +261,7 @@ const ProfileChatBot = () => {
       return {
         text: "Certainly! Sai's comprehensive resume is available for download through Google Drive. The document contains detailed information about his professional background, work experience, and technical expertise. Please use the link below to access his CV.",
         links: [
-          { text: "Download Resume", url: "https://drive.google.com/file/d/1UuACNItERO543n_9ZdK-C-sM8Z2Z_sQ9/view?usp=drive_link", type: "resume" }
+          { text: "Download Resume", url: "https://docs.google.com/document/d/1kaZc-x2a1rjamTYw6DnTVHytLgBR2q9M/edit?usp=sharing&ouid=105303347734911584038&rtpof=true&sd=true", type: "resume" }
         ]
       };
     }
@@ -280,9 +280,9 @@ const ProfileChatBot = () => {
       };
     }
 
-    if (hasKeyword(['role in webdaddy', 'role at webdaddy', 'webdaddy role', 'what did he do at webdaddy', 'webdaddy job', 'webdaddy position', 'webdaddy work', 'webdaddy responsibilities'])) {
+    if (hasKeyword(['role in bloomberg', 'role at bloomberg', 'bloomberg role', 'what did he do at bloomberg', 'bloomberg job', 'bloomberg position', 'bloomberg work', 'bloomberg responsibilities'])) {
       return {
-        text: "At Webdaddy (August 2024 - February 2025), Sai served as a Python Developer and R&D Specialist. In this role, he cleaned and validated over 1 million records, improving machine learning accuracy by 25%. He developed automated ETL pipelines using SQL and Python, reducing errors and conserving 30% of resources. Additionally, he designed KPI dashboards in Tableau and Power BI for business teams, significantly reducing reporting time."
+        text: "At Bloomberg (July 2024 - Present), Sai serves as a Generative AI Engineer. In this role, he implements and develops LLM-based features to improve Bloomberg's financial data products. He builds Python-based APIs to link LLM outputs to internal analyst platforms and creates systems for monitoring response latency, drift, accuracy, and overall model performance. He also compares proprietary vs. open-source LLMs (Gemini, LLaMA, GPT) and determines best-fit solutions for enterprise use."
       };
     }
 
@@ -297,7 +297,7 @@ const ProfileChatBot = () => {
     if (hasKeyword(['experience', 'job', 'webdaddy', 'findem', 'career', 'employment', 'worked', 'working', 'expereince', 'experince', 'expirience', 'companies', 'employer']) && 
         !hasKeyword(['authorization', 'visa', 'opt', 'ead', 'f1', 'permit', 'status', 'usa', 'united states', 'work in usa', 'work in us', 'authorized to work'])) {
       return {
-        text: "Sai has **2+ years** of professional experience across multiple organizations. At Webdaddy (August 2024 - February 2025), he served as a Python Developer and R&D Specialist, where he cleaned and validated over 1 million records, improving machine learning accuracy by 25%. He developed automated ETL pipelines using SQL and Python, reducing errors and conserving 30% of resources. Additionally, he designed KPI dashboards in Tableau and Power BI for business teams, significantly reducing reporting time.\n\nPreviously at Findem Inc. (May 2022 - December 2023), he worked as an R&D Data Analyst, building real-time dashboards with Tableau and Dash that enabled managers to make decisions 25% faster. He created automation pipelines that saved over 20 hours of manual work weekly and utilized Python (Django, FastAPI) to develop backend systems. He also integrated APIs and cloud platforms (AWS, GCP) for comprehensive dataset processing and analysis."
+        text: "Sai has **3+ years** of professional experience as a Generative AI Engineer across multiple organizations. At Bloomberg (July 2024 - Present), he serves as a Generative AI Engineer, implementing and developing LLM-based features to improve Bloomberg's financial data products. He builds Python-based APIs to link LLM outputs to internal analyst platforms and creates systems for monitoring response latency, drift, accuracy, and overall model performance.\n\nPreviously at Findem Inc. (June 2021 - December 2023), he worked as a Generative AI Engineer, developing GenAI-powered recruitment tools that made candidate screening 35% more efficient. He built engaging conversational chatbots using LLMs and integrated GenAI APIs (OpenAI, Gemini) into hiring platforms. He also prepared synthetic datasets for LLM fine-tuning and developed AI-enabled dashboards for hiring managers' decision making."
       };
     }
 
@@ -323,7 +323,7 @@ const ProfileChatBot = () => {
       return {
         text: "Sai's comprehensive resume is available for download through Google Drive. The document contains detailed information about his professional background, work experience, and technical expertise. You can access his CV using the link below.",
         links: [
-          { text: "Download Resume", url: "https://drive.google.com/file/d/1UuACNItERO543n_9ZdK-C-sM8Z2Z_sQ9/view?usp=drive_link", type: "resume" }
+          { text: "Download Resume", url: "https://docs.google.com/document/d/1kaZc-x2a1rjamTYw6DnTVHytLgBR2q9M/edit?usp=sharing&ouid=105303347734911584038&rtpof=true&sd=true", type: "resume" }
         ]
       };
     }
@@ -352,10 +352,8 @@ const ProfileChatBot = () => {
     // Certifications
     if (hasKeyword(['certification', 'certificate', 'hackerrank', 'excelr', 'cert', 'certificat', 'certifiction'])) {
       return {
-        text: "Sai has earned several valuable professional certifications that validate his technical expertise. He holds Python Basic and SQL Intermediate certifications from HackerRank, both obtained in 2024. Additionally, he completed a comprehensive Data Science certification from ExcelR in April 2024. These certifications demonstrate his commitment to continuous learning and professional development. The credentials are verified and can be accessed through the links provided below.",
+        text: "Sai has earned a valuable professional certification that validates his technical expertise. He completed a comprehensive Data Science certification from ExcelR in April 2024. This certification demonstrates his commitment to continuous learning and professional development in the field of data science and machine learning. The credential is verified and can be accessed through the link provided below.",
         links: [
-          { text: "Python Certificate", url: "https://www.hackerrank.com/certificates/cfa21a08e874", type: "external" },
-          { text: "SQL Certificate", url: "https://www.hackerrank.com/certificates/7f36216e8829", type: "external" },
           { text: "Data Science Certificate", url: "https://www.linkedin.com/in/sai-srinivas-pedhapolla-345959256/details/certifications/", type: "linkedin" }
         ]
       };
@@ -383,8 +381,8 @@ const ProfileChatBot = () => {
       return {
         text: "Yes, Sai is actively seeking new professional opportunities. He recently completed his Master of Science in Data Science from NJIT in May 2025 and is currently pursuing roles in data science, full-stack development, or AI/ML positions. He holds F1 OPT EAD authorization commencing August 16, 2025, and is available for opportunities throughout the United States. He is prepared to leverage his expertise in Python, React, data analysis, and machine learning to contribute to organizational success. Please feel free to contact him directly or review his resume for additional details.",
         links: [
-          { text: "Contact Sai", url: "mailto:pedhapollasaisrinivas@gmail.com", type: "email" },
-          { text: "Download Resume", url: "https://drive.google.com/file/d/1UuACNItERO543n_9ZdK-C-sM8Z2Z_sQ9/view?usp=drive_link", type: "resume" },
+          { text: "Contact Sai", url: "mailto:sai.pedhapolla@gmail.com", type: "email" },
+          { text: "Download Resume", url: "https://docs.google.com/document/d/1kaZc-x2a1rjamTYw6DnTVHytLgBR2q9M/edit?usp=sharing&ouid=105303347734911584038&rtpof=true&sd=true", type: "resume" },
           { text: "LinkedIn Profile", url: "https://www.linkedin.com/in/sai-srinivas-pedhapolla-345959256/", type: "linkedin" }
         ]
       };
@@ -453,7 +451,7 @@ const ProfileChatBot = () => {
       } else if (hasKeyword(['data analyst', 'data anlyst', 'data anlyst valso', 'data anlyst also', 'data anlyst', 'analyst', 'data analysis', 'business analyst', 'tableau', 'power bi', 'visualization'])) {
         roleResponse = "Data Analyst\n\nSai has 2+ years of data analysis experience! His expertise includes:\n\n• Programming: Python (Pandas, NumPy, scikit-learn), SQL (MySQL, PostgreSQL, T-SQL)\n• Data Processing: Processed over 1M+ data records, improved ML accuracy by 25%\n• Visualization: Tableau, Power BI, Plotly Dash, Matplotlib, Seaborn\n• Statistical Analysis: EDA, data cleaning, data wrangling, predictive analytics\n• Business Impact: Built real-time KPI dashboards, automated ETL pipelines saving 30% resources\n• Tools: Jupyter, Google Colab, Git, Agile methodologies\n• Projects: Recipe Health Dashboard (1,000+ recipes), Traffic Analysis (10K+ requests), Netflix Data Analysis\n• Performance: 25% faster decision-making, 30% resource reduction, 20% project turnaround improvement\n\nHis experience at Findem Inc. and Webdaddy demonstrates practical data analysis skills with measurable business results.";
       } else if (hasKeyword(['data scientist', 'machine learning engineer', 'ml engineer', 'ai engineer', 'ai developer', 'ml', 'machine learning', 'ai', 'scientist', 'tensorflow', 'pytorch', 'deep learning', 'neural networks', 'predictive modeling'])) {
-        roleResponse = "Data Scientist / ML Engineer\n\nSai has 2+ years of data science and ML engineering experience! His expertise includes:\n\n• ML Frameworks: TensorFlow, PyTorch, scikit-learn, Keras\n• Data Processing: Processed 1M+ data records for ML training\n• Model Development: Built predictive models achieving 87% accuracy (Stock Market Forecasting)\n• Specializations: Sentiment analysis, time-series forecasting, deep learning\n• Programming: Python, R, SQL with strong statistical background\n• Cloud Platforms: AWS, GCP for ML model deployment\n• Business Applications: Real-world ML implementations at Webdaddy and Findem\n• AI Integration: Integrated LLMs with cloud providers, reduced development lifecycle by 15%\n• Performance: 25% improvement in classification accuracy, 30% feature velocity gain\n\nHis proven track record includes improving classification accuracy by 25% and building end-to-end ML solutions.";
+        roleResponse = "Generative AI Engineer / ML Engineer\n\nSai has 3+ years of Generative AI and ML engineering experience! His expertise includes:\n\n• LLM Development: OpenAI, Gemini, LLaMA, AWS Bedrock, Snowflake Cortex\n• Prompt Engineering: Advanced templates for consistent business-ready outputs\n• Model Deployment: Monitoring response latency, drift, accuracy, and performance\n• GenAI Integration: Enterprise systems with compliance and cybersecurity\n• Programming: Python, FastAPI, Flask, Streamlit, API integration\n• Cloud Platforms: AWS, GCP, Azure for AI model deployment\n• Business Applications: Real-world GenAI implementations at Bloomberg and Findem\n• Performance: 35% efficiency improvements, 40% error reduction\n• Specializations: Conversational AI, virtual assistants, agentic frameworks\n\nHis proven track record includes developing GenAI-powered tools and building enterprise-ready AI solutions.";
       } else if (hasKeyword(['devops engineer', 'cloud engineer', 'devops', 'cloud', 'aws', 'gcp', 'infrastructure', 'deployment', 'automation'])) {
         roleResponse = "DevOps/Cloud Engineer\n\nSai has 2+ years of DevOps and cloud engineering experience! His expertise includes:\n\n• Cloud Platforms: AWS (EC2, S3), Google Cloud Platform\n• Automation: ETL pipelines, CI/CD processes, 2 automation pipelines built\n• Infrastructure: Cloud deployment and management\n• Performance: Reduced development lifecycle by 15%, automated 20+ hours of manual work weekly\n• Tools: Git, version control, Agile methodologies (Jira, Trello)\n• Scalability: Built systems handling large-scale data processing (1M+ records)\n• Integration: API integration, cloud services, LLM integration with cloud providers\n• Monitoring: Real-time traffic analysis (10K+ requests), 95% uptime reliability\n\nHis experience includes cloud integration and automation that delivered measurable performance improvements.";
       } else {
@@ -518,7 +516,7 @@ const ProfileChatBot = () => {
     }
     if (hasKeyword(['years of experience', 'how many years', 'experience years', 'years experience', 'how long', 'experience level', 'seniority', 'junior', 'senior', 'mid level', 'entry level'])) {
       return {
-        text: "Sai has 2+ years of professional experience in data science and software development! His experience includes:\n\n• Webdaddy (Aug 2024 - Feb 2025): Python Developer & R&D Specialist\n• Findem Inc. (May 2022 - Dec 2023): R&D Data Science Analyst\n• Master's Degree: Data Science from NJIT (completed May 2025)\n• Bachelor's Degree: Computer Science Engineering (June 2023)\n\nHis experience spans full-stack development, data analysis, machine learning, and cloud platforms with measurable business impact including 30% performance improvements and processing 1M+ data records."
+        text: "Sai has 3+ years of professional experience as a Generative AI Engineer! His experience includes:\n\n• Bloomberg (Jul 2024 - Present): Generative AI Engineer\n• Findem Inc. (June 2021 - Dec 2023): Generative AI Engineer\n• Master's Degree: Data Science from NJIT (completed May 2025)\n• Bachelor's Degree: Computer Science Engineering (June 2023)\n\nHis experience spans LLM development, prompt engineering, model deployment, and GenAI integration with measurable business impact including 35% efficiency improvements and 40% error reduction."
       };
     }
     if (hasKeyword(['what is he doing', 'what is he doing right now', 'what is he doing now', 'what does he do', 'what is he up to', 'current status', 'current situation', 'right now', 'currently', 'now', 'present']) && 

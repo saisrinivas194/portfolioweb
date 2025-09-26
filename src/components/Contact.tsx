@@ -39,7 +39,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <a
-                  href="https://drive.google.com/file/d/1UuACNItERO543n_9ZdK-C-sM8Z2Z_sQ9/view?usp=drive_link"
+                  href="https://docs.google.com/document/d/1kaZc-x2a1rjamTYw6DnTVHytLgBR2q9M/edit?usp=sharing&ouid=105303347734911584038&rtpof=true&sd=true"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative overflow-hidden px-8 py-4 bg-gradient-to-r from-[#06b6d4] to-[#0f766e] text-white rounded-2xl hover:shadow-xl transition-all duration-300 hover:scale-105 hover:from-[#0f766e] hover:to-[#06b6d4]"
@@ -93,23 +93,23 @@ const Contact = () => {
                 />
                 <SocialIcon 
                   type="email"
-                  url="mailto:pedhapollasaisrinivas@gmail.com"
+                  url="mailto:sai.pedhapolla@gmail.com"
                   tooltip={{
                     initials: "SP",
                     name: "Sai Srinivas",
                     username: "saisrinivas",
-                    description: "pedhapollasaisrinivas@gmail.com"
+                    description: "sai.pedhapolla@gmail.com"
                   }}
                   color="#EA4335"
                 />
                 <SocialIcon 
                   type="phone"
-                  url="tel:+12017059891"
+                  url="tel:+15512231009"
                   tooltip={{
                     initials: "SP",
                     name: "Sai Srinivas",
                     username: "saisrinivas",
-                    description: "+1 (201) 705-9891"
+                    description: "+1 (551) 223-1009"
                   }}
                   color="#34A853"
                 />

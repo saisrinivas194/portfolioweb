@@ -96,26 +96,27 @@ const Experience = () => {
 
   const experienceData = [
     {
-      company: "Webdaddy",
-      role: "Python Developer R&D Specialist",
-      duration: "Aug 2024 - Feb 2025",
-      location: "Bengaluru, India",
+      company: "Bloomberg (Contract)",
+      role: "Generative AI Engineer",
+      duration: "Jul 2024 - Present",
+      location: "New Jersey, USA",
       achievements: [
-        "Built from the ground up AI applications end-to-end with Python (FastAPI, Django) and React/Next.js, resulting in a 30% accord feature velocity gain.",
-        "Developed API's and 2 Automation Pipelines, increased lead gen by 40% and automated 20+ hours of manual work a week.",
-        "Built real-time KPI dashboards in Tableau and Dash to help make decisions 25% faster.",
-        "Integrated large language models (STD/LLMs) with cloud providers (AWS, GCP), shrinking development life period by 15%, and enlarging overall product coverage."
+        "Implementing and developing LLM-based features to improve Bloomberg's financial data products with advanced prompt engineering templates.",
+        "Built Python-based APIs to link LLM outputs to internal analyst platforms, resulting in 40% decrease in errors through automation.",
+        "Created systems for monitoring response latency, drift, accuracy, and overall model performance with compliance integration.",
+        "Compared proprietary vs. open-source LLMs (Gemini, LLaMA, GPT) and determined best-fit solutions for enterprise use."
       ]
     },
     {
       company: "Findem, Inc.",
-      role: "R&D Data Science Analyst",
-      duration: "May 2022 - Dec 2023",
+      role: "Generative AI Engineer",
+      duration: "June 2021 - Dec 2023",
       location: "Bengaluru, India",
       achievements: [
-        "Preprocessed and validated 1M+ data records for ML training, increasing classification accuracy by 25% for emails with supervised learning and annotation.",
-        "Standardized automated ETL pipelines and KPI reporting in SQL resulting in 30% less resources spent and reducing errors.",
-        "Championed Agile process (Jira, Trello), decreasing project turn around time by 20%."
+        "Developed GenAI-powered recruitment tools that made candidate screening 35% more efficient with real-time scoring.",
+        "Built engaging conversational chatbots using LLMs to address employee queries and crafted domain-specific prompts.",
+        "Integrated GenAI APIs (OpenAI, Gemini) into hiring platforms and prepared synthetic datasets for LLM fine-tuning.",
+        "Developed AI-enabled dashboards for hiring managers' decision making and guided junior teammates on LLM deployment."
       ]
     }
   ];

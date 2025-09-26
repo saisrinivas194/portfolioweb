@@ -264,23 +264,23 @@ const Hero = () => {
               />
               <SocialIconClient 
                 type="email"
-                url="mailto:pedhapollasaisrinivas@gmail.com"
+                url="mailto:sai.pedhapolla@gmail.com"
                 tooltip={{
                   initials: "SP",
                   name: "Sai Srinivas",
                   username: "saisrinivas",
-                  description: "pedhapollasaisrinivas@gmail.com"
+                  description: "sai.pedhapolla@gmail.com"
                 }}
                 color="#EA4335"
               />
               <SocialIconClient 
                 type="phone"
-                url="tel:+12017059891"
+                url="tel:+15512231009"
                 tooltip={{
                   initials: "SP",
                   name: "Sai Srinivas",
                   username: "saisrinivas",
-                  description: "+1 (201) 705-9891"
+                  description: "+1 (551) 223-1009"
                 }}
                 color="#34A853"
               />
@@ -312,47 +312,45 @@ const Hero = () => {
                       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-full bg-[#7dd3fc] animate-blink"></div>
                     </div>
                     <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-800 tracking-tight animate-fade-in-up delay-300 leading-snug">
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Python</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Developer</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">|</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Full-Stack</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Generative</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">AI</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Engineer</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">|</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Data</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Analyst</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">LLM</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Specialist</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">|</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Frontend</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Prompt</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Engineer</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">|</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">AI</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Developer</span>
                     </h2>
                     <h3 className="text-sm sm:text-base md:text-lg text-gray-600 tracking-tight animate-fade-in-up delay-400 leading-relaxed mt-2">
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Data-Driven</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Solutions</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">•</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Web</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Application</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">LLM</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Development</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">•</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Analytics</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">&</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Visualization</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Prompt</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Engineering</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">•</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Model</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Deployment</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">•</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Python</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">•</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">SQL</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">FastAPI</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">•</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">React/Next.js</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">OpenAI</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">•</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Power</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">BI</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Gemini</span>{' '}
                       <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">•</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Cloud</span>{' '}
-                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">(AWS/GCP)</span>
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">AWS</span>{' '}
+                      <span className="inline-block hover:animate-bounce-text transition-all duration-300 cursor-default">Bedrock</span>
                     </h3>
                   </div>
                 </div>
               </div>
               <p className="text-sm sm:text-base text-gray-700 tracking-wide animate-fade-in-up delay-500 leading-relaxed text-justify">
-                A full stack developer and data analyst with a strong foundation in cloud (AWS/GCP) platforms, Python, React/Next.js, and SQL. Proof of developing data pipelines, APIs, and scalable web apps to deliver quantifiable business value. A track record of using automation pipelines, predictive analytics, and real-time dashboards to improve decision-making, efficiency, and accuracy.
+                I have over 3 years of experience as a Generative AI Engineer working on the design, development, and deployment of LLM-powered solutions in the Finance and HR industries. I have experience with prompt engineering, model deployment and monitoring, and GenAI integration into enterprise systems. I have automation of workflows, development of conversational agents, and building AI-powered applications to solve business problems.
               </p>
             </div>
           </div>

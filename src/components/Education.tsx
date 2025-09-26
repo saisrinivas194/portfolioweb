@@ -9,28 +9,28 @@ import Image from 'next/image';
 const Education = () => {
   const educationData = [
     {
-      institution: "New Jersey Institute of Technology (NJIT)",
+      institution: "NEW JERSEY INSTITUTE OF TECHNOLOGY (NJIT)",
       degree: "Masters of Science (Data Science)",
-      duration: "January 2024 - May 2025",
+      duration: "",
       location: "Newark, NJ, USA",
-      gpa: "3.350/4 GPA",
+      gpa: "",
       logo: "/NJIT.png",
       status: "completed",
-      statusText: "Completed",
-      graduationYear: "2025",
-      description: "Studies in Machine Learning, Deep Learning, Big Data Analytics, Data Visualization, Statistical Analysis, and AI & Prompt Engineering."
+      statusText: "",
+      graduationYear: "",
+      description: ""
     },
     {
-      institution: "SCSVMV University",
+      institution: "SCSVMV UNIVERSITY",
       degree: "Bachelor of Engineering (Computer Science)",
-      duration: "June 2019 - June 2023",
-      location: "Kanchipuram, TN, India",
-      gpa: "9.43/10 GPA",
+      duration: "",
+      location: "Kanchipuram, TN",
+      gpa: "",
       logo: "/scsvmv.png",
       status: "completed",
-      statusText: "Completed",
-      graduationYear: "2023",
-      description: "Studies in Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, Computer Networks, Operating Systems, and Software Engineering."
+      statusText: "",
+      graduationYear: "",
+      description: ""
     }
   ];
 
@@ -75,7 +75,6 @@ const Education = () => {
                         <b>{education.institution.toUpperCase()}</b><br/>
                         <b>{education.degree}</b><br/>
                         <b>Location:</b> {education.location}<br/>
-                        <b>GPA:</b> {education.gpa}<br/>
                         {education.description}
                       </p>
                       {index < educationData.length - 1 && <hr />}
